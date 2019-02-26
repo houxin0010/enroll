@@ -4,3 +4,28 @@ spring:
     password: xxx000
     url: jdbc:mysql://39.108.154.215:3306/enroll?useUnicode=true&characterEncoding=utf-8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    session:
+      timeout: 120m
+
+logging:
+  level:
+    org:
+      springframework:
+        security: INFO
+
+mybatis-plus:
+  #  xml
+  #  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.houxin.backstage.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
