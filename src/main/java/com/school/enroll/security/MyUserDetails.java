@@ -23,7 +23,7 @@ public class MyUserDetails extends User implements UserDetails {
     public MyUserDetails() {
     }
 
-    public MyUserDetails(User user, List<Role> roles) {
+    MyUserDetails(User user, List<Role> roles) {
         super(user);
         this.roles = roles;
     }
@@ -32,7 +32,7 @@ public class MyUserDetails extends User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
         List<Role> roles = this.roles;
-        roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getRoleName())));
+        roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getRoleCode())));
         return authorities;
     }
 

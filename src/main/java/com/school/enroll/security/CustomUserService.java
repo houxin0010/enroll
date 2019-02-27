@@ -1,5 +1,6 @@
 package com.school.enroll.security;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.school.enroll.entity.Role;
 import com.school.enroll.entity.User;
@@ -9,6 +10,7 @@ import com.school.enroll.mapper.UserMapper;
 import com.school.enroll.mapper.UserRoleMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -35,11 +37,12 @@ public class CustomUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         log.info("username = {}", s);
         User user = userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getUsername, s));
+        log.info("user = {}", JSON.toJSONString(user));
         if (user == null) {
-            throw new UsernameNotFoundException("用户名不存在");
+            throw new BadCredentialsException("用户名不存在");
         }
         List<Role> roles = new ArrayList<>();
-        List<UserRole> userRoles = userRoleMapper.selectList(new LambdaQueryWrapper<UserRole>().eq(UserRole::getId, user.getId()));
+        List<UserRole> userRoles = userRoleMapper.selectList(new LambdaQueryWrapper<UserRole>().eq(UserRole::getUserId, user.getId()));
         userRoles.forEach((userRole -> roles.add(roleMapper.selectById(userRole.getRoleId()))));
         return new MyUserDetails(user, roles);
     }
