@@ -5,7 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,5 +39,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 return bCryptPasswordEncoder.matches(charSequence.toString(), s);
             }
         });
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+        http.sessionManagement()
+                .maximumSessions(1)
+                .sessionRegistry(new SessionRegistryImpl());
+        http.authorizeRequests()
+                //后台管理只允许管理员角色访问
+                .antMatchers("/manager/**").hasRole("ADMIN")
+                //其他请求需要登录认证
+                .and()
+                .formLogin().loginPage("/login")
+                .failureForwardUrl("/login?error").permitAll()
+                .and()
+                .logout().permitAll();
     }
 }
