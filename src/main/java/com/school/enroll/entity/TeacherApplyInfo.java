@@ -29,5 +29,9 @@ public class TeacherApplyInfo implements Serializable {
     private String professionalTitle;
     private String applyPhaseStudying;
     private String applySubject;
+    private String status;
+    private String note;
+    private Date createTime;
+    private Date updateTime;
 
 }

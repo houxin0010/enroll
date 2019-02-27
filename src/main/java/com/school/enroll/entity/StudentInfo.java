@@ -21,5 +21,9 @@ public class StudentInfo implements Serializable {
     private String homeAddress;
     private Long phoneNo;
     private String selfIntroduction;
+    private String status;
+    private String note;
+    private Date createTime;
+    private Date updateTime;
 
 }
