@@ -12,9 +12,11 @@
         body {
             background-color: #DADADA;
         }
+
         body > .grid {
             height: 90%;
         }
+
         .column {
             max-width: 450px;
         }
@@ -28,7 +30,7 @@
                 陈实中学后台管理
             </div>
         </h2>
-        <form class="ui large form">
+        <form class="ui large form" action="/login" method="post">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
@@ -49,11 +51,12 @@
 
         </form>
 
-        <div class="ui message">
-            新用户？ <a href="login.php#">注册</a>
-        </div>
+        <!--<div class="ui message">-->
+        <!--新用户？ <a href="login.php#">注册</a>-->
+        <!--</div>-->
     </div>
 </div>
 
 </body>
+<script src="../static/js/login.js"></script>
 </html>
