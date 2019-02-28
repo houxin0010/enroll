@@ -14,7 +14,6 @@ import java.util.List;
 /**
  * @author houxin
  */
-@Data
 public class MyUserDetails extends User implements UserDetails {
     private static final long serialVersionUID = 8468506701836672264L;
 
