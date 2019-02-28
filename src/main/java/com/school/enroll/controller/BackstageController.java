@@ -9,6 +9,6 @@ public class BackstageController {
 
     @RequestMapping("/index")
     public String index() {
-        return "backstage/index";
+        return "backstage/primarySchool";
     }
 }
