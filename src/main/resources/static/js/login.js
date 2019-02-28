@@ -15,10 +15,6 @@ $('.ui.form').form({
                 {
                     type: 'empty',
                     prompt: "{name}不能为空"
-                },
-                {
-                    type: 'minLength[6]',
-                    prompt: "{name}不能小于6位"
                 }
             ]
         }
