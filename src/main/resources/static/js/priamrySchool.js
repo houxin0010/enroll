@@ -9,7 +9,7 @@ function queryStudentInfo() {
     let $form = $('.ui.segment form');
     let allFields = $form.form('get values');
     console.log(allFields);
-    let url = "/backstage/getPrimaryStudentInfo";
+    let url = "/backstage/primary/getPrimaryStudentInfo";
     $.ajax({
         url: url,
         type: 'POST',

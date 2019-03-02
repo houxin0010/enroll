@@ -8,6 +8,8 @@
 
 </head>
 <body>
+<div th:replace="common::optionHint"></div>
+<div th:replace="common::updateHint"></div>
 <div th:replace="common::leftMenu"></div>
 <div class="main" style="margin-left: 19em; margin-right: 1em;">
     <div class="ui grid">
@@ -93,8 +95,8 @@
                             <td th:text="${#dates.format(studentInfo.createTime,'yyyy-MM-dd')}"></td>
                             <td>
                                 <button class="ui small blue inverted button">详情</button>
-                                <button class="ui small green inverted button">通过</button>
-                                <button class="ui small red inverted button">拒绝</button>
+                                <button th:if="${studentInfo.status} eq 'AUDIT'" class="ui small green inverted button"
+                                        th:onclick="|javascript:updateStatus(${studentInfo.id})|">审核</button>
                             </td>
                         </tr>
                         </tbody>

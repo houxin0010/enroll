@@ -11,5 +11,5 @@ public interface StudentInfoService {
 
     List<StudentInfo> getMiddleStudentInfo(StudentInfoVo studentInfoVo);
 
-    List<StudentInfo> updateStudentStatus( );
+    int updateStudentStatus(Long id, String status);
 }

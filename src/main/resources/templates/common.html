@@ -24,7 +24,7 @@
         <div class="item">
             <h2 class="ui teal header">
                 <i class="student icon"></i>
-                <div class="content">小学报名信息查询</div>
+                <div class="content" id="topTip">小学报名信息查询</div>
             </h2>
         </div>
         <div class="right menu" style="margin-right: 20px;">
@@ -46,6 +46,40 @@
         <a class="active item" th:href="@{/backstage/primary/index}" id="primarySchoolMenu">小学报名</a>
         <a class="item" th:href="@{/backstage/middle/index}" id="middleSchoolMenu">初中报名</a>
         <a class="item" th:href="@{/backstage/teacher/index}" id="teacherSchoolMenu">教师招聘</a>
+    </div>
+</th:block>
+
+<th:block th:fragment="optionHint">
+    <div class="ui basic modal">
+        <div class="ui icon header">
+            <i class="exclamation triangle yellow icon"></i>
+            入学审核
+        </div>
+        <div class="content">
+            <p>是否通过该学生的入学报名审核</p>
+        </div>
+        <div class="actions">
+            <div class="ui red cancel inverted button">
+                <i class="x icon"></i>
+                拒绝
+            </div>
+            <div class="ui green ok inverted button">
+                <i class="check icon"></i>
+                通过
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block th:fragment="updateHint">
+    <div class="ui mini modal">
+        <div class="header">
+            <i class="bell outline icon"></i>
+            审核提示
+        </div>
+        <div class="content">
+            <p>修改成功！点击查询查看最新数据</p>
+        </div>
     </div>
 </th:block>
 

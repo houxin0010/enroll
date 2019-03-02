@@ -33,4 +33,12 @@ public class StudentInfoServiceImpl implements StudentInfoService {
         return studentInfoMapper.findByField(studentInfoVo.getName(), studentInfoVo.getStatus(), 1,
                 studentInfoVo.getStartTime(), studentInfoVo.getEndTime());
     }
+
+    @Override
+    public int updateStudentStatus(Long id, String status) {
+        StudentInfo studentInfo = new StudentInfo();
+        studentInfo.setId(id);
+        studentInfo.setStatus(status);
+        return studentInfoMapper.updateById(studentInfo);
+    }
 }

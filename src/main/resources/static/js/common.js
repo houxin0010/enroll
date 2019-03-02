@@ -16,3 +16,37 @@ $("div.calendar").calendar({
         }
     }
 });
+
+function updateStatus(id) {
+    let url = "/backstage/updateStatus";
+    $('.basic.modal')
+        .modal({
+            onDeny: function () {
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        status: 'REJECT'
+                    },
+                    success: function (data) {
+                        $('.mini.modal').modal('show');
+                    }
+                });
+            },
+            onApprove: function () {
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        status: 'PASSED'
+                    },
+                    success: function (data) {
+                        $('.mini.modal').modal('show');
+                    }
+                });
+            }
+        })
+        .modal('show');
+}
