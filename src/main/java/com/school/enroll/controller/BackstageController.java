@@ -50,4 +50,9 @@ public class BackstageController {
     public ResponseEntity updateStudentStatus(Long id, String status) {
         return ResponseEntity.ok(studentInfoService.updateStudentStatus(id, status));
     }
+
+    @RequestMapping("/teacher/index")
+    public String teacherSchoolIndex(TeacherInfoVo teacherInfoVo,Model model){
+
+    }
 }
