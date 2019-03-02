@@ -20,27 +20,28 @@
 </head>
 <body>
 <th:block th:fragment="topMenu">
-    <div class="ui top fixed large inverted menu" style="padding-left: 262px; height: 70px;">
+    <div class="ui small menu">
         <div class="right menu" style="margin-right: 20px;">
-            <h4 class="ui inverted header" style="margin-top: 13px; margin-right: 15px">
+            <h4 class="ui header" style="margin-top: 13px; margin-right: 15px">
                 <img th:src="@{../static/images/steve.jpg}" class="ui circular image">
                 尊敬的管理员，您好!
             </h4>
-            <a th:href="@{/logout}" class="ui inverted button" style="height: 40px; margin-top: 12px;">注销</a>
+            <a th:href="@{/logout}" class="ui red small inverted button" style="height: 35px; margin-top: 15px;">注销</a>
         </div>
     </div>
 </th:block>
 
 <th:block th:fragment="leftMenu">
-    <div class="ui left fixed vertical large inverted menu">
-        <h2 class="ui inverted blue header" style="margin-left: 15px; margin-top: 20px">
+    <div class="ui visible left vertical sidebar large inverted menu stackable">
+        <h2 class="ui inverted teal header" style="margin-left: 15px; margin-top: 20px">
             <i class="desktop icon"></i>
-            后台管理系统
+            后台管理
         </h2>
         <a class="active item">小学报名</a>
         <a class="item">初中报名</a>
         <a class="item">教师招聘</a>
     </div>
 </th:block>
+
 </body>
 </html>
