@@ -19,10 +19,18 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     private StudentInfoMapper studentInfoMapper;
 
     @Override
-    public List<StudentInfo> getStudentInfo(StudentInfoVo studentInfoVo) {
+    public List<StudentInfo> getPrimaryStudentInfo(StudentInfoVo studentInfoVo) {
 
         log.info("studentInfoVo = {}", JSON.toJSONString(studentInfoVo));
-        return studentInfoMapper.findByField(studentInfoVo.getName(),
-                studentInfoVo.getStatus(), studentInfoVo.getStartTime(), studentInfoVo.getEndTime());
+        return studentInfoMapper.findByField(studentInfoVo.getName(), studentInfoVo.getStatus(), 0,
+                studentInfoVo.getStartTime(), studentInfoVo.getEndTime());
+    }
+
+    @Override
+    public List<StudentInfo> getMiddleStudentInfo(StudentInfoVo studentInfoVo) {
+
+        log.info("studentInfoVo = {}", JSON.toJSONString(studentInfoVo));
+        return studentInfoMapper.findByField(studentInfoVo.getName(), studentInfoVo.getStatus(), 1,
+                studentInfoVo.getStartTime(), studentInfoVo.getEndTime());
     }
 }

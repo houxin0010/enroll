@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface StudentInfoService {
 
-    List<StudentInfo> getStudentInfo(StudentInfoVo studentInfoVo);
+    List<StudentInfo> getPrimaryStudentInfo(StudentInfoVo studentInfoVo);
+
+    List<StudentInfo> getMiddleStudentInfo(StudentInfoVo studentInfoVo);
 }

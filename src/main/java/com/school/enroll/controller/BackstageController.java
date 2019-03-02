@@ -19,15 +19,22 @@ public class BackstageController {
 
     @RequestMapping("/index")
     public String index(StudentInfoVo studentInfoVo, Model model) {
-        List<StudentInfo> studentInfos = studentInfoService.getStudentInfo(studentInfoVo);
-        model.addAttribute("studentInfos", studentInfos);
+        List<StudentInfo> primaryStudentInfoList = studentInfoService.getPrimaryStudentInfo(studentInfoVo);
+        model.addAttribute("primaryStudentInfoList", primaryStudentInfoList);
         return "backstage/primarySchool";
     }
 
-    @RequestMapping("/getStudentInfo")
+    @RequestMapping("/getPrimaryStudentInfo")
     public String getStudentInfo(StudentInfoVo studentInfoVo, Model model) {
-        List<StudentInfo> studentInfos = studentInfoService.getStudentInfo(studentInfoVo);
-        model.addAttribute("studentInfos", studentInfos);
-        return "backstage/primarySchool::studentInfoList";
+        List<StudentInfo> primaryStudentInfoList = studentInfoService.getPrimaryStudentInfo(studentInfoVo);
+        model.addAttribute("primaryStudentInfoList", primaryStudentInfoList);
+        return "backstage/primarySchool::primaryStudentInfoList";
+    }
+
+    @RequestMapping("/getMiddleStudentInfo")
+    public String getMiddleStudentInfo(StudentInfoVo studentInfoVo, Model model){
+        List<StudentInfo> middleStudentInfoList = studentInfoService.getMiddleStudentInfo(studentInfoVo);
+        model.addAttribute("middleStudentInfoList", middleStudentInfoList);
+        return "backstage/MiddleSchool::middleStudentInfoList";
     }
 }

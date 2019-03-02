@@ -28,13 +28,13 @@ function queryStudentInfo() {
     let $form = $('.ui.segment form');
     let allFields = $form.form('get values');
     console.log(allFields);
-    let url = "/backstage/getStudentInfo";
+    let url = "/backstage/getPrimaryStudentInfo";
     $.ajax({
         url: url,
         type: 'POST',
         data: allFields,
         success: function (data) {
-            $('#studentInfoList').html(data);
+            $('#primaryStudentInfoList').html(data);
         }
     });
 

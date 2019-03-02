@@ -59,7 +59,7 @@
                 </form>
             </div>
             <div class="ui segment">
-                <div id="studentInfoList" th:fragment="studentInfoList">
+                <div id="primaryStudentInfoList" th:fragment="primaryStudentInfoList">
                     <table class="ui celled table center aligned">
                         <thead>
                         <tr>
@@ -75,7 +75,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="studentInfo:${studentInfos}">
+                        <tr th:each="studentInfo:${primaryStudentInfoList}">
                             <td th:text="${studentInfo.name}"></td>
                             <td th:text="${studentInfo.sex}==0?'女':'男'"></td>
                             <td th:text="${studentInfo.nation}"></td>
@@ -90,11 +90,9 @@
                             </td>
                             <td th:text="${#dates.format(studentInfo.createTime,'yyyy-MM-dd')}"></td>
                             <td>
-                                <!--<a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>-->
-                                <!--<button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除-->
-                                <!--</button>-->
-                                <a class="ui small secondary button">编辑</a>
-                                <button class="negative ui small button">删除</button>
+                                <button class="ui small blue inverted button">详情</button>
+                                <button class="ui small green inverted button">通过</button>
+                                <button class="ui small red inverted button">拒绝</button>
                             </td>
                         </tr>
                         </tbody>

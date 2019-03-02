@@ -11,6 +11,7 @@ public class StudentInfoProvider {
         return new SQL() {{
             SELECT("*");
             FROM("student_info");
+            WHERE("type = #{type}");
             if (!StringUtils.isEmpty(name)) {
                 WHERE("name = #{name}");
             }

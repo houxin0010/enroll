@@ -13,6 +13,6 @@ import java.util.List;
 public interface StudentInfoMapper extends BaseMapper<StudentInfo> {
 
     @SelectProvider(type = StudentInfoProvider.class, method = "findByFieldSql")
-    List<StudentInfo> findByField(@Param("name") String name, @Param("status") String status,
+    List<StudentInfo> findByField(@Param("name") String name, @Param("status") String status, @Param("type") int type,
                                   @Param("startTime") String startTime, @Param("endTime") String endTime);
 }
