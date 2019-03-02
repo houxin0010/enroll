@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //其他请求需要登录认证
                 .and()
                 .formLogin().loginPage("/login")
-                .defaultSuccessUrl("/backstage/index").permitAll()
+                .defaultSuccessUrl("/backstage/primary/index").permitAll()
                 .failureUrl("/login?error").permitAll()
                 .and()
                 .logout().logoutUrl("/logout")

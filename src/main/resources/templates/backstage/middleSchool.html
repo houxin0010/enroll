@@ -59,7 +59,7 @@
                 </form>
             </div>
             <div class="ui segment">
-                <div id="primaryStudentInfoList" th:fragment="primaryStudentInfoList">
+                <div id="middleStudentInfoList" th:fragment="middleStudentInfoList">
                     <table class="ui celled table center aligned">
                         <thead>
                         <tr>
@@ -69,19 +69,21 @@
                             <th>出生日期</th>
                             <th>户籍所在地</th>
                             <th>家庭住址</th>
+                            <th>小学名称</th>
                             <th>状态</th>
                             <th>创建时间</th>
                             <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="studentInfo:${primaryStudentInfoList}">
+                        <tr th:each="studentInfo:${middleStudentInfoList}">
                             <td th:text="${studentInfo.name}"></td>
                             <td th:text="${studentInfo.sex}==0?'女':'男'"></td>
                             <td th:text="${studentInfo.nation}"></td>
                             <td th:text="${#dates.format(studentInfo.birthdate,'yyyy-MM-dd')}"></td>
                             <td th:text="${studentInfo.domicilePlace}"></td>
                             <td th:text="${studentInfo.homeAddress}"></td>
+                            <td th:text="${studentInfo.primarySchool}"></td>
                             <td th:switch="${studentInfo.status}">
                                 <label th:case="INIT">初始化</label>
                                 <label th:case="AUDIT">审核中</label>
@@ -98,7 +100,7 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th colspan="9">
+                            <th colspan="10">
                                 <div class="ui right floated pagination menu">
                                     <a class="icon item">
                                         <i class="left chevron icon"></i>
@@ -120,10 +122,7 @@
         </div>
     </div>
 </div>
-</div>
-
-
 </body>
 <script th:src="@{../../static/js/common.js}"></script>
-<script th:src="@{../../static/js/priamrySchool.js}"></script>
+<script th:src="@{../../static/js/middleSchool.js}"></script>
 </html>

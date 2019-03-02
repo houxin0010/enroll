@@ -10,4 +10,6 @@ public interface StudentInfoService {
     List<StudentInfo> getPrimaryStudentInfo(StudentInfoVo studentInfoVo);
 
     List<StudentInfo> getMiddleStudentInfo(StudentInfoVo studentInfoVo);
+
+    List<StudentInfo> updateStudentStatus( );
 }
