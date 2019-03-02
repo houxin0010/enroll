@@ -13,20 +13,16 @@
     <div class="ui grid">
         <div class="right floated column">
             <div th:replace="common::topMenu"></div>
-            <div class="ui stackable segment">
-                <h2 class="ui dividing teal header">
-                    <i class="student icon"></i>
-                    <div class="content">小学报名信息查询</div>
-                </h2>
+            <div class="ui segment">
                 <form class="ui form">
                     <div class="three fields">
                         <div class="field">
                             <label>姓名</label>
-                            <input type="text" name="shipping[name]" placeholder="姓名">
+                            <input type="text" name="name" placeholder="姓名">
                         </div>
                         <div class="field">
                             <label>状态</label>
-                            <select class="ui dropdown">
+                            <select class="ui dropdown" name="status">
                                 <option value="">全部</option>
                                 <option value="INIT">初始化</option>
                                 <option value="AUDIT">审核中</option>
@@ -38,80 +34,90 @@
                             <label>创建日期</label>
                             <div class="two fields">
                                 <div class="field">
-                                    <div class="ui calendar" id="startDate">
+                                    <div class="ui calendar">
 
                                         <div class="ui input left icon">
                                             <i class="calendar alternate icon"></i>
-                                            <input type="text" placeholder="开始日期" value="">
+                                            <input type="text" placeholder="开始日期" value="" name="startTime">
                                         </div>
                                     </div>
                                 </div>
                                 -
                                 <div class="field">
-                                    <div class="ui calendar" id="endDate">
+                                    <div class="ui calendar">
                                         <div class="ui input left icon">
                                             <i class="calendar alternate icon"></i>
-                                            <input type="text" placeholder="结束日期" value="">
+                                            <input type="text" placeholder="结束日期" value="" name="endTime">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ui button" tabindex="0">查询</div>
+                    <div class="ui teal button" th:onclick="'javascript:queryStudentInfo()'">查询</div>
+                    <div class="ui button" th:onclick="'javascript:resst()'">重置</div>
                 </form>
             </div>
             <div class="ui segment">
-                <table class="ui celled table tablet stackable">
-                    <thead>
-                    <tr>
-                        <th>姓名</th>
-                        <th>性别</th>
-                        <th>名族</th>
-                        <th>出生日期</th>
-                        <th>户籍所在地</th>
-                        <th>家庭住址</th>
-                        <th>状态</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="studentInfo:${studentInfos}">
-                        <td th:text="${studentInfo.name}"></td>
-                        <td th:text="${studentInfo.sex}==0?'女':'男'"></td>
-                        <td th:text="${studentInfo.nation}"></td>
-                        <td th:text="${#dates.format(studentInfo.birthdate,'yyyy-MM-dd')}"></td>
-                        <td th:text="${studentInfo.domicilePlace}"></td>
-                        <td th:text="${studentInfo.homeAddress}"></td>
-                        <td th:text="${studentInfo.status}"></td>
-                        <td>
-                            <!--<a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>-->
-                            <!--<button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除-->
-                            <!--</button>-->
-                            <a class="ui small secondary button">编辑</a>
-                            <button class="negative ui small button">删除</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <th colspan="8">
-                            <div class="ui right floated pagination menu">
-                                <a class="icon item">
-                                    <i class="left chevron icon"></i>
-                                </a>
-                                <a class="item">1</a>
-                                <a class="item">2</a>
-                                <a class="item">3</a>
-                                <a class="item">4</a>
-                                <a class="icon item">
-                                    <i class="right chevron icon"></i>
-                                </a>
-                            </div>
-                        </th>
-                    </tr>
-                    </tfoot>
-                </table>
+                <div id="studentInfoList" th:fragment="studentInfoList">
+                    <table class="ui celled table center aligned">
+                        <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>名族</th>
+                            <th>出生日期</th>
+                            <th>户籍所在地</th>
+                            <th>家庭住址</th>
+                            <th>状态</th>
+                            <th>创建时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="studentInfo:${studentInfos}">
+                            <td th:text="${studentInfo.name}"></td>
+                            <td th:text="${studentInfo.sex}==0?'女':'男'"></td>
+                            <td th:text="${studentInfo.nation}"></td>
+                            <td th:text="${#dates.format(studentInfo.birthdate,'yyyy-MM-dd')}"></td>
+                            <td th:text="${studentInfo.domicilePlace}"></td>
+                            <td th:text="${studentInfo.homeAddress}"></td>
+                            <td th:switch="${studentInfo.status}">
+                                <label th:case="INIT">初始化</label>
+                                <label th:case="AUDIT">审核中</label>
+                                <label th:case="PASSED">通过</label>
+                                <label th:case="REJECT">拒绝</label>
+                            </td>
+                            <td th:text="${#dates.format(studentInfo.createTime,'yyyy-MM-dd')}"></td>
+                            <td>
+                                <!--<a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>-->
+                                <!--<button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除-->
+                                <!--</button>-->
+                                <a class="ui small secondary button">编辑</a>
+                                <button class="negative ui small button">删除</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th colspan="9">
+                                <div class="ui right floated pagination menu">
+                                    <a class="icon item">
+                                        <i class="left chevron icon"></i>
+                                    </a>
+                                    <a class="item">1</a>
+                                    <a class="item">2</a>
+                                    <a class="item">3</a>
+                                    <a class="item">4</a>
+                                    <a class="icon item">
+                                        <i class="right chevron icon"></i>
+                                    </a>
+                                </div>
+                            </th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -120,27 +126,5 @@
 
 
 </body>
-<script>
-    $('.ui.sidebar')
-        .sidebar('toggle')
-    ;
-    $('select.dropdown').dropdown();
-    $("div.calendar").calendar({
-        type: 'date',
-        formatter: { // 自定义日期的格式
-            date: function (date, settings) {
-                if (!date) return '';
-
-                var year = date.getFullYear();
-                var month = date.getMonth() + 1;
-                var day = date.getDate();
-
-                month = month < 10 ? '0' + month : month;
-                day = day < 10 ? '0' + day : day;
-
-                return year + '-' + month + '-' + day;
-            }
-        }
-    });
-</script>
+<script th:src="@{../../static/js/primarySchool.js}"></script>
 </html>

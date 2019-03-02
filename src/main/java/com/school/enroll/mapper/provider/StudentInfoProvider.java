@@ -18,10 +18,10 @@ public class StudentInfoProvider {
                 WHERE("status = #{status}");
             }
             if (!StringUtils.isEmpty(startTime)) {
-                WHERE("create_time >= #{startTime}");
+                WHERE("DATE_FORMAT(create_time,'%Y-%m-%d') >= #{startTime}");
             }
             if (!StringUtils.isEmpty(endTime)) {
-                WHERE("create_time < #{endTime}");
+                WHERE("DATE_FORMAT(create_time,'%Y-%m-%d') < #{endTime}");
             }
             ORDER_BY("create_time DESC");
         }}.toString();

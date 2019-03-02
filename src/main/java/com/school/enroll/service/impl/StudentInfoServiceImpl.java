@@ -1,5 +1,6 @@
 package com.school.enroll.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.school.enroll.entity.StudentInfo;
 import com.school.enroll.mapper.StudentInfoMapper;
 import com.school.enroll.service.StudentInfoService;
@@ -20,6 +21,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     @Override
     public List<StudentInfo> getStudentInfo(StudentInfoVo studentInfoVo) {
 
+        log.info("studentInfoVo = {}", JSON.toJSONString(studentInfoVo));
         return studentInfoMapper.findByField(studentInfoVo.getName(),
                 studentInfoVo.getStatus(), studentInfoVo.getStartTime(), studentInfoVo.getEndTime());
     }

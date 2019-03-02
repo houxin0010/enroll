@@ -28,6 +28,6 @@ public class BackstageController {
     public String getStudentInfo(StudentInfoVo studentInfoVo, Model model) {
         List<StudentInfo> studentInfos = studentInfoService.getStudentInfo(studentInfoVo);
         model.addAttribute("studentInfos", studentInfos);
-        return "backstage/primarySchool::table_refresh";
+        return "backstage/primarySchool::studentInfoList";
     }
 }
