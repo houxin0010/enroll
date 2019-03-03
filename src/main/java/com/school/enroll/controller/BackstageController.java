@@ -79,9 +79,8 @@ public class BackstageController {
 
     }
     @RequestMapping("/teacher/detail")
-    public ResponseEntity teacherDetail(Long id,Model model){
-          List<TeacherApplyDetailResult> list = teacherApplyInfoService.getTeacherApplyInfoDetail(id);
-          model.addAttribute("teacherApplyDetailResult",list);
-          return ResponseEntity.ok(list);
+    public ResponseEntity teacherDetail(Long id){
+          TeacherApplyDetailResult teacherApplyDetailResult = teacherApplyInfoService.getTeacherApplyInfoDetail(id);
+          return ResponseEntity.ok(teacherApplyDetailResult);
     }
 }

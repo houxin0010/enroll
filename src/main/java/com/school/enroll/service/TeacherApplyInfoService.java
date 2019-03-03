@@ -15,5 +15,5 @@ public interface TeacherApplyInfoService {
 
     int updateTeacherStatus(Long id, String status);
 
-    List<TeacherApplyDetailResult> getTeacherApplyInfoDetail(Long id);
+    TeacherApplyDetailResult getTeacherApplyInfoDetail(Long id);
 }
