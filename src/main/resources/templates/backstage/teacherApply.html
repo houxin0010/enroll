@@ -11,6 +11,7 @@
 <div th:replace="common::leftMenu"></div>
 <div th:replace="common::optionHint2"></div>
 <div th:replace="common::updateHint"></div>
+<div th:replace="common::contentHint"></div>
 <div class="main" style="margin-left: 19em; margin-right: 1em;">
     <div class="ui grid">
         <div class="right floated column">
@@ -83,12 +84,20 @@
                         <tr th:each="teacherApplyInfo:${teacherApplyInfoList}">
                             <td th:text="${teacherApplyInfo.name}"></td>
                             <td th:text="${teacherApplyInfo.sex}==0?'女':'男'"></td>
-                            <td th:text="${teacherApplyInfo.nation}"></td>
+                            <td th:text="${teacherApplyInfo.nation}==0?'汉族':'少数民族'"></td>
                             <td th:text="${#dates.format(teacherApplyInfo.birthdate,'yyyy-MM-dd')}"></td>
-                            <td th:text="${teacherApplyInfo.politicsStatus}"></td>
+                            <td th:text="${teacherApplyInfo.politicsStatus}==0?'党员':'群众'"></td>
                             <td th:text="${teacherApplyInfo.domicilePlace}"></td>
-                            <td th:text="${teacherApplyInfo.accountProperties}"></td>
-                            <td th:text="${teacherApplyInfo.education}"></td>
+                            <td th:text="${teacherApplyInfo.accountProperties}==0?'农村户口':'城镇户口'"></td>
+                            <td th:switch="${teacherApplyInfo.education}">
+                                <label th:case="0">小学</label>
+                                <label th:case="1">初中</label>
+                                <label th:case="2">高中（中专，职高）</label>
+                                <label th:case="3">大专</label>
+                                <label th:case="4">本科</label>
+                                <label th:case="5">硕士研究生</label>
+                                <label th:case="6">博士研究生</label>
+                            </td>
                             <td th:text="${teacherApplyInfo.profession}"></td>
                             <td th:switch="${teacherApplyInfo.status}">
                                 <label th:case="INIT">初始化</label>
@@ -98,7 +107,9 @@
                             </td>
                             <td th:text="${#dates.format(teacherApplyInfo.createTime,'yyyy-MM-dd')}"></td>
                             <td>
-                                <button class="ui small blue inverted button">详情</button>
+                                <button class="ui small blue inverted button"
+                                th:onclick="|javascript:getTeacherDetail(${teacherApplyInfo.id})|" >
+                               详情</button>
                                 <button th:if="${teacherApplyInfo.status} eq 'AUDIT'" class="ui small green inverted button"
                                         th:onclick="|javascript:updateTeacherStatus(${teacherApplyInfo.id})|">审核
                                 </button>

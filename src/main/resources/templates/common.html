@@ -107,18 +107,30 @@
 </th:block>
 
 <th:block th:fragment="contentHint">
-    <div class="ui modal">
-        <div class="header">Header</div>
-        <div class="content">
-            <table>
-                <tr>
-                    <td>姓名:</td>
-                    <td>${teacherApplyInfoResult}</td>
-                </tr>
-            </table>
-            <p></p>
-            <p></p>
+    <div class="ui long modal">
+        <div class="header">教师详细信息</div>
+        <div id="teacherApplyDetailResult" >
+            <div class="image content">
+                <img class="image" src="./static/images/steve.jpg">
+                <div class="description">
+                    <table class="ui celled table center aligned">
+                        <tr>
+                            <td>姓名:</td>
+                            <td id="name"></td>
+                            <td >性别:</td>
+                            <td id="sex"></td>
+                            <td>民族</td>
+                            <td id="nation"></td>
+                            <td>出生日期</td>
+                            <td id="birthday"></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
         </div>
+
+
     </div>
 </th:block>
 </body>

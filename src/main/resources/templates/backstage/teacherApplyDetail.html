@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+
+</head>
+<body>
+
+<div class="main" style="margin-left: 19em; margin-right: 1em;">
+    <div class="ui grid">
+            <div class="ui segment">
+                <div id="teacherApplyDetailResult" th:fragment="teacherApplyDetailResult">
+
+                        <div class="image content">
+                            <img class="image" src="./static/images/steve.jpg">
+                            <div class="description" th:height="400">
+                                <table>
+                                    <tr>
+                                        <td>姓名:</td>
+                                        <td th:text="${teacherApplyDetailResult.name}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>性别:</td>
+                                        <td th:text="${teacherApplyDetailResult.sex}"></td>
+                                    </tr>
+                                    <!--<tr>-->
+                                        <!--<td>姓名:</td>-->
+                                        <!--<td>${teacherApplyInfo.nation}</td>-->
+                                    <!--</tr>-->
+                                    <!--<tr>-->
+                                        <!--<td>姓名:</td>-->
+                                        <!--<td>${teacherApplyDetailResult.name.}</td>-->
+                                    <!--</tr>-->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+    </div>
+</div>
+</div>
+
+
+</body>
+<script th:src="@{../../static/js/common.js}"></script>
+<script th:src="@{../../static/js/teacher.js}"></script>
+</html>
