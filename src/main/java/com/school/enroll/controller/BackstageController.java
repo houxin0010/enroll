@@ -1,8 +1,13 @@
 package com.school.enroll.controller;
 
 import com.school.enroll.entity.StudentInfo;
+import com.school.enroll.entity.TeacherApplyInfo;
+import com.school.enroll.result.TeacherApplyDetailResult;
 import com.school.enroll.service.StudentInfoService;
+import com.school.enroll.service.TeacherApplyInfoService;
 import com.school.enroll.vo.StudentInfoVo;
+import com.school.enroll.vo.TeacherInfoVo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,10 +18,14 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/backstage")
+@Slf4j
 public class BackstageController {
 
     @Autowired
     private StudentInfoService studentInfoService;
+
+    @Autowired
+    private TeacherApplyInfoService teacherApplyInfoService;
 
     @RequestMapping("/primary/index")
     public String primarySchoolIndex(StudentInfoVo studentInfoVo, Model model) {
@@ -52,7 +61,27 @@ public class BackstageController {
     }
 
     @RequestMapping("/teacher/index")
-    public String teacherSchoolIndex(TeacherInfoVo teacherInfoVo,Model model){
+    public String teacherSchoolIndex(TeacherInfoVo teacherInfoVo, Model model){
+        List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(teacherInfoVo);
+        log.info("list===>{}",teacherApplyInfoList.size());
+        model.addAttribute("teacherApplyInfoList",teacherApplyInfoList);
+        return"backstage/teacherApply";
+    }
+    @RequestMapping("/teacher/getTeacherApplyInfo")
+    public String getTeacherApplyInfo(TeacherInfoVo teacherInfoVo, Model model){
+        List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(teacherInfoVo);
+        model.addAttribute("teacherApplyInfoList",teacherApplyInfoList);
+        return"backstage/teacherApply::teacherApplyInfoList";
+    }
+    @RequestMapping("/updateTeacherStatus")
+    public ResponseEntity updateTeacherStatus(Long id, String status) {
+        return ResponseEntity.ok(teacherApplyInfoService.updateTeacherStatus(id, status));
 
+    }
+    @RequestMapping("/teacher/detail")
+    public ResponseEntity teacherDetail(Long id,Model model){
+          List<TeacherApplyDetailResult> list = teacherApplyInfoService.getTeacherApplyInfoDetail(id);
+          model.addAttribute("teacherApplyDetailResult",list);
+          return ResponseEntity.ok(list);
     }
 }

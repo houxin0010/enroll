@@ -83,5 +83,43 @@
     </div>
 </th:block>
 
+
+<th:block th:fragment="optionHint2">
+    <div class="ui basic modal">
+        <div class="ui icon header">
+            <i class="exclamation triangle yellow icon"></i>
+            求职审核
+        </div>
+        <div class="content">
+            <p>是否通过该教师的求职报名审核</p>
+        </div>
+        <div class="actions">
+            <div class="ui red cancel inverted button">
+                <i class="x icon"></i>
+                拒绝
+            </div>
+            <div class="ui green ok inverted button">
+                <i class="check icon"></i>
+                通过
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block th:fragment="contentHint">
+    <div class="ui modal">
+        <div class="header">Header</div>
+        <div class="content">
+            <table>
+                <tr>
+                    <td>姓名:</td>
+                    <td>${teacherApplyInfoResult}</td>
+                </tr>
+            </table>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+</th:block>
 </body>
 </html>

@@ -50,3 +50,36 @@ function updateStatus(id) {
         })
         .modal('show');
 }
+function updateTeacherStatus(id) {
+    let url = "/backstage/updateTeacherStatus";
+    $('.basic.modal')
+        .modal({
+            onDeny: function () {
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        status: 'REJECT'
+                    },
+                    success: function (data) {
+                        $('.mini.modal').modal('show');
+                    }
+                });
+            },
+            onApprove: function () {
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        status: 'PASSED'
+                    },
+                    success: function (data) {
+                        $('.mini.modal').modal('show');
+                    }
+                });
+            }
+        })
+        .modal('show');
+}
