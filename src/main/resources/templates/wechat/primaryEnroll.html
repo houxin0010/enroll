@@ -32,78 +32,139 @@
     <h1 class="page__title">小学报名申请</h1>
     <p class="page__desc">请填写完整信息以及至少一个家庭成员信息，谢谢!</p>
 </div>
+
 <div class="page__bd">
-    <div class="weui-cells__title">基本信息:</div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入姓名" type="text">
+    <form id="base_info_form">
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__hd">基本信息:</div>
+            <div class="weui-panel__bd">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
+                    <div class="weui-cell__bd">
+                        <input required emptyTips="请输入姓名" class="weui-input" name="name" placeholder="请输入姓名"
+                               type="text">
+                    </div>
+                </div>
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd"><label class="weui-label">性别:</label></div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="sex">
+                            <option value="1">男</option>
+                            <option value="0">女</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">名族:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required emptyTips="请输入名族" name="nation" placeholder="请输入名族"
+                               type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">出生日期:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required emptyTips="请选择出生日期" placeholder="请选择日期" type="text"
+                               id="birthdate" name="birthdate">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">户口所在地:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required emptyTips="请输入户口所在地" placeholder="请输入户口所在地" type="text"
+                               id="domicile_place" name="domicilePlace">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">家庭住址:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required emptyTips="请输入家庭住址" placeholder="请输入家庭住址" type="text"
+                               name="homeAddress">
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="weui-cell weui-cell_select weui-cell_select-after">
-        <div class="weui-cell__hd"><label class="weui-label">性别:</label></div>
-        <div class="weui-cell__bd">
-            <select class="weui-select" name="sex">
-                <option value="1">男</option>
-                <option value="0">女</option>
-            </select>
+    </form>
+
+    <form id="father_info_form">
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__hd">家庭成员1:</div>
+            <div class="weui-panel__bd">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">称谓:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" value="父亲" name="fatherSalutation" disabled>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" placeholder="请输入姓名" type="text" name="fatherName">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">学历:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" placeholder="请输入学历" type="text" name="fatherEducation">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">工作单位:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" placeholder="请输入工作单位" type="text" name="fatherWorkUnit">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">联系方式:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="tel" required pattern="[0-9]{11}" placeholder="请输入手机号"
+                               emptyTips="请输入手机号" notMatchTips="请输入正确的手机号" name="fatherPhoneNo">
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">名族:</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入名族" type="text">
+    </form>
+
+    <form id="mother_info_form">
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-cells__title">家庭成员2:</div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">称谓:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" value="母亲" name="motherSalutation" disabled>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入姓名" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">学历:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入学历" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">工作单位:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入工作单位" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">联系方式:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入手机号">
+                </div>
+            </div>
         </div>
+    </form>
+
+    <div class="weui-btn-area">
+        <a id="formSubmitBtn" class="weui-btn weui-btn_primary">提交并保存</a>
     </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">出生日期:</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="请选择日期" type="text" id="birthdate">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">户口所在地:</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入户口所在地" type="text">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">家庭住址:</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入家庭住址" type="text">
-        </div>
-    </div>
-    <div class="weui-cells__title">家庭成员1:</div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">称谓:</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="text" th:value="父亲">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入姓名" type="text">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">学历:</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入学历" type="text">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">工作单位:</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入工作单位" type="text">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">联系方式:</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入手机号">
-        </div>
-    </div>
+
 </div>
 
 
@@ -115,17 +176,5 @@
 </div>
 </body>
 
-<script>
-    $('#birthdate').on('focus', function () {
-        weui.datePicker({
-            start: 1999,
-            end: new Date(),
-            defaultValue: [2012, 1, 1],
-            onConfirm: function (result) {
-                $('#birthdate').val(result[0].label.replace("年","-") + result[1].label.replace("月","-") + result[2].label.replace("日",""));
-            },
-            id: 'birthdate'
-        });
-    });
-</script>
+<script th:src="@{../../static/js/primaryEnroll.js}"></script>
 </html>
