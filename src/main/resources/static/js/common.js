@@ -50,3 +50,56 @@ function updateStatus(id) {
         })
         .modal('show');
 }
+function updateTeacherStatus(id) {
+    let url = "/backstage/updateTeacherStatus";
+    $('.basic.modal')
+        .modal({
+            onDeny: function () {
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        status: 'REJECT'
+                    },
+                    success: function (data) {
+                        $('.mini.modal').modal('show');
+                    }
+                });
+            },
+            onApprove: function () {
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        status: 'PASSED'
+                    },
+                    success: function (data) {
+                        $('.mini.modal').modal('show');
+                    }
+                });
+            }
+        })
+        .modal('show');
+
+
+}
+function getTeacherDetail(id) {
+    let url = "/backstage/teacher/detail";
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: {id:id},
+        success: function (data) {
+            console.log(data)
+
+            $('.long.modal').modal('show');
+            $("#name").text(data.name)
+            $("#sex").text(data.sex)
+            let birthday = data.birthdate;
+            $("#birthday").text(birthday)
+
+        }
+    });
+}
