@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TrainingExperienceMapper extends BaseMapper<com.school.enroll.entity.TrainingExperience> {
+public interface TrainingExperienceMapper extends BaseMapper<TrainingExperience> {
     @Select("select * from training_experience where teacher_id = #{teacherId}")
     List<TrainingExperience> selectListByTeacherId(Long teacherId);
 }

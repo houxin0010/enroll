@@ -1,6 +1,7 @@
 package com.school.enroll.service;
 
 import com.school.enroll.entity.StudentInfo;
+import com.school.enroll.vo.PrimaryStudentInfoVo;
 import com.school.enroll.vo.StudentInfoVo;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface StudentInfoService {
     List<StudentInfo> getMiddleStudentInfo(StudentInfoVo studentInfoVo);
 
     int updateStudentStatus(Long id, String status);
+
+    void createStudentInfo(PrimaryStudentInfoVo primaryStudentInfoVo);
 }

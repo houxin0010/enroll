@@ -4,7 +4,9 @@ $('#birthdate').on('focus', function () {
         end: new Date(),
         defaultValue: [2012, 1, 1],
         onConfirm: function (result) {
-            $('#birthdate').val(result[0].label.replace("年", "-") + result[1].label.replace("月", "-") + result[2].label.replace("日", ""));
+            console.log(result);
+            // $('#birthdate').val(result[0].label.replace("年", "-") + result[1].label.replace("月", "-") + result[2].label.replace("日", ""));
+            $('#birthdate').val(result[0].label + result[1].label + result[2].label);
         },
         id: 'birthdate'
     });
@@ -240,26 +242,52 @@ $('#domicile_place').on('focus', function () {
 });
 
 $('#formSubmitBtn').click(function () {
+    var url = "/primarySchool/primarySchoolApply";
     weui.form.validate('#base_info_form', function (error) {
         if (!error) {
-            var fatherFormData = $('#father_info_form').serializeArray();
-            var motherFormData = $('#mother_info_form').serializeArray();
             var baseFormData = $('#base_info_form').serializeArray();
 
-            console.log(baseFormData, fatherFormData, motherFormData);
-            if (fatherFormData.length === 0 && motherFormData.length===0) {
-                weui.topTips('请至少填写一位家庭成员信息', 3000);
-            }
-            // weui.form.validate('#father_info_form', function (error) {
-            //
-            // });
-            // let loading = weui.loading('提交中...');
-            // setTimeout(function () {
-            //     loading.hide();
-            //     weui.toast('提交成功', 3000);
-            // }, 1500);
+            console.log(baseFormData);
+            let loading = weui.loading('提交中...');
+            let studentInfo = {
+                name: baseFormData[0].value,
+                sex: baseFormData[1].value,
+                nation: baseFormData[2].value,
+                birthdate: baseFormData[3].value,
+                domicilePlace: baseFormData[4].value,
+                homeAddress: baseFormData[5].value
+            };
+            let familyInfo = [{
+                salutation: baseFormData[6].value,
+                name: baseFormData[7].value,
+                education: baseFormData[8].value,
+                workUnit: baseFormData[9].value,
+                phoneNo: baseFormData[10].value
+            }, {
+                salutation: baseFormData[11].value,
+                name: baseFormData[12].value,
+                education: baseFormData[13].value,
+                workUnit: baseFormData[14].value,
+                phoneNo: baseFormData[15].value
+            }];
+            $.ajax({
+                url: url,
+                type: 'POST',
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify({
+                    primaryStudentInfoVo: studentInfo,
+                    familyInfoVos: familyInfo
+                }),
+                success: function (data) {
+                    loading.hide();
+                    weui.toast('提交成功', 3000);
+                },
+                error: function () {
+                    loading.hide();
+                    weui.toast('请求超时', 3000);
+                }
+            });
         }
-        // return true; // 当return true时，不会显示错误
     });
 });
 
