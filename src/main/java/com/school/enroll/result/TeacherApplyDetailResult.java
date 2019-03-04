@@ -1,5 +1,6 @@
 package com.school.enroll.result;
 
+import com.school.enroll.entity.EducationExperience;
 import com.school.enroll.entity.JobExperience;
 import com.school.enroll.entity.TrainingExperience;
 import com.school.enroll.entity.WorkExperience;
@@ -39,6 +40,7 @@ public class TeacherApplyDetailResult implements Serializable{
     private List<WorkExperience> workExperienceList;
     private List<JobExperience> jobExperienceList;
     private List<TrainingExperience> trainingExperienceList;
+    private List<EducationExperience> educationExperienceList;
 
 
 }

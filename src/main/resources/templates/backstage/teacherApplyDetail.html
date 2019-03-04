@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-
+<style>
+    .item{
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+</style>
 
 </head>
 <body>
@@ -17,25 +22,107 @@
                         <div class="image content">
                             <img class="image" src="./static/images/steve.jpg">
                             <div class="description" th:height="400">
-                                <table>
-                                    <tr>
-                                        <td>姓名:</td>
-                                        <td th:text="${teacherApplyDetailResult.name}"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>性别:</td>
-                                        <td th:text="${teacherApplyDetailResult.sex}"></td>
-                                    </tr>
-                                    <!--<tr>-->
-                                        <!--<td>姓名:</td>-->
-                                        <!--<td>${teacherApplyInfo.nation}</td>-->
-                                    <!--</tr>-->
-                                    <!--<tr>-->
-                                        <!--<td>姓名:</td>-->
-                                        <!--<td>${teacherApplyDetailResult.name.}</td>-->
-                                    <!--</tr>-->
-                                </table>
+                                <h3 class="ui header">基础信息</h3>
+                                <div class="ui divider"></div>
+                                <div class="ui list">
+                                    <div class="item">
+                                        <label>姓名：</label>
+                                        <span th:text="${teacherApplyDetailResult.name}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>性别：</label>
+                                        <span th:text="${teacherApplyDetailResult.sex}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>民族：</label>
+                                        <span th:text="${teacherApplyDetailResult.nation}"></span>
+                                     </div>
+                                    <div class="item">
+                                        <label>出生日期：</label>
+                                        <span th:text="${teacherApplyDetailResult.getBirthdate()}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>证件号码：</label>
+                                        <span th:text="${teacherApplyDetailResult.idNo}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>政治面貌：</label>
+                                        <span th:text="${teacherApplyDetailResult.politicsStatus}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>户口所在地：</label>
+                                        <span th:text="${teacherApplyDetailResult.domicilePlace}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>户口性质：</label>
+                                        <span th:text="${teacherApplyDetailResult.accountProperties}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>婚姻状况：</label>
+                                        <span th:text="${teacherApplyDetailResult.maritalStatus}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>邮箱：</label>
+                                        <span th:text="${teacherApplyDetailResult.email}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>电话号码：</label>
+                                        <span th:text="${teacherApplyDetailResult.phoneNo}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>最高学历：</label>
+                                        <span th:text="${teacherApplyDetailResult.education}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>专业：</label>
+                                        <span th:text="${teacherApplyDetailResult.profession}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>英语等级：</label>
+                                        <span th:text="${teacherApplyDetailResult.englishLevel}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>教师资格证：</label>
+                                        <span th:text="${teacherApplyDetailResult.teacherCertification}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>专业职称：</label>
+                                        <span th:text="${teacherApplyDetailResult.professionalTitle}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>应聘学段：</label>
+                                        <span th:text="${teacherApplyDetailResult.applyPhaseStudying}"></span>
+                                    </div>
+                                    <div class="item">
+                                        <label>应聘学科：</label>
+                                        <span th:text="${teacherApplyDetailResult.applySubject}"></span>
+                                    </div>
                             </div>
+                                <h3 class="ui header">教育经历</h3>
+                                <div class="ui divider"></div>
+                                <div  th:each="educationExperience : ${teacherApplyDetailResult.getEducationExperienceList()}">
+                                    <div >
+                                        <label>开始时间</label>
+                                      <span  th:text="${educationExperience.startTime}></span>
+                                    </div>
+                                    <div>
+                                        <label>结束时间</label>
+                                        <span  th:text="${educationExperience.endTime}></span>
+                                     </div>
+                                       <div >
+                                        <label>开始时间</label>
+                                        <span  th:text="${educationExperience.education}></span>
+                                     </div>
+                                       <div>
+                                        <label>开始时间</label>
+                                        <span  th:text="${educationExperience.}></span>
+                                     </div>
+
+                                </div>
+                                <h3 class="ui header">培训经历</h3>
+                                <div class="ui divider"></div>
+                                <h3 class="ui header">工作经历</h3>
+                                <div class="ui divider"></div>
                         </div>
                     </div>
             </div>

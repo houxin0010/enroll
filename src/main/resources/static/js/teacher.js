@@ -19,3 +19,19 @@ function queryTeacherApplyInfo() {
         }
     });
 }
+
+function getTeacherDetail(id) {
+    $('.long.modal') .modal('show');
+    let url = "/backstage/teacher/detail";
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: {id:id},
+        success: function (data) {
+            console.log(data)
+            $('#teacherApplyDetailResult').html(data);
+
+
+        }
+    });
+}

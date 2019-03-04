@@ -1,13 +1,7 @@
 package com.school.enroll.service.impl;
 
-import com.school.enroll.entity.JobExperience;
-import com.school.enroll.entity.TeacherApplyInfo;
-import com.school.enroll.entity.TrainingExperience;
-import com.school.enroll.entity.WorkExperience;
-import com.school.enroll.mapper.JobExperienceMapper;
-import com.school.enroll.mapper.TeacherApplyInfoMapper;
-import com.school.enroll.mapper.TrainingExperienceMapper;
-import com.school.enroll.mapper.WorkExperienceMapper;
+import com.school.enroll.entity.*;
+import com.school.enroll.mapper.*;
 import com.school.enroll.result.TeacherApplyDetailResult;
 import com.school.enroll.service.TeacherApplyInfoService;
 import com.school.enroll.vo.TeacherInfoVo;
@@ -30,7 +24,8 @@ public class TeacherApplyInfoServiceImpl implements TeacherApplyInfoService {
     private WorkExperienceMapper workExperienceMapper;
     @Autowired
     private TrainingExperienceMapper trainingExperienceMapper;
-
+    @Autowired
+    private EducationExperienceMapper educationExperienceMapper;
     @Override
     public List<TeacherApplyInfo> getTeacherApplyInfo(TeacherInfoVo teacherInfoVo) {
         List<TeacherApplyInfo> list = teacherApplyInfoMapper.findTeacherByParams(teacherInfoVo);
@@ -58,10 +53,12 @@ public class TeacherApplyInfoServiceImpl implements TeacherApplyInfoService {
         List<JobExperience> jobExperiences = jobExperienceMapper.selectListByTeacherId(id);
         List<WorkExperience> workExperiences = workExperienceMapper.selectListByTeacherId(id);
         List<TrainingExperience> trainingExperiences = trainingExperienceMapper.selectListByTeacherId(id);
+        List<EducationExperience> educationExperiences = educationExperienceMapper.findByTeacherId(id);
         BeanUtils.copyProperties(teacherApplyInfo,teacherApplyDetailResult);
         teacherApplyDetailResult.setJobExperienceList(jobExperiences);
         teacherApplyDetailResult.setWorkExperienceList(workExperiences);
         teacherApplyDetailResult.setTrainingExperienceList(trainingExperiences);
+        teacherApplyDetailResult.setEducationExperienceList(educationExperiences);
         return teacherApplyDetailResult;
     }
 }

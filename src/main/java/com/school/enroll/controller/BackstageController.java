@@ -2,6 +2,7 @@ package com.school.enroll.controller;
 
 import com.school.enroll.entity.StudentInfo;
 import com.school.enroll.entity.TeacherApplyInfo;
+import com.school.enroll.result.StudentInfoDetailResult;
 import com.school.enroll.result.TeacherApplyDetailResult;
 import com.school.enroll.service.StudentInfoService;
 import com.school.enroll.service.TeacherApplyInfoService;
@@ -79,8 +80,15 @@ public class BackstageController {
 
     }
     @RequestMapping("/teacher/detail")
-    public ResponseEntity teacherDetail(Long id){
+    public String teacherDetail(Long id,Model model){
           TeacherApplyDetailResult teacherApplyDetailResult = teacherApplyInfoService.getTeacherApplyInfoDetail(id);
-          return ResponseEntity.ok(teacherApplyDetailResult);
+          model.addAttribute("teacherApplyDetailResult",teacherApplyDetailResult);
+          return "backstage/teacherApply::teacherApplyDetailResult";
+    }
+    @RequestMapping("/student/detail")
+    public String studentDetail(Long id,Model model){
+        StudentInfoDetailResult studentInfoDetailResult = studentInfoService.getStudentInfoDetail(id);
+        model.addAttribute("studentInfoDetailResult",studentInfoDetailResult);
+        return "backstage/studentDetail";
     }
 }
