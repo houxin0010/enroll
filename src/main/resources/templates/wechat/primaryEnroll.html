@@ -84,78 +84,89 @@
                 </div>
             </div>
         </div>
-    </form>
 
-    <form id="father_info_form">
         <div class="weui-panel weui-panel_access">
             <div class="weui-panel__hd">家庭成员1:</div>
             <div class="weui-panel__bd">
-                <div class="weui-cell">
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
                     <div class="weui-cell__hd"><label class="weui-label">称谓:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="text" value="父亲" name="fatherSalutation" disabled>
+                        <select class="weui-select" name="salutation">
+                            <option value="1">父亲</option>
+                            <option value="0">母亲</option>
+                        </select>
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" placeholder="请输入姓名" type="text" name="fatherName">
+                        <input class="weui-input" required emptyTips="请至少填写一个家庭成员姓名" placeholder="请输入姓名" type="text" name="name">
                     </div>
                 </div>
-                <div class="weui-cell">
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
                     <div class="weui-cell__hd"><label class="weui-label">学历:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" placeholder="请输入学历" type="text" name="fatherEducation">
+                        <select class="weui-select" name="education">
+                            <option value="1">初中</option>
+                            <option value="2">高中（中专、职高）</option>
+                            <option value="3">大专</option>
+                            <option value="4">本科</option>
+                            <option value="5">硕士研究生</option>
+                            <option value="6">博士研究生</option>
+                            <option value="7">其他</option>
+
+                        </select>
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">工作单位:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" placeholder="请输入工作单位" type="text" name="fatherWorkUnit">
+                        <input class="weui-input" required emptyTips="请输入工作单位" placeholder="请输入工作单位" type="text" name="workUnit">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">联系方式:</label></div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" type="tel" required pattern="[0-9]{11}" placeholder="请输入手机号"
-                               emptyTips="请输入手机号" notMatchTips="请输入正确的手机号" name="fatherPhoneNo">
+                               emptyTips="请输入手机号" notMatchTips="请输入正确的手机号" name="phoneNo">
                     </div>
                 </div>
             </div>
         </div>
-    </form>
 
-    <form id="mother_info_form">
         <div class="weui-panel weui-panel_access">
             <div class="weui-cells__title">家庭成员2:</div>
-            <div class="weui-cell">
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
                 <div class="weui-cell__hd"><label class="weui-label">称谓:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" value="母亲" name="motherSalutation" disabled>
+                    <select class="weui-select" name="salutation">
+                        <option value="0">母亲</option>
+                        <option value="1">父亲</option>
+                    </select>
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入姓名" type="text">
+                    <input class="weui-input" placeholder="请输入姓名" type="text" name="name">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">学历:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入学历" type="text">
+                    <input class="weui-input" placeholder="请输入学历" type="text" name="education">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">工作单位:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入工作单位" type="text">
+                    <input class="weui-input" placeholder="请输入工作单位" type="text" name="workUnit">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">联系方式:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入手机号">
+                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入手机号" name="phoneNo">
                 </div>
             </div>
         </div>
