@@ -39,7 +39,7 @@
                                      </div>
                                     <div class="item">
                                         <label>出生日期：</label>
-                                        <span th:text="${teacherApplyDetailResult.getBirthdate()}"></span>
+                                        <span th:text="${teacherApplyDetailResult.getBirthdate}"></span>
                                     </div>
                                     <div class="item">
                                         <label>证件号码：</label>
@@ -100,7 +100,7 @@
                             </div>
                                 <h3 class="ui header">教育经历</h3>
                                 <div class="ui divider"></div>
-                                <div  th:each="educationExperience : ${teacherApplyDetailResult.getEducationExperienceList()}">
+                                <div  th:each="educationExperience : ${teacherApplyDetailResult.educationExperienceList}">
                                     <div >
                                         <label>开始时间</label>
                                       <span  th:text="${educationExperience.startTime}></span>
