@@ -20,3 +20,16 @@ function queryStudentInfo() {
         }
     });
 }
+function  findDetail(id) {
+    let url = "/backstage/student/detail";
+
+    $('.long.modal') .modal('show');
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: {id:id},
+        success: function (data) {
+            $('#studentInfoDetailResult').html(data);
+        }
+    });
+}

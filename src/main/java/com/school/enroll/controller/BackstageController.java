@@ -89,6 +89,6 @@ public class BackstageController {
     public String studentDetail(Long id,Model model){
         StudentInfoDetailResult studentInfoDetailResult = studentInfoService.getStudentInfoDetail(id);
         model.addAttribute("studentInfoDetailResult",studentInfoDetailResult);
-        return "backstage/studentDetail";
+        return "backstage/studentDetail::studentInfoDetailResult";
     }
 }
