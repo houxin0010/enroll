@@ -31,6 +31,7 @@ public class TeacherApplyInfo implements Serializable {
     private String applySubject;
     private String status;
     private String note;
+    private String openId;
     private Date createTime;
     private Date updateTime;
 

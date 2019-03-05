@@ -4,14 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-
-    <link rel="stylesheet" th:href="@{../../static/weui/css/weui.css}"/>
-    <link rel="stylesheet" th:href="@{../../static/weui/css/example.css}"/>
-
-    <script th:src="@{../../static/jquery-3.1.1.min.js}"></script>
-    <script th:src="@{../../static/weui/js/weui.js}"></script>
+    <div th:replace="common::header"></div>
 </head>
 <body ontouchstart>
 <div class="weui-search-bar" id="searchBar">
@@ -100,7 +93,8 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" required emptyTips="请至少填写一个家庭成员姓名" placeholder="请输入姓名" type="text" name="name">
+                        <input class="weui-input" required emptyTips="请至少填写一个家庭成员姓名" placeholder="请输入姓名" type="text"
+                               name="name">
                     </div>
                 </div>
                 <div class="weui-cell weui-cell_select weui-cell_select-after">
@@ -114,14 +108,14 @@
                             <option value="5">硕士研究生</option>
                             <option value="6">博士研究生</option>
                             <option value="7">其他</option>
-
                         </select>
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">工作单位:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" required emptyTips="请输入工作单位" placeholder="请输入工作单位" type="text" name="workUnit">
+                        <input class="weui-input" required emptyTips="请输入工作单位" placeholder="请输入工作单位" type="text"
+                               name="workUnit">
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -151,10 +145,18 @@
                     <input class="weui-input" placeholder="请输入姓名" type="text" name="name">
                 </div>
             </div>
-            <div class="weui-cell">
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
                 <div class="weui-cell__hd"><label class="weui-label">学历:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入学历" type="text" name="education">
+                    <select class="weui-select" name="education">
+                        <option value="1">初中</option>
+                        <option value="2">高中（中专、职高）</option>
+                        <option value="3">大专</option>
+                        <option value="4">本科</option>
+                        <option value="5">硕士研究生</option>
+                        <option value="6">博士研究生</option>
+                        <option value="7">其他</option>
+                    </select>
                 </div>
             </div>
             <div class="weui-cell">
@@ -180,10 +182,7 @@
 
 
 <div class="weui-footer">
-    <p class="weui-footer__links">
-        <a href="javascript:home();" class="weui-footer__link">WeUI首页</a>
-    </p>
-    <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+    <p class="weui-footer__text">Copyright © 2008-2019 weui.io</p>
 </div>
 </body>
 

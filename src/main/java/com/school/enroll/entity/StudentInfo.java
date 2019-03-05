@@ -27,6 +27,7 @@ public class StudentInfo implements Serializable {
     private String status;
     private Integer type;
     private String note;
+    private String openId;
     private Date createTime;
     private Date updateTime;
 

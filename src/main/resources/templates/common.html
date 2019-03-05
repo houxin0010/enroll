@@ -11,10 +11,13 @@
 
         <link rel="stylesheet" type="text/css" th:href="@{../../static/semantic/semantic.min.css}">
         <link th:href="@{../../static/semantic-ui-calendar/calendar.css}" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{../../static/weui/css/weui.css}"/>
+        <link rel="stylesheet" th:href="@{../../static/weui/css/example.css}"/>
 
         <script th:src="@{../../static/jquery-3.1.1.min.js}"></script>
         <script th:src="@{../../static/semantic/semantic.min.js}"></script>
         <script th:src="@{../../static/semantic-ui-calendar/calendar.js}" charset="utf-8"></script>
+        <script th:src="@{../../static/weui/js/weui.js}"></script>
     </th:block>
 
 </head>
@@ -108,6 +111,23 @@
 
 <th:block th:fragment="contentHint">
 
+</th:block>
+
+<th:block th:fragment="searchHeader">
+    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+            <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    </div>
 </th:block>
 </body>
 </html>

@@ -6,12 +6,14 @@ import org.springframework.util.StringUtils;
 
 public class StudentInfoProvider {
 
-    public String findByFieldSql(@Param("name") String name, @Param("status") String status,
+    public String findByFieldSql(@Param("name") String name, @Param("status") String status, @Param("type") int type,
                                  @Param("startTime") String startTime, @Param("endTime") String endTime) {
         return new SQL() {{
             SELECT("*");
             FROM("student_info");
-            WHERE("type = #{type}");
+            if (!StringUtils.isEmpty(type)) {
+                WHERE("type = #{type}");
+            }
             if (!StringUtils.isEmpty(name)) {
                 WHERE("name = #{name}");
             }

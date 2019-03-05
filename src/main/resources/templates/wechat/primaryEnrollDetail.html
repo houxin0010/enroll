@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:replace="common::header"></div>
+</head>
+<body>
+<div th:replace="common::searchHeader"></div>
+<div class="page__hd">
+    <h1 class="page__title">报名学生详细信息</h1>
+</div>
+<div class="page__bd">
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__hd">基本信息:</div>
+        <div class="weui-panel__bd">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="name" disabled type="text"
+                           th:value="${fullEnrollStudentInfo.studentInfo.name}">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">性别:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="sex" disabled type="text"
+                           th:value="${fullEnrollStudentInfo.studentInfo.sex}==0?'女':'男'">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">名族:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" disabled name="nation" type="text"
+                           th:value="${fullEnrollStudentInfo.studentInfo.nation}">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">出生日期:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="birthdate" disabled type="text"
+                           th:value="${#dates.format(fullEnrollStudentInfo.studentInfo.birthdate,'yyyy-MM-dd')}">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">户口所在地:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="domicilePlace" disabled type="text"
+                           th:value="${fullEnrollStudentInfo.studentInfo.domicilePlace}">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">家庭住址:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="homeAddress" disabled type="text"
+                           th:value="${fullEnrollStudentInfo.studentInfo.homeAddress}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-panel weui-panel_access" th:each="familyInfoList:${fullEnrollStudentInfo.familyInfoList}">
+        <div class="weui-panel__hd">家庭成员:</div>
+        <div class="weui-panel__bd">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">称谓:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="salutation" disabled type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="name" disabled type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">学历:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="education" disabled type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">工作单位:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="workUnit" disabled type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">联系方式:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="phoneNo" disabled type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

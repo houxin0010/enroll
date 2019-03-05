@@ -1,6 +1,7 @@
 package com.school.enroll.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.school.enroll.entity.FamilyInfo;
 import com.school.enroll.entity.HonorInfo;
 import com.school.enroll.entity.StudentInfo;
@@ -10,6 +11,8 @@ import com.school.enroll.mapper.HonorInfoMapper;
 import com.school.enroll.mapper.StudentInfoMapper;
 import com.school.enroll.result.StudentInfoDetailResult;
 import com.school.enroll.service.StudentInfoService;
+import com.school.enroll.vo.FullEnrollStudentInfo;
+import com.school.enroll.vo.PrimarySchoolApplyVo;
 import com.school.enroll.vo.PrimaryStudentInfoVo;
 import com.school.enroll.vo.StudentInfoVo;
 import lombok.extern.slf4j.Slf4j;
@@ -37,10 +40,16 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 
     @Override
     public List<StudentInfo> getPrimaryStudentInfo(StudentInfoVo studentInfoVo) {
-
         log.info("studentInfoVo = {}", JSON.toJSONString(studentInfoVo));
         return studentInfoMapper.findByField(studentInfoVo.getName(), studentInfoVo.getStatus(), 0,
                 studentInfoVo.getStartTime(), studentInfoVo.getEndTime());
+    }
+
+    @Override
+    public List<StudentInfo> getStudentInfoByOpenId(String openId, Integer type) {
+        return studentInfoMapper.selectList(new LambdaQueryWrapper<StudentInfo>()
+                .eq(StudentInfo::getOpenId, openId)
+                .eq(StudentInfo::getType, type));
     }
 
     @Override
@@ -60,8 +69,10 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     }
 
     @Override
-    public void createStudentInfo(PrimaryStudentInfoVo primaryStudentInfoVo) {
+    public void createStudentInfo(PrimarySchoolApplyVo primarySchoolApplyVo, String openId) {
+        PrimaryStudentInfoVo primaryStudentInfoVo = primarySchoolApplyVo.getPrimaryStudentInfoVo();
         StudentInfo studentInfo = new StudentInfo();
+        studentInfo.setOpenId(openId);
         BeanUtils.copyProperties(primaryStudentInfoVo, studentInfo);
         try {
             studentInfo.setBirthdate(new SimpleDateFormat("yyyy年M月d日").parse(primaryStudentInfoVo.getBirthdate()));
@@ -73,18 +84,35 @@ public class StudentInfoServiceImpl implements StudentInfoService {
         studentInfo.setStatus(StatusEnum.AUDIT.getCode());
         studentInfo.setType(0);
         studentInfoMapper.insert(studentInfo);
+        primarySchoolApplyVo.getFamilyInfoVos().forEach(familyInfoVo -> {
+            FamilyInfo familyInfo = new FamilyInfo();
+            BeanUtils.copyProperties(familyInfoVo, familyInfo);
+            familyInfo.setStudentId(studentInfo.getId());
+            familyInfoMapper.insert(familyInfo);
+        });
     }
 
     @Override
     public StudentInfoDetailResult getStudentInfoDetail(Long id) {
         StudentInfoDetailResult studentInfoDetailResult = new StudentInfoDetailResult();
-         StudentInfo studentInfo = studentInfoMapper.selectById(id);
-         BeanUtils.copyProperties(studentInfo,studentInfoDetailResult);
-         List<FamilyInfo> familyInfos = familyInfoMapper.findByStudentId(id);
-         List<HonorInfo> honorInfos = honorInfoMapper.findByStudentId(id);
-         studentInfoDetailResult.setFamilyInfoList(familyInfos);
-         studentInfoDetailResult.setHonorInfoList(honorInfos);
+        StudentInfo studentInfo = studentInfoMapper.selectById(id);
+        BeanUtils.copyProperties(studentInfo, studentInfoDetailResult);
+        List<FamilyInfo> familyInfos = familyInfoMapper.findByStudentId(id);
+        List<HonorInfo> honorInfos = honorInfoMapper.findByStudentId(id);
+        studentInfoDetailResult.setFamilyInfoList(familyInfos);
+        studentInfoDetailResult.setHonorInfoList(honorInfos);
         return studentInfoDetailResult;
+    }
+
+    @Override
+    public FullEnrollStudentInfo getFullEnrollStudentInfo(Long id) {
+        FullEnrollStudentInfo fullEnrollStudentInfo = new FullEnrollStudentInfo();
+        StudentInfo studentInfo = studentInfoMapper.selectById(id);
+        fullEnrollStudentInfo.setStudentInfo(studentInfo);
+        List<FamilyInfo> familyInfoList = familyInfoMapper.selectList(new LambdaQueryWrapper<FamilyInfo>()
+                .eq(FamilyInfo::getStudentId, id));
+        fullEnrollStudentInfo.setFamilyInfoList(familyInfoList);
+        return fullEnrollStudentInfo;
     }
 
 }
