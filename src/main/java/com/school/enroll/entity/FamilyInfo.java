@@ -18,7 +18,7 @@ public class FamilyInfo implements Serializable {
     private Long education;
     private String workUnit;
     private String position;
-    private Long phoneNo;
+    private String phoneNo;
     private Long studentId;
 
 }

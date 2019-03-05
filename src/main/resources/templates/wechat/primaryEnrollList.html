@@ -22,7 +22,7 @@
                 <li class="weui-media-box__info__meta" th:switch="${studentInfo.status}">
                     <label th:case="INIT">初始化</label>
                     <label th:case="AUDIT">审核中</label>
-                    <label th:case="PASSED">通过</label>
+                    <label th:case="PASSED">已通过</label>
                     <label th:case="REJECT">拒绝</label>
                 </li>
                 <a class="weui-media-box__info__meta weui-media-box__info__meta_extra" th:href="@{/primarySchool/studentEnrollDetail(id=${studentInfo.id})}">详细信息</a>
@@ -35,7 +35,7 @@
     <a id="formSubmitBtn" class="weui-btn weui-btn_primary" th:href="@{/primarySchool/enroll}">申请报名</a>
 </div>
 
-<div class="weui-footer weui-footer_fixed-bottom">
+<div class="weui-footer">
     <p class="weui-footer__text">Copyright © 2008-2019 weui.io</p>
 </div>
 </body>

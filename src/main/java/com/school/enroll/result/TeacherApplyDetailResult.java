@@ -25,7 +25,7 @@ public class TeacherApplyDetailResult implements Serializable{
     private Long accountProperties;
     private String maritalStatus;
     private String email;
-    private Long phoneNo;
+    private String phoneNo;
     private Long education;
     private String profession;
     private Long englishLevel;

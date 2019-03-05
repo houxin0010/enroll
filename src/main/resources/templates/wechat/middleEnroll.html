@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
     <div th:replace="common::header"></div>
 </head>
-<body ontouchstart>
+<body>
 <div th:replace="common::searchHeader"></div>
 <div class="page__hd">
-    <h1 class="page__title">小学报名申请</h1>
-    <p class="page__desc">请填写完整信息以及至少一个家庭成员信息，谢谢!</p>
+    <h1 class="page__title">初中报名申请</h1>
+    <p class="page__desc">请填写完整信息、获奖信息以及至少一个家庭成员信息，谢谢!</p>
 </div>
 
 <div class="page__bd">
@@ -49,6 +48,26 @@
                     </div>
                 </div>
                 <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">身份证号:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" pattern="REG_IDNUM" name="idNo" placeholder="请输入身份证号"
+                               notMatchTips="请输入正确的身份证号码" type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">现就读小学:</label></div>
+                    <div class="weui-cell__bd">
+                        <input required emptyTips="请输入就读小学" class="weui-input" name="name" placeholder="请输入就读小学"
+                               type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">学籍号:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="nation" placeholder="请输入学籍号" type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">户口所在地:</label></div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" required emptyTips="请输入户口所在地" placeholder="请输入户口所在地" type="text"
@@ -60,6 +79,13 @@
                     <div class="weui-cell__bd">
                         <input class="weui-input" required emptyTips="请输入家庭住址" placeholder="请输入家庭住址" type="text"
                                name="homeAddress">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">联系电话:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="tel" required pattern="[0-9]{11}" placeholder="请输入手机号"
+                               emptyTips="请输入手机号" notMatchTips="请输入正确的手机号" name="phoneNo">
                     </div>
                 </div>
             </div>
@@ -166,12 +192,5 @@
     </div>
 
 </div>
-
-
-<div class="weui-footer">
-    <p class="weui-footer__text">Copyright © 2008-2019 weui.io</p>
-</div>
 </body>
-
-<script th:src="@{../../static/js/primaryEnroll.js}"></script>
 </html>

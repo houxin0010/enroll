@@ -21,7 +21,7 @@ public class StudentInfoDetailResult implements Serializable {
     private String studentCode;
     private String domicilePlace;
     private String homeAddress;
-    private Long phoneNo;
+    private String phoneNo;
     private String selfIntroduction;
     private String status;
     private String type;
