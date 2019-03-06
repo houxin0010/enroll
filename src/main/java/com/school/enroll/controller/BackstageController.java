@@ -85,10 +85,16 @@ public class BackstageController {
           model.addAttribute("teacherApplyDetailResult",teacherApplyDetailResult);
           return "backstage/teacherApply::teacherApplyDetailResult";
     }
-    @RequestMapping("/student/detail")
-    public String studentDetail(Long id,Model model){
+    @RequestMapping("/middle/student/detail")
+    public String middleStudentDetail(Long id,Model model){
         StudentInfoDetailResult studentInfoDetailResult = studentInfoService.getStudentInfoDetail(id);
         model.addAttribute("studentInfoDetailResult",studentInfoDetailResult);
-        return "backstage/studentDetail::studentInfoDetailResult";
+        return "backstage/middleSchool::studentInfoDetailResult";
+    }
+    @RequestMapping("/primary/student/detail")
+    public String primaryStudentDetail(Long id,Model model){
+        StudentInfoDetailResult studentInfoDetailResult = studentInfoService.getStudentInfoDetail(id);
+        model.addAttribute("studentInfoDetailResult",studentInfoDetailResult);
+        return "backstage/primarySchool::studentInfoDetailResult";
     }
 }

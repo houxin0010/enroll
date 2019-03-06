@@ -84,6 +84,7 @@
                             <label th:case="4">本科</label>
                             <label th:case="5">硕士研究生</label>
                             <label th:case="6">博士研究生</label>
+                            <label th:case="7">其他</label>
                         </span>
                     </div>
                     <div class="column">
@@ -299,6 +300,7 @@
                                 <label th:case="4">本科</label>
                                 <label th:case="5">硕士研究生</label>
                                 <label th:case="6">博士研究生</label>
+                                <label th:case="7">其他</label>
                             </td>
                             <td th:text="${teacherApplyInfo.profession}"></td>
                             <td th:switch="${teacherApplyInfo.status}">

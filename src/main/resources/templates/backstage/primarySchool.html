@@ -10,125 +10,88 @@
 <body>
 <th:block>
     <div class="ui long modal grid">
-        <div class="header">教师详细信息</div>
+        <div class="header">学生详细信息</div>
         <div id="studentInfoDetailResult" th:fragment="studentInfoDetailResult">
             <div class="image content">
-                <img class="image" th:src="${teacherApplyDetailResult?.pictureUrl}">
+                <!--<img class="image" th:src="${studentInfoDetailResult?.pictureUrl}">-->
                 <div class="description" >
                     <h3 class="ui header">基础信息</h3>
                     <div class="ui divider"></div>
                     <div class="ui four column grid">
                         <div class="column">
                             <label>姓名：</label>
-                            <span th:text="${teacherApplyDetailResult?.name}"></span>
+                            <span th:text="${studentInfoDetailResult?.name}"></span>
                         </div>
                         <div class="column">
                             <label>性别：</label>
-                            <span th:text="${teacherApplyDetailResult?.sex}==0?'女':'男'"></span>
+                            <span th:text="${studentInfoDetailResult?.sex}==0?'女':'男'"></span>
                         </div>
                         <div class="column">
                             <label>民族：</label>
-                            <span th:text="${teacherApplyDetailResult?.nation}==0?'汉族':'少数民族'"></span>
+                            <span th:text="${studentInfoDetailResult?.nation}==0?'汉族':'少数民族'"></span>
                         </div>
                         <div class="column">
                             <label>出生日期：</label>
-                            <span th:text="${#dates.format(teacherApplyDetailResult?.birthdate,'yyyy-MM-dd')}"></span>
+                            <span th:text="${#dates.format(studentInfoDetailResult?.birthdate,'yyyy-MM-dd')}"></span>
                         </div>
                         <div class="column">
                             <label>证件号码：</label>
-                            <span th:text="${teacherApplyDetailResult?.idNo}"></span>
-                        </div>
-                        <div class="column">
-                            <label>政治面貌：</label>
-                            <span th:switch="${teacherApplyDetailResult?.politicsStatus}">
-                            <label th:case="0">群众</label>
-                            <label th:case="1">共青团员</label>
-                            <label th:case="2">中共预备党员</label>
-                            <label th:case="3">中共党员</label>
-                        </span>
-                        </div>
-                        <div class="column">
-                            <label>户口所在地：</label>
-                            <span th:text="${teacherApplyDetailResult?.domicilePlace}"></span>
-                        </div>
-                        <div class="column">
-                            <label>户口性质：</label>
-                            <span th:text="${teacherApplyDetailResult?.accountProperties}==0?'农村户口':'城镇户口'"></span>
+                            <span th:text="${studentInfoDetailResult?.idNo}"></span>
                         </div>
                         <div class ="column">
-                            <label>婚姻状况：</label>
-                            <span th:text="${teacherApplyDetailResult?.maritalStatus}"></span>
-                        </div>
-                        <div class="column">
-                            <label>邮箱：</label>
-                            <span th:text="${teacherApplyDetailResult?.email}"></span>
-                        </div>
-                        <div class="column">
                             <label>电话号码：</label>
-                            <span th:text="${teacherApplyDetailResult?.phoneNo}"></span>
-                        </div>
-                        <div class="column">
-                            <label>最高学历：</label>
-                            <span th:switch="${teacherApplyDetailResult?.education}">
-                            <label th:case="0">小学</label>
-                            <label th:case="1">初中</label>
-                            <label th:case="2">高中（中专，职高）</label>
-                            <label th:case="3">大专</label>
-                            <label th:case="4">本科</label>
-                            <label th:case="5">硕士研究生</label>
-                            <label th:case="6">博士研究生</label>
-                        </span>
-                        </div>
-                        <div class="column">
-                            <label>专业：</label>
-                            <span th:text="${teacherApplyDetailResult?.profession}"></span>
-                        </div>
-                        <div class="column">
-                            <label>英语等级：</label>
-                            <span th:text="${teacherApplyDetailResult?.englishLevel}"></span>
-                        </div>
-                        <div class="column">
-                            <label>教师资格证：</label>
-                            <span th:text="${teacherApplyDetailResult?.teacherCertification}"></span>
-                        </div>
-                        <div class="column">
-                            <label>专业职称：</label>
-                            <span th:text="${teacherApplyDetailResult?.professionalTitle}"></span>
-                        </div>
-                        <div class="column">
-                            <label>应聘学段：</label>
-                            <span th:text="${teacherApplyDetailResult?.applyPhaseStudying}"></span>
-                        </div>
-                        <div class="column">
-                            <label>应聘学科：</label>
-                            <span th:text="${teacherApplyDetailResult?.applySubject}"></span>
+                            <span th:text="${studentInfoDetailResult?.phoneNo}"></span>
                         </div>
                     </div>
-                    <h3 class="ui header">教育经历</h3>
+                    <div  class="ui two column grid">
+                        <div class="column">
+                            <label>户籍所在地：</label>
+                            <span th:text="${studentInfoDetailResult?.domicilePlace}"></span>
+                        </div>
+                        <div class="column">
+                            <label>家庭住址：</label>
+                            <span th:text="${studentInfoDetailResult?.homeAddress}"></span>
+                        </div>
+
+                        <div class="column">
+                            <label>自我介绍：</label>
+                            <span th:text="${studentInfoDetailResult?.selfIntroduction}"></span>
+                        </div>
+                    </div>
+                    <h3 class="ui header">家庭信息</h3>
                     <div class="ui divider"></div>
                     <table class="ui celled table center aligned">
                         <thead>
                         <tr>
-                            <th>开始时间</th>
-                            <th>结束时间</th>
-                            <th>学校名称</th>
+                            <th>姓名</th>
+                            <th>关系</th>
                             <th>学历</th>
-                            <th>专业</th>
-                            <th>证书</th>
+                            <th>工作单位</th>
+                            <th>职位</th>
+                            <th>电话</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="educationExperience:${teacherApplyDetailResult?.educationExperienceList}">
-                            <td  th:text="${#dates.format(educationExperience?.startTime,'yyyy-MM-dd')}"></td>
-                            <td  th:text="${#dates.format(educationExperience?.endTime, 'yyyy-MM-dd')}"></td>
-                            <td  th:text="${educationExperience?.schoolName}"></td>
-                            <td  th:text="${educationExperience?.education}"></td>
-                            <td  th:text="${educationExperience?.profession}"></td>
-                            <td  th:text="${educationExperience?.credential}"></td>
+                        <tr th:each="familyInfo:${studentInfoDetailResult?.familyInfoList}">
+                            <td  th:text="${familyInfo?.name}"></td>
+                            <td  th:text="${familyInfo?.salutation}==0?'母亲':'父亲'"></td>
+                            <td  th:switch="${familyInfo?.education}">
+                                <label th:case="0">小学</label>
+                                <label th:case="1">初中</label>
+                                <label th:case="2">高中（中专，职高）</label>
+                                <label th:case="3">大专</label>
+                                <label th:case="4">本科</label>
+                                <label th:case="5">硕士研究生</label>
+                                <label th:case="6">博士研究生</label>
+                                <label th:case="7">其他</label>
+                            </td>
+                            <td  th:text="${familyInfo?.workUnit}"></td>
+                            <td  th:text="${familyInfo?.profession}"></td>
+                            <td  th:text="${familyInfo?.phoneNo}"></td>
                         </tr>
                         </tbody>
                     </table>
-                    <h3 class="ui header">培训经历</h3>
+                    <h3 class="ui header">个人获奖情况</h3>
                     <div class="ui divider"></div>
                     <table class="ui celled table center aligned">
                         <thead>
@@ -141,62 +104,20 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="trainingExperience:${teacherApplyDetailResult?.trainingExperienceList}">
-                            <td  th:text="${#dates.format(trainingExperience?.startTime,'yyyy-MM-dd')}"></td>
-                            <td  th:text="${#dates.format(trainingExperience?.endTime, 'yyyy-MM-dd')}"></td>
-                            <td  th:text="${trainingExperience?.trainingContent}"></td>
-                            <td  th:text="${trainingExperience?.trainingInstitution}"></td>
-                            <td  th:text="${trainingExperience?.trainingResult}"></td>
+                        <tr th:each="honorInfo:${studentInfoDetailResult?.honorInfoList}">
+                            <td  th:text="${honorInfo?.honorRoll}"></td>
+                            <td  th:text="${honorInfo?.level}"></td>
+                            <td  th:text="${honorInfo?.certificate}"></td>
+                            <td  th:text="${honorInfo?.meritStudent}"></td>
+                            <td  th:text="${honorInfo?.redScarf}"></td>
+                            <td  th:text="${honorInfo?.schoolPositionFour}"></td>
+                            <td  th:text="${honorInfo?.schoolPositionFive}"></td>
+                            <td  th:text="${honorInfo?.schoolPositionSix}"></td>
+                            <td  th:text="${honorInfo?.otherHonor}"></td>
                         </tr>
                         </tbody>
                     </table>
-                    <h3 class="ui header">离职经历</h3>
-                    <div class="ui divider"></div>
-                    <table class="ui celled table center aligned">
-                        <thead>
-                        <tr>
-                            <th>开始时间</th>
-                            <th>结束时间</th>
-                            <th>工作单位</th>
-                            <th>职位</th>
-                            <th>证明人姓名</th>
-                            <th>证明人电话</th>
-                            <th>离职原因</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="workExperience:${teacherApplyDetailResult?.workExperienceList}">
-                            <td  th:text="${#dates.format(workExperience?.startTime,'yyyy-MM-dd')}"></td>
-                            <td  th:text="${#dates.format(workExperience?.endTime, 'yyyy-MM-dd')}"></td>
-                            <td  th:text="${workExperience?.workUnit}"></td>
-                            <td  th:text="${workExperience?.position}"></td>
-                            <td  th:text="${workExperience?.certifierName}"></td>
-                            <td  th:text="${workExperience?.certifierPhone}"></td>
-                            <td  th:text="${workExperience?.reasonsResignation}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <h3 class="ui header">任职工作</h3>
-                    <div class="ui divider"></div>
-                    <table class="ui celled table center aligned">
-                        <thead>
-                        <tr>
-                            <th>技术职务名称</th>
-                            <th>晋升年月</th>
-                            <th>晋升单位</th>
-                            <th>批准单位</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="jobExperience:${teacherApplyDetailResult?.jobExperienceList}">
 
-                            <td  th:text="${jobExperience?.jobTitle}"></td>
-                            <td  th:text="${jobExperience?.promotionDate}"></td>
-                            <td  th:text="${jobExperience?.promotionUnit}"></td>
-                            <td  th:text="${jobExperience?.ratifyUnit}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
 
             </div>
@@ -324,5 +245,5 @@
 
 </body>
 <script th:src="@{../../static/js/common.js}"></script>
-<script th:src="@{../../static/js/priamrySchool.js}"></script>
+<script th:src="@{../../static/js/primarySchool.js}"></script>
 </html>

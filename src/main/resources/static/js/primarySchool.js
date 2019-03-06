@@ -21,6 +21,7 @@ function queryStudentInfo() {
 }
 function  findDetail(id) {
     $('.long.modal') .modal('show');
+    let url ="/backstage/primary/student/detail"
     $.ajax({
         url: url,
         type: 'POST',

@@ -8,6 +8,119 @@
 
 </head>
 <body>
+<th:block>
+    <div class="ui long modal grid">
+        <div class="header">学生详细信息</div>
+        <div id="studentInfoDetailResult" th:fragment="studentInfoDetailResult">
+            <div class="image content">
+                <!--<img class="image" th:src="${studentInfoDetailResult?.pictureUrl}">-->
+                <div class="description" >
+                    <h3 class="ui header">基础信息</h3>
+                    <div class="ui divider"></div>
+                    <div class="ui four column grid">
+                        <div class="column">
+                            <label>姓名：</label>
+                            <span th:text="${studentInfoDetailResult?.name}"></span>
+                        </div>
+                        <div class="column">
+                            <label>性别：</label>
+                            <span th:text="${studentInfoDetailResult?.sex}==0?'女':'男'"></span>
+                        </div>
+                        <div class="column">
+                            <label>民族：</label>
+                            <span th:text="${studentInfoDetailResult?.nation}==0?'汉族':'少数民族'"></span>
+                        </div>
+                        <div class="column">
+                            <label>出生日期：</label>
+                            <span th:text="${#dates.format(studentInfoDetailResult?.birthdate,'yyyy-MM-dd')}"></span>
+                        </div>
+                        <div class="column">
+                            <label>证件号码：</label>
+                            <span th:text="${studentInfoDetailResult?.idNo}"></span>
+                        </div>
+                        <div class="column">
+                            <label>户口所在地：</label>
+                            <span th:text="${studentInfoDetailResult?.domicilePlace}"></span>
+                        </div>
+                        <div class="column">
+                            <label>家庭住址：</label>
+                            <span th:text="${studentInfoDetailResult?.homeAddress}"></span>
+                        </div>
+                        <div class ="column">
+                            <label>电话号码：</label>
+                            <span th:text="${studentInfoDetailResult?.phoneNo}"></span>
+                        </div>
+                        <div class="column">
+                            <label>邮箱：</label>
+                            <span th:text="${studentInfoDetailResult?.selfIntroduction}"></span>
+                        </div>
+                    </div>
+                    <h3 class="ui header">家庭信息</h3>
+                    <div class="ui divider"></div>
+                    <table class="ui celled table center aligned">
+                        <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>关系</th>
+                            <th>学历</th>
+                            <th>工作单位</th>
+                            <th>职位</th>
+                            <th>电话</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="familyInfo:${studentInfoDetailResult?.familyInfoList}">
+                            <td  th:text="${familyInfo?.name}"></td>
+                            <td  th:text="${familyInfo?.salutation}==0?'母亲':'父亲'"></td>
+                            <td  th:switch="${familyInfo?.education}">
+                                <label th:case="0">小学</label>
+                                <label th:case="1">初中</label>
+                                <label th:case="2">高中（中专，职高）</label>
+                                <label th:case="3">大专</label>
+                                <label th:case="4">本科</label>
+                                <label th:case="5">硕士研究生</label>
+                                <label th:case="6">博士研究生</label>
+                                <label th:case="7">其他</label>
+                            </td>
+                            <td  th:text="${familyInfo?.workUnit}"></td>
+                            <td  th:text="${familyInfo?.profession}"></td>
+                            <td  th:text="${familyInfo?.phoneNo}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h3 class="ui header">个人获奖情况</h3>
+                    <div class="ui divider"></div>
+                    <table class="ui celled table center aligned">
+                        <thead>
+                        <tr>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>培训内容</th>
+                            <th>培训机构</th>
+                            <th>培训结果</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="honorInfo:${studentInfoDetailResult?.honorInfoList}">
+                            <td  th:text="${honorInfo?.honorRoll}"></td>
+                            <td  th:text="${honorInfo?.level}"></td>
+                            <td  th:text="${honorInfo?.certificate}"></td>
+                            <td  th:text="${honorInfo?.meritStudent}"></td>
+                            <td  th:text="${honorInfo?.redScarf}"></td>
+                            <td  th:text="${honorInfo?.schoolPositionFour}"></td>
+                            <td  th:text="${honorInfo?.schoolPositionFive}"></td>
+                            <td  th:text="${honorInfo?.schoolPositionSix}"></td>
+                            <td  th:text="${honorInfo?.otherHonor}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</th:block>
 <div th:replace="common::optionHint"></div>
 <div th:replace="common::updateHint"></div>
 <div th:replace="common::leftMenu"></div>
@@ -94,7 +207,8 @@
                             </td>
                             <td th:text="${#dates.format(studentInfo.createTime,'yyyy-MM-dd')}"></td>
                             <td>
-                                <button class="ui small blue inverted button">详情</button>
+                                <button class="ui small blue inverted button"
+                                        th:onclick="|javascript:findDetail(${studentInfo.id})|">详情</button>
                                 <button th:if="${studentInfo.status} eq 'AUDIT'" class="ui small green inverted button"
                                         th:onclick="|javascript:updateStatus(${studentInfo.id})|">审核</button>
                             </td>

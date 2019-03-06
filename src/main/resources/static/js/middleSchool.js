@@ -21,9 +21,9 @@ function queryStudentInfo() {
     });
 }
 function  findDetail(id) {
-    let url = "/backstage/student/detail";
 
     $('.long.modal') .modal('show');
+    let url = "/backstage/middle/student/detail";
     $.ajax({
         url: url,
         type: 'POST',
