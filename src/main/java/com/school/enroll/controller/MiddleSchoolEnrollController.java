@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/primarySchool")
-public class PrimarySchoolEnrollController {
+@RequestMapping("/middleSchool")
+public class MiddleSchoolEnrollController {
 
     @Autowired
     private StudentInfoService studentInfoService;
@@ -26,12 +26,12 @@ public class PrimarySchoolEnrollController {
         String openId = "wx_test";
         List<StudentInfo> studentInfoList = studentInfoService.getStudentInfoByOpenId(openId, 0);
         model.addAttribute("studentInfoList", studentInfoList);
-        return "wechat/primaryEnrollList";
+        return "wechat/middleEnrollList";
     }
 
     @RequestMapping("/enroll")
     public String enroll() {
-        return "wechat/primaryEnroll";
+        return "wechat/middleEnroll";
     }
 
     @RequestMapping("/apply")
@@ -45,6 +45,6 @@ public class PrimarySchoolEnrollController {
     public String studentEnrollDetail(Long id, Model model) {
         FullEnrollStudentInfo fullEnrollStudentInfo = studentInfoService.getFullEnrollStudentInfo(id);
         model.addAttribute("fullEnrollStudentInfo", fullEnrollStudentInfo);
-        return "wechat/primaryEnrollDetail";
+        return "wechat/middleEnrollDetail";
     }
 }

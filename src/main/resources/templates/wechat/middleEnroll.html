@@ -36,7 +36,7 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">名族:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" required emptyTips="请输入名族" name="nation" placeholder="请输入名族"
+                        <input class="weui-input" name="nation" placeholder="请输入名族"
                                type="text">
                     </div>
                 </div>
@@ -68,9 +68,16 @@
                     </div>
                 </div>
                 <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">学籍所在地:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required emptyTips="请选择学籍所在地" placeholder="请选择学籍所在地" type="text"
+                               id="school_roll_place" name="schoolRollPlace">
+                    </div>
+                </div>
+                <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">户口所在地:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" required emptyTips="请输入户口所在地" placeholder="请输入户口所在地" type="text"
+                        <input class="weui-input" required emptyTips="请选择户口所在地" placeholder="请选择户口所在地" type="text"
                                id="domicile_place" name="domicilePlace">
                     </div>
                 </div>
@@ -84,8 +91,8 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">联系电话:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="tel" required pattern="[0-9]{11}" placeholder="请输入手机号"
-                               emptyTips="请输入手机号" notMatchTips="请输入正确的手机号" name="phoneNo">
+                        <input class="weui-input" type="tel" pattern="[0-9]{11}" placeholder="请输入手机号"
+                               notMatchTips="请输入正确的手机号" name="phoneNo">
                     </div>
                 </div>
             </div>
@@ -129,6 +136,12 @@
                     <div class="weui-cell__bd">
                         <input class="weui-input" required emptyTips="请输入工作单位" placeholder="请输入工作单位" type="text"
                                name="workUnit">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">职务:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="nation" placeholder="请输入职务" type="text">
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -179,9 +192,106 @@
                 </div>
             </div>
             <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">职务:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="nation" placeholder="请输入职务" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">联系方式:</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入手机号" name="phoneNo">
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-cells__title">获奖情况:</div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd"><label class="weui-label">市级三好学生:</label></div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="meritStudent">
+                        <option value="0">是</option>
+                        <option value="1">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd"><label class="weui-label">市红领巾奖章:</label></div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="redScarf">
+                        <option value="0">是</option>
+                        <option value="1">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cells__title">校内职务（中队长以上）:</div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">四年级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入四年级校内职务" placeholder="请输入四年级校内职务" type="text"
+                           name="name">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">五年级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入五年级校内职务" placeholder="请输入五年级校内职务" type="text"
+                           name="name">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">六年级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入六年级校内职务" placeholder="请输入六年级校内职务" type="text"
+                           name="name">
+                </div>
+            </div>
+            <div class="weui-cells__title">优秀证书(区级以上):</div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">区级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入区级优秀证书，没有可填无" placeholder="请输入区级优秀证书" type="text"
+                           name="name">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">市级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入市级优秀证书，没有可填无" placeholder="请输入市级优秀证书" type="text"
+                           name="name">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">省级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入省级优秀证书，没有可填无" placeholder="请输入省级优秀证书" type="text"
+                           name="name">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">国家级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入国家级优秀证书，没有可填无" placeholder="请输入国家级优秀证书" type="text"
+                           name="name">
+                </div>
+            </div>
+            <div class="weui-cells__title">杯赛证书</div>
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <textarea class="weui-textarea" required emptyTips="请输入杯赛证书，没有可填无" placeholder="请输入杯赛证书" rows="3"></textarea>
+                        <div class="weui-textarea-counter"><span>0</span>/200</div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__title">自我介绍</div>
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <textarea class="weui-textarea" placeholder="自我介绍..." rows="3"></textarea>
+                        <div class="weui-textarea-counter"><span>0</span>/200</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -193,4 +303,5 @@
 
 </div>
 </body>
+<script th:src="@{../../static/js/middleEnroll.js}"></script>
 </html>
