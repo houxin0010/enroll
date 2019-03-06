@@ -37,7 +37,7 @@ public class PrimarySchoolEnrollController {
     @RequestMapping("/apply")
     public ResponseEntity apply(@RequestBody PrimarySchoolApplyVo primarySchoolApplyVo) {
         String openId = "wx_test";
-        studentInfoService.createStudentInfo(primarySchoolApplyVo, openId);
+        studentInfoService.createPrimaryStudentInfo(primarySchoolApplyVo, openId);
         return ResponseEntity.ok("保存成功!");
     }
 

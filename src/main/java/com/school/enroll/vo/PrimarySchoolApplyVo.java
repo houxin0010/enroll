@@ -1,5 +1,6 @@
 package com.school.enroll.vo;
 
+import com.school.enroll.entity.FamilyInfo;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,5 +11,5 @@ public class PrimarySchoolApplyVo implements Serializable {
     private static final long serialVersionUID = -5574472109690594076L;
 
     private PrimaryStudentInfoVo primaryStudentInfoVo;
-    private List<FamilyInfoVo> familyInfoVos;
+    private List<FamilyInfo> familyInfos;
 }

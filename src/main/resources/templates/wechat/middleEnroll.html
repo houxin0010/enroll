@@ -36,8 +36,7 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">名族:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" name="nation" placeholder="请输入名族"
-                               type="text">
+                        <input class="weui-input" name="nation" placeholder="请输入名族" type="text">
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -50,21 +49,22 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">身份证号:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" pattern="REG_IDNUM" name="idNo" placeholder="请输入身份证号"
+                        <input class="weui-input" required pattern="REG_IDNUM" name="idNo" placeholder="请输入身份证号"
                                notMatchTips="请输入正确的身份证号码" type="text">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">现就读小学:</label></div>
                     <div class="weui-cell__bd">
-                        <input required emptyTips="请输入就读小学" class="weui-input" name="name" placeholder="请输入就读小学"
+                        <input required emptyTips="请输入就读小学" class="weui-input" name="primarySchool"
+                               placeholder="请输入就读小学"
                                type="text">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">学籍号:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" name="nation" placeholder="请输入学籍号" type="text">
+                        <input class="weui-input" name="studentCode" placeholder="请输入学籍号" type="text">
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -91,7 +91,7 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">联系电话:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="tel" pattern="[0-9]{11}" placeholder="请输入手机号"
+                        <input class="weui-input" type="tel" required pattern="[0-9]{11}" placeholder="请输入手机号"
                                notMatchTips="请输入正确的手机号" name="phoneNo">
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">职务:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" name="nation" placeholder="请输入职务" type="text">
+                        <input class="weui-input" name="position" placeholder="请输入职务" type="text">
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -194,7 +194,7 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">职务:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" name="nation" placeholder="请输入职务" type="text">
+                    <input class="weui-input" name="position" placeholder="请输入职务" type="text">
                 </div>
             </div>
             <div class="weui-cell">
@@ -230,57 +230,58 @@
                 <div class="weui-cell__hd"><label class="weui-label">四年级:</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" required emptyTips="请输入四年级校内职务" placeholder="请输入四年级校内职务" type="text"
-                           name="name">
+                           name="schoolPositionFour">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">五年级:</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" required emptyTips="请输入五年级校内职务" placeholder="请输入五年级校内职务" type="text"
-                           name="name">
+                           name="schoolPositionFive">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">六年级:</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" required emptyTips="请输入六年级校内职务" placeholder="请输入六年级校内职务" type="text"
-                           name="name">
+                           name="schoolPositionSix">
                 </div>
             </div>
             <div class="weui-cells__title">优秀证书(区级以上):</div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">区级:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" required emptyTips="请输入区级优秀证书，没有可填无" placeholder="请输入区级优秀证书" type="text"
-                           name="name">
+                    <input class="weui-input" required emptyTips="区级" placeholder="请输入区级优秀证书" type="text"
+                           name="honorRoll">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">市级:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" required emptyTips="请输入市级优秀证书，没有可填无" placeholder="请输入市级优秀证书" type="text"
-                           name="name">
+                    <input class="weui-input" required emptyTips="请输入市级优秀证书" placeholder="请输入市级优秀证书" type="text"
+                           name="honorRoll">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">省级:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" required emptyTips="请输入省级优秀证书，没有可填无" placeholder="请输入省级优秀证书" type="text"
-                           name="name">
+                    <input class="weui-input" required emptyTips="请输入省级优秀证书" placeholder="请输入省级优秀证书" type="text"
+                           name="honorRoll">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">国家级:</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" required emptyTips="请输入国家级优秀证书，没有可填无" placeholder="请输入国家级优秀证书" type="text"
-                           name="name">
+                    <input class="weui-input" required emptyTips="请输入国家级优秀证书" placeholder="请输入国家级优秀证书" type="text"
+                           name="honorRoll">
                 </div>
             </div>
             <div class="weui-cells__title">杯赛证书</div>
             <div class="weui-cells weui-cells_form">
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
-                        <textarea class="weui-textarea" required emptyTips="请输入杯赛证书，没有可填无" placeholder="请输入杯赛证书" rows="3"></textarea>
+                        <textarea class="weui-textarea" required emptyTips="请输入杯赛证书" placeholder="请输入杯赛证书" rows="3"
+                                  name="certificate"></textarea>
                         <div class="weui-textarea-counter"><span>0</span>/200</div>
                     </div>
                 </div>
@@ -289,7 +290,7 @@
             <div class="weui-cells weui-cells_form">
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
-                        <textarea class="weui-textarea" placeholder="自我介绍..." rows="3"></textarea>
+                        <textarea class="weui-textarea" placeholder="自我介绍..." rows="3" name="selfIntroduction"></textarea>
                         <div class="weui-textarea-counter"><span>0</span>/200</div>
                     </div>
                 </div>

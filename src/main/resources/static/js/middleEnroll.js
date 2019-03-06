@@ -464,9 +464,82 @@ $('#school_roll_place').on('focus', function () {
             console.log(result)
         },
         onConfirm: function (result) {
-            $('#domicile_place').val(result[0].label + "-" + result[1].label);
+            $('#school_roll_place').val(result[0].label + "-" + result[1].label);
         },
         id: 'doubleLinePicker'
+    });
+});
+
+$('#formSubmitBtn').click(function () {
+    var url = "/middleSchool/apply";
+    weui.form.validate('#base_info_form', function (error) {
+        if (!error) {
+            var baseFormData = $('#base_info_form').serializeArray();
+
+            console.log(baseFormData);
+            let loading = weui.loading('提交中...');
+            let studentInfo = {
+                name: baseFormData[0].value,
+                sex: baseFormData[1].value,
+                nation: baseFormData[2].value,
+                birthdate: baseFormData[3].value,
+                idNo: baseFormData[4].value,
+                primarySchool: baseFormData[5].value,
+                studentCode: baseFormData[6].value,
+                schoolRollPlace: baseFormData[7].value,
+                domicilePlace: baseFormData[8].value,
+                homeAddress: baseFormData[9].value,
+                phoneNo: baseFormData[10].value
+            };
+            let familyInfos = [{
+                salutation: baseFormData[11].value,
+                name: baseFormData[12].value,
+                education: baseFormData[13].value,
+                workUnit: baseFormData[14].value,
+                position: baseFormData[15].value,
+                phoneNo: baseFormData[16].value
+            }, {
+                salutation: baseFormData[17].value,
+                name: baseFormData[18].value,
+                education: baseFormData[19].value,
+                workUnit: baseFormData[20].value,
+                position: baseFormData[21].value,
+                phoneNo: baseFormData[22].value
+            }];
+            let honorInfo = {
+                meritStudent: baseFormData[23].value,
+                redScarf: baseFormData[24].value,
+                schoolPositionFour: baseFormData[25].value,
+                schoolPositionFive: baseFormData[26].value,
+                schoolPositionSix: baseFormData[27].value,
+                honorRoll: baseFormData[28].value + "," + baseFormData[29].value + "," + baseFormData[30].value + "," + baseFormData[31].value + ",",
+                certificate: baseFormData[32].value,
+                selfIntroduction: baseFormData[33].value
+            };
+            $.ajax({
+                url: url,
+                type: 'POST',
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify({
+                    middleStudentInfoVo: studentInfo,
+                    familyInfos: familyInfos,
+                    honorInfo: honorInfo
+                }),
+                success: function (data) {
+                    loading.hide();
+                    weui.toast('提交成功', 3000);
+                },
+                error: function () {
+                    loading.hide();
+                    weui.toast('请求超时', 3000);
+                }
+            });
+        }
+    }, {
+        regexp: {
+            IDNUM: /(?:^\d{15}$)|(?:^\d{18}$)|^\d{17}[\dXx]$/,
+            VCODE: /^.{4}$/
+        }
     });
 });
 

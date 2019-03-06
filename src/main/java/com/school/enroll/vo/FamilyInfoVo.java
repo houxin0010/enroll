@@ -12,6 +12,7 @@ public class FamilyInfoVo implements Serializable {
     private Long salutation;
     private Long education;
     private String workUnit;
+    private String position;
     private String phoneNo;
     private Long studentId;
 }

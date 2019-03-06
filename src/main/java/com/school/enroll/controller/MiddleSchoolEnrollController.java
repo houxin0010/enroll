@@ -3,7 +3,7 @@ package com.school.enroll.controller;
 import com.school.enroll.entity.StudentInfo;
 import com.school.enroll.service.StudentInfoService;
 import com.school.enroll.vo.FullEnrollStudentInfo;
-import com.school.enroll.vo.PrimarySchoolApplyVo;
+import com.school.enroll.vo.MiddleSchoolApplyVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -35,9 +35,9 @@ public class MiddleSchoolEnrollController {
     }
 
     @RequestMapping("/apply")
-    public ResponseEntity apply(@RequestBody PrimarySchoolApplyVo primarySchoolApplyVo) {
+    public ResponseEntity apply(@RequestBody MiddleSchoolApplyVo middleSchoolApplyVo) {
         String openId = "wx_test";
-        studentInfoService.createStudentInfo(primarySchoolApplyVo, openId);
+        studentInfoService.createMiddleStudentInfo(middleSchoolApplyVo, openId);
         return ResponseEntity.ok("保存成功!");
     }
 

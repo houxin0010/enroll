@@ -11,14 +11,12 @@ import com.school.enroll.mapper.HonorInfoMapper;
 import com.school.enroll.mapper.StudentInfoMapper;
 import com.school.enroll.result.StudentInfoDetailResult;
 import com.school.enroll.service.StudentInfoService;
-import com.school.enroll.vo.FullEnrollStudentInfo;
-import com.school.enroll.vo.PrimarySchoolApplyVo;
-import com.school.enroll.vo.PrimaryStudentInfoVo;
-import com.school.enroll.vo.StudentInfoVo;
+import com.school.enroll.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -69,7 +67,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     }
 
     @Override
-    public void createStudentInfo(PrimarySchoolApplyVo primarySchoolApplyVo, String openId) {
+    public void createPrimaryStudentInfo(PrimarySchoolApplyVo primarySchoolApplyVo, String openId) {
         PrimaryStudentInfoVo primaryStudentInfoVo = primarySchoolApplyVo.getPrimaryStudentInfoVo();
         StudentInfo studentInfo = new StudentInfo();
         studentInfo.setOpenId(openId);
@@ -84,12 +82,40 @@ public class StudentInfoServiceImpl implements StudentInfoService {
         studentInfo.setStatus(StatusEnum.AUDIT.getCode());
         studentInfo.setType(0);
         studentInfoMapper.insert(studentInfo);
-        primarySchoolApplyVo.getFamilyInfoVos().forEach(familyInfoVo -> {
-            FamilyInfo familyInfo = new FamilyInfo();
-            BeanUtils.copyProperties(familyInfoVo, familyInfo);
-            familyInfo.setStudentId(studentInfo.getId());
-            familyInfoMapper.insert(familyInfo);
+        primarySchoolApplyVo.getFamilyInfos().forEach(familyInfo -> {
+            if (!StringUtils.isEmpty(familyInfo.getName())){
+                familyInfo.setStudentId(studentInfo.getId());
+                familyInfoMapper.insert(familyInfo);
+            }
         });
+    }
+
+    @Override
+    public void createMiddleStudentInfo(MiddleSchoolApplyVo middleSchoolApplyVo, String openId) {
+        StudentInfo studentInfo = new StudentInfo();
+        studentInfo.setOpenId(openId);
+        MiddleStudentInfoVo middleStudentInfoVo = middleSchoolApplyVo.getMiddleStudentInfoVo();
+        BeanUtils.copyProperties(middleStudentInfoVo, studentInfo);
+        try {
+            studentInfo.setBirthdate(new SimpleDateFormat("yyyy年M月d日").parse(middleStudentInfoVo.getBirthdate()));
+        } catch (ParseException e) {
+            log.error(e.getMessage(), e);
+            studentInfo.setBirthdate(null);
+        }
+        studentInfo.setCreateTime(new Date());
+        studentInfo.setStatus(StatusEnum.AUDIT.getCode());
+        studentInfo.setType(0);
+        studentInfoMapper.insert(studentInfo);
+
+        middleSchoolApplyVo.getFamilyInfos().forEach(familyInfo -> {
+            if (!StringUtils.isEmpty(familyInfo.getName())){
+                familyInfo.setStudentId(studentInfo.getId());
+                familyInfoMapper.insert(familyInfo);
+            }
+        });
+        HonorInfo honorInfo = middleSchoolApplyVo.getHonorInfo();
+        honorInfo.setStudentId(studentInfo.getId());
+        honorInfoMapper.insert(honorInfo);
     }
 
     @Override
