@@ -19,80 +19,94 @@
     <div class="header">教师详细信息</div>
     <div id="teacherApplyDetailResult" th:fragment="teacherApplyDetailResult">
         <div class="image content">
-            <img class="image" src="./static/images/steve.jpg">
+            <img  class="image" th:src="@{${teacherApplyDetailResult?.pictureUrl}}">
+            <div class="ui divider"></div>
             <div class="description" >
                 <h3 class="ui header">基础信息</h3>
                 <div class="ui divider"></div>
-                <div style="align-content: center" class="ui list">
-                    <div class="item">
+                <div class="ui four column grid">
+                    <div class="column">
                         <label>姓名：</label>
-                        <span th:text="${teacherApplyDetailResult?.name}"></span>
+                        <span th:text=" ${teacherApplyDetailResult?.name}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>性别：</label>
-                        <span th:text="${teacherApplyDetailResult?.sex}"></span>
+                        <span th:text="${teacherApplyDetailResult?.sex}==0?'女':'男'"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>民族：</label>
-                        <span th:text="${teacherApplyDetailResult?.nation}"></span>
+                        <span th:text="${teacherApplyDetailResult?.nation}==0?'汉族':'少数民族'"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>出生日期：</label>
-                        <span th:text="${teacherApplyDetailResult?.birthdate}"></span>
+                        <span th:text="${#dates.format(teacherApplyDetailResult?.birthdate,'yyyy-MM-dd')}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>证件号码：</label>
                         <span th:text="${teacherApplyDetailResult?.idNo}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>政治面貌：</label>
-                        <span th:text="${teacherApplyDetailResult?.politicsStatus}"></span>
+                        <span th:switch="${teacherApplyDetailResult?.politicsStatus}">
+                            <label th:case="0">群众</label>
+                            <label th:case="1">共青团员</label>
+                            <label th:case="2">中共预备党员</label>
+                            <label th:case="3">中共党员</label>
+                        </span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>户口所在地：</label>
                         <span th:text="${teacherApplyDetailResult?.domicilePlace}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>户口性质：</label>
-                        <span th:text="${teacherApplyDetailResult?.accountProperties}"></span>
+                        <span th:text="${teacherApplyDetailResult?.accountProperties}==0?'农村户口':'城镇户口'"></span>
                     </div>
-                    <div class="item">
+                    <div class ="column">
                         <label>婚姻状况：</label>
                         <span th:text="${teacherApplyDetailResult?.maritalStatus}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>邮箱：</label>
                         <span th:text="${teacherApplyDetailResult?.email}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>电话号码：</label>
                         <span th:text="${teacherApplyDetailResult?.phoneNo}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>最高学历：</label>
-                        <span th:text="${teacherApplyDetailResult?.education}"></span>
+                        <span th:switch="${teacherApplyDetailResult?.education}">
+                            <label th:case="0">小学</label>
+                            <label th:case="1">初中</label>
+                            <label th:case="2">高中（中专，职高）</label>
+                            <label th:case="3">大专</label>
+                            <label th:case="4">本科</label>
+                            <label th:case="5">硕士研究生</label>
+                            <label th:case="6">博士研究生</label>
+                        </span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>专业：</label>
                         <span th:text="${teacherApplyDetailResult?.profession}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>英语等级：</label>
                         <span th:text="${teacherApplyDetailResult?.englishLevel}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>教师资格证：</label>
                         <span th:text="${teacherApplyDetailResult?.teacherCertification}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>专业职称：</label>
                         <span th:text="${teacherApplyDetailResult?.professionalTitle}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>应聘学段：</label>
                         <span th:text="${teacherApplyDetailResult?.applyPhaseStudying}"></span>
                     </div>
-                    <div class="item">
+                    <div class="column">
                         <label>应聘学科：</label>
                         <span th:text="${teacherApplyDetailResult?.applySubject}"></span>
                     </div>
@@ -105,8 +119,9 @@
                         <th>开始时间</th>
                         <th>结束时间</th>
                         <th>学校名称</th>
-                        <th>等级</th>
+                        <th>学历</th>
                         <th>专业</th>
+                        <th>证书</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -116,6 +131,7 @@
                         <td  th:text="${educationExperience?.schoolName}"></td>
                         <td  th:text="${educationExperience?.education}"></td>
                         <td  th:text="${educationExperience?.profession}"></td>
+                        <td  th:text="${educationExperience?.credential}"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -150,9 +166,9 @@
                         <th>结束时间</th>
                         <th>工作单位</th>
                         <th>职位</th>
-                        <th>离职证明人</th>
-                        <th>电话</th>
-                        <th>原因</th>
+                        <th>证明人姓名</th>
+                        <th>证明人电话</th>
+                        <th>离职原因</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -172,13 +188,10 @@
                 <table class="ui celled table center aligned">
                     <thead>
                     <tr>
-                        <th>工作名称</th>
-                        <th>结束时间</th>
-                        <th>工作单位</th>
-                        <th>职位</th>
-                        <th>离职证明人</th>
-                        <th>电话</th>
-                        <th>原因</th>
+                        <th>技术职务名称</th>
+                        <th>晋升年月</th>
+                        <th>晋升单位</th>
+                        <th>批准单位</th>
                     </tr>
                     </thead>
                     <tbody>

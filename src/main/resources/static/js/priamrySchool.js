@@ -19,3 +19,15 @@ function queryStudentInfo() {
         }
     });
 }
+function  findDetail(id) {
+    $('.long.modal') .modal('show');
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: {id:id},
+        success: function (data) {
+            $('#studentInfoDetailResult').html(data);
+        }
+    });
+
+}
