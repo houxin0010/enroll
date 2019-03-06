@@ -57,6 +57,10 @@
                             <label>自我介绍：</label>
                             <span th:text="${studentInfoDetailResult?.selfIntroduction}"></span>
                         </div>
+                        <div class="column">
+                            <label>备注：</label>
+                            <span th:text="${studentInfoDetailResult?.note}"></span>
+                        </div>
                     </div>
                     <h3 class="ui header">家庭信息</h3>
                     <div class="ui divider"></div>
@@ -86,7 +90,7 @@
                                 <label th:case="7">其他</label>
                             </td>
                             <td  th:text="${familyInfo?.workUnit}"></td>
-                            <td  th:text="${familyInfo?.profession}"></td>
+                            <td  th:text="${familyInfo?.position}"></td>
                             <td  th:text="${familyInfo?.phoneNo}"></td>
                         </tr>
                         </tbody>
@@ -96,11 +100,15 @@
                     <table class="ui celled table center aligned">
                         <thead>
                         <tr>
-                            <th>开始时间</th>
-                            <th>结束时间</th>
-                            <th>培训内容</th>
-                            <th>培训机构</th>
-                            <th>培训结果</th>
+                            <th>优秀证书</th>
+                            <th>证书等级</th>
+                            <th>杯赛证书</th>
+                            <th>三好学生</th>
+                            <th>红领巾奖</th>
+                            <th>四年级校内职务</th>
+                            <th>五年级校内职务</th>
+                            <th>六年级校内职务</th>
+                            <th>其他荣誉</th>
                         </tr>
                         </thead>
                         <tbody>

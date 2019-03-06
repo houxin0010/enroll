@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface HonorInfoMapper extends BaseMapper<HonorInfo> {
     @Select("select * from honor_info where student_id = #{studentId}")
-    List<HonorInfo> findByStudentId(Long studentId);
+    HonorInfo findByStudentId(Long studentId);
 }

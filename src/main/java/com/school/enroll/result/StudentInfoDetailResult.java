@@ -28,7 +28,16 @@ public class StudentInfoDetailResult implements Serializable {
     private String note;
     private Date createTime;
     private Date updateTime;
+    private String honorRoll;
+    private Long level;
+    private String certificate;
+    private Long meritStudent;
+    private Long redScarf;
+    private String schoolPositionFour;
+    private String schoolPositionFive;
+    private String schoolPositionSix;
+    private Long studentId;
+    private String otherHonor;
     private List<FamilyInfo> familyInfoList;
-    private List<HonorInfo> honorInfoList;
 
 }

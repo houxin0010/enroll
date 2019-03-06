@@ -38,21 +38,40 @@
                             <label>证件号码：</label>
                             <span th:text="${studentInfoDetailResult?.idNo}"></span>
                         </div>
+                        <div class ="column">
+                            <label>电话号码：</label>
+                            <span th:text="${studentInfoDetailResult?.phoneNo}"></span>
+                        </div>
+                        <div class ="column">
+                            <label>小学名称：</label>
+                            <span th:text="${studentInfoDetailResult?.primarySchool}"></span>
+                        </div>
+                        <div class ="column">
+                            <label>学籍号：</label>
+                            <span th:text="${studentInfoDetailResult?.studentCode}"></span>
+                        </div>
+                        <div class ="column">
+                            <label>学籍所在地：</label>
+                            <span th:text="${studentInfoDetailResult?.schoolRollPlace}"></span>
+                        </div>
+                    </div>
+                    <div  class="ui two column grid">
                         <div class="column">
-                            <label>户口所在地：</label>
+                            <label>户籍所在地：</label>
                             <span th:text="${studentInfoDetailResult?.domicilePlace}"></span>
                         </div>
                         <div class="column">
                             <label>家庭住址：</label>
                             <span th:text="${studentInfoDetailResult?.homeAddress}"></span>
                         </div>
-                        <div class ="column">
-                            <label>电话号码：</label>
-                            <span th:text="${studentInfoDetailResult?.phoneNo}"></span>
+
+                        <div class="column">
+                            <label>自我介绍：</label>
+                            <span th:text="${studentInfoDetailResult?.selfIntroduction}"></span>
                         </div>
                         <div class="column">
-                            <label>邮箱：</label>
-                            <span th:text="${studentInfoDetailResult?.selfIntroduction}"></span>
+                            <label>备注：</label>
+                            <span th:text="${studentInfoDetailResult?.note}"></span>
                         </div>
                     </div>
                     <h3 class="ui header">家庭信息</h3>
@@ -61,10 +80,10 @@
                         <thead>
                         <tr>
                             <th>姓名</th>
-                            <th>关系</th>
+                            <th>称谓</th>
                             <th>学历</th>
                             <th>工作单位</th>
-                            <th>职位</th>
+                            <th>职务</th>
                             <th>电话</th>
                         </tr>
                         </thead>
@@ -93,11 +112,15 @@
                     <table class="ui celled table center aligned">
                         <thead>
                         <tr>
-                            <th>开始时间</th>
-                            <th>结束时间</th>
-                            <th>培训内容</th>
-                            <th>培训机构</th>
-                            <th>培训结果</th>
+                            <th>优秀证书</th>
+                            <th>证书等级</th>
+                            <th>杯赛证书</th>
+                            <th>三好学生</th>
+                            <th>红领巾奖</th>
+                            <th>四年级校内职务</th>
+                            <th>五年级校内职务</th>
+                            <th>六年级校内职务</th>
+                            <th>其他荣誉</th>
                         </tr>
                         </thead>
                         <tbody>
