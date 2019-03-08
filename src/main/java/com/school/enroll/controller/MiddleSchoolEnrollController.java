@@ -24,7 +24,7 @@ public class MiddleSchoolEnrollController {
     @RequestMapping("/index")
     public String index(Model model) {
         String openId = "wx_test";
-        List<StudentInfo> studentInfoList = studentInfoService.getStudentInfoByOpenId(openId, 0);
+        List<StudentInfo> studentInfoList = studentInfoService.getStudentInfoByOpenId(openId, 1);
         model.addAttribute("studentInfoList", studentInfoList);
         return "wechat/middleEnrollList";
     }

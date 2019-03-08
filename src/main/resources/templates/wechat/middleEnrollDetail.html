@@ -1,10 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cmn-Hans" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <div th:replace="common::header"></div>
 </head>
 <body>
+<div th:replace="common::searchHeader"></div>
+<div class="page__hd">
+    <h1 class="page__title">报名学生详细信息</h1>
+</div>
+<div class="page__bd">
+    <form id="base_info_form">
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__hd">基本信息:</div>
+            <div class="weui-panel__bd">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
+                    <div class="weui-cell__bd">
+                        <input required emptyTips="请输入姓名" class="weui-input" name="name" placeholder="请输入姓名"
+                               type="text">
+                    </div>
+                </div>
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd"><label class="weui-label">性别:</label></div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="sex">
+                            <option value="1">男</option>
+                            <option value="0">女</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">名族:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="nation" placeholder="请输入名族" type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">出生日期:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required emptyTips="请选择出生日期" placeholder="请选择日期" type="text"
+                               id="birthdate" name="birthdate">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">身份证号:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required pattern="REG_IDNUM" name="idNo" placeholder="请输入身份证号"
+                               notMatchTips="请输入正确的身份证号码" type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">现就读小学:</label></div>
+                    <div class="weui-cell__bd">
+                        <input required emptyTips="请输入就读小学" class="weui-input" name="primarySchool"
+                               placeholder="请输入就读小学"
+                               type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">学籍号:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="studentCode" placeholder="请输入学籍号" type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">学籍所在地:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required emptyTips="请选择学籍所在地" placeholder="请选择学籍所在地" type="text"
+                               id="school_roll_place" name="schoolRollPlace">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">户口所在地:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required emptyTips="请选择户口所在地" placeholder="请选择户口所在地" type="text"
+                               id="domicile_place" name="domicilePlace">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">家庭住址:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required emptyTips="请输入家庭住址" placeholder="请输入家庭住址" type="text"
+                               name="homeAddress">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">联系电话:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="tel" required pattern="[0-9]{11}" placeholder="请输入手机号"
+                               notMatchTips="请输入正确的手机号" name="phoneNo">
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__hd">家庭成员1:</div>
+            <div class="weui-panel__bd">
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd"><label class="weui-label">称谓:</label></div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="salutation">
+                            <option value="1">父亲</option>
+                            <option value="0">母亲</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required emptyTips="请至少填写一个家庭成员姓名" placeholder="请输入姓名" type="text"
+                               name="name">
+                    </div>
+                </div>
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd"><label class="weui-label">学历:</label></div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="education">
+                            <option value="1">初中</option>
+                            <option value="2">高中（中专、职高）</option>
+                            <option value="3">大专</option>
+                            <option value="4">本科</option>
+                            <option value="5">硕士研究生</option>
+                            <option value="6">博士研究生</option>
+                            <option value="7">其他</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">工作单位:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" required emptyTips="请输入工作单位" placeholder="请输入工作单位" type="text"
+                               name="workUnit">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">职务:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="position" placeholder="请输入职务" type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">联系方式:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="tel" required pattern="[0-9]{11}" placeholder="请输入手机号"
+                               emptyTips="请输入手机号" notMatchTips="请输入正确的手机号" name="phoneNo">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-cells__title">家庭成员2:</div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd"><label class="weui-label">称谓:</label></div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="salutation">
+                        <option value="0">母亲</option>
+                        <option value="1">父亲</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入姓名" type="text" name="name">
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd"><label class="weui-label">学历:</label></div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="education">
+                        <option value="1">初中</option>
+                        <option value="2">高中（中专、职高）</option>
+                        <option value="3">大专</option>
+                        <option value="4">本科</option>
+                        <option value="5">硕士研究生</option>
+                        <option value="6">博士研究生</option>
+                        <option value="7">其他</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">工作单位:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入工作单位" type="text" name="workUnit">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">职务:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="position" placeholder="请输入职务" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">联系方式:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入手机号" name="phoneNo">
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-cells__title">获奖情况:</div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd"><label class="weui-label">市级三好学生:</label></div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="meritStudent">
+                        <option value="0">是</option>
+                        <option value="1">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+                <div class="weui-cell__hd"><label class="weui-label">市红领巾奖章:</label></div>
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="redScarf">
+                        <option value="0">是</option>
+                        <option value="1">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cells__title">校内职务（中队长以上）:</div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">四年级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入四年级校内职务" placeholder="请输入四年级校内职务" type="text"
+                           name="schoolPositionFour">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">五年级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入五年级校内职务" placeholder="请输入五年级校内职务" type="text"
+                           name="schoolPositionFive">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">六年级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入六年级校内职务" placeholder="请输入六年级校内职务" type="text"
+                           name="schoolPositionSix">
+                </div>
+            </div>
+            <div class="weui-cells__title">优秀证书(区级以上):</div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">区级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="区级" placeholder="请输入区级优秀证书" type="text"
+                           name="honorRoll">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">市级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入市级优秀证书" placeholder="请输入市级优秀证书" type="text"
+                           name="honorRoll">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">省级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入省级优秀证书" placeholder="请输入省级优秀证书" type="text"
+                           name="honorRoll">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">国家级:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" required emptyTips="请输入国家级优秀证书" placeholder="请输入国家级优秀证书" type="text"
+                           name="honorRoll">
+                </div>
+            </div>
+            <div class="weui-cells__title">杯赛证书</div>
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <textarea class="weui-textarea" required emptyTips="请输入杯赛证书" placeholder="请输入杯赛证书" rows="3"
+                                  name="certificate"></textarea>
+                        <div class="weui-textarea-counter"><span>0</span>/200</div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__title">自我介绍</div>
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <textarea class="weui-textarea" placeholder="自我介绍..." rows="3"
+                                  name="selfIntroduction"></textarea>
+                        <div class="weui-textarea-counter"><span>0</span>/200</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

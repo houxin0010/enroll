@@ -537,8 +537,7 @@ $('#formSubmitBtn').click(function () {
         }
     }, {
         regexp: {
-            IDNUM: /(?:^\d{15}$)|(?:^\d{18}$)|^\d{17}[\dXx]$/,
-            VCODE: /^.{4}$/
+            IDNUM: /(?:^\d{15}$)|(?:^\d{18}$)|^\d{17}[\dXx]$/
         }
     });
 });
