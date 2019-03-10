@@ -10,6 +10,9 @@
 <body>
 <th:block>
     <div class="ui long modal grid">
+        <div style="text-align: right;padding-top: 10px">
+            <i   th:onclick="|javascript:closeWindow()|" class="spinner close icon"></i>
+        </div>
         <div class="header">学生详细信息</div>
         <div id="studentInfoDetailResult" th:fragment="studentInfoDetailResult">
             <div class="image content">
@@ -95,10 +98,7 @@
                     </table>
                 </div>
                 <div class=" ui hidden divider"></div>
-                <div>
-                    <button class=" fluid  ui center small blue inverted button"
-                            th:onclick="|javascript:closeWindow()|">关闭</button>
-                </div>
+
             </div>
         </div>
     </div>
