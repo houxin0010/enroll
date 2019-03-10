@@ -9,7 +9,8 @@
 </head>
 <body>
 <th:block>
-    <div class="ui long modal grid">
+    <div class="ui long fullscreen modal grid">
+        <i class="close icon"></i>
         <div class="header">学生详细信息</div>
         <div id="studentInfoDetailResult" th:fragment="studentInfoDetailResult">
             <div class="image content">
@@ -28,7 +29,7 @@
                         </div>
                         <div class="column">
                             <label>民族：</label>
-                            <span th:text="${studentInfoDetailResult?.nation}==0?'汉族':'少数民族'"></span>
+                            <span th:text="${studentInfoDetailResult?.nation}"></span>
                         </div>
                         <div class="column">
                             <label>出生日期：</label>
@@ -155,10 +156,10 @@
 
             </div>
             <div class=" ui hidden divider"></div>
-            <div>
-                <button class=" fluid  ui center small blue inverted button"
-                        th:onclick="|javascript:closeWindow()|">关闭</button>
-            </div>
+            <!--<div>-->
+                <!--<button class=" fluid  ui center small blue inverted button"-->
+                        <!--th:onclick="|javascript:closeWindow()|">关闭</button>-->
+            <!--</div>-->
         </div>
     </div>
 </th:block>

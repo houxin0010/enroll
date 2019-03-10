@@ -9,7 +9,8 @@
 </head>
 <body>
 <th:block>
-    <div class="ui long modal grid">
+    <div class="ui long fullscreen modal grid">
+        <i class="close icon"></i>
         <div class="header">学生详细信息</div>
         <div id="studentInfoDetailResult" th:fragment="studentInfoDetailResult">
             <div class="image content">
@@ -95,10 +96,10 @@
                     </table>
                 </div>
                 <div class=" ui hidden divider"></div>
-                <div>
-                    <button class=" fluid  ui center small blue inverted button"
-                            th:onclick="|javascript:closeWindow()|">关闭</button>
-                </div>
+                <!--<div>-->
+                    <!--<button class=" fluid  ui center small blue inverted button"-->
+                            <!--th:onclick="|javascript:closeWindow()|">关闭</button>-->
+                <!--</div>-->
             </div>
         </div>
     </div>

@@ -83,7 +83,7 @@ public class StudentInfoServiceImpl implements StudentInfoService {
         studentInfo.setType(0);
         studentInfoMapper.insert(studentInfo);
         primarySchoolApplyVo.getFamilyInfos().forEach(familyInfo -> {
-            if (!StringUtils.isEmpty(familyInfo.getName())){
+            if (!StringUtils.isEmpty(familyInfo.getName())) {
                 familyInfo.setStudentId(studentInfo.getId());
                 familyInfoMapper.insert(familyInfo);
             }
@@ -104,11 +104,11 @@ public class StudentInfoServiceImpl implements StudentInfoService {
         }
         studentInfo.setCreateTime(new Date());
         studentInfo.setStatus(StatusEnum.AUDIT.getCode());
-        studentInfo.setType(0);
+        studentInfo.setType(1);
         studentInfoMapper.insert(studentInfo);
 
         middleSchoolApplyVo.getFamilyInfos().forEach(familyInfo -> {
-            if (!StringUtils.isEmpty(familyInfo.getName())){
+            if (!StringUtils.isEmpty(familyInfo.getName())) {
                 familyInfo.setStudentId(studentInfo.getId());
                 familyInfoMapper.insert(familyInfo);
             }
@@ -124,8 +124,8 @@ public class StudentInfoServiceImpl implements StudentInfoService {
         StudentInfo studentInfo = studentInfoMapper.selectById(id);
         BeanUtils.copyProperties(studentInfo, studentInfoDetailResult);
         List<FamilyInfo> familyInfos = familyInfoMapper.findByStudentId(id);
-        HonorInfo honorInfo= honorInfoMapper.findByStudentId(id);
-        if (null!=honorInfo){
+        HonorInfo honorInfo = honorInfoMapper.findByStudentId(id);
+        if (null != honorInfo) {
             BeanUtils.copyProperties(honorInfo, studentInfoDetailResult);
         }
         studentInfoDetailResult.setFamilyInfoList(familyInfos);
@@ -138,9 +138,14 @@ public class StudentInfoServiceImpl implements StudentInfoService {
         FullEnrollStudentInfo fullEnrollStudentInfo = new FullEnrollStudentInfo();
         StudentInfo studentInfo = studentInfoMapper.selectById(id);
         fullEnrollStudentInfo.setStudentInfo(studentInfo);
+
         List<FamilyInfo> familyInfoList = familyInfoMapper.selectList(new LambdaQueryWrapper<FamilyInfo>()
                 .eq(FamilyInfo::getStudentId, id));
         fullEnrollStudentInfo.setFamilyInfoList(familyInfoList);
+
+        HonorInfo honorInfo = honorInfoMapper.findByStudentId(id);
+        fullEnrollStudentInfo.setHonorInfo(honorInfo);
+
         return fullEnrollStudentInfo;
     }
 
