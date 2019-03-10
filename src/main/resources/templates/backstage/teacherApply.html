@@ -19,7 +19,7 @@
     <div class="header">教师详细信息</div>
     <div id="teacherApplyDetailResult" th:fragment="teacherApplyDetailResult">
         <div class="image content">
-            <img  class="image" th:src="@{${teacherApplyDetailResult?.pictureUrl}}">
+            <img  class=" ui small image" th:src="@{${teacherApplyDetailResult?.pictureUrl}}">
             <div class="ui divider"></div>
             <div class="description" >
                 <h3 class="ui header">基础信息</h3>
@@ -199,14 +199,18 @@
                     <tr th:each="jobExperience:${teacherApplyDetailResult?.jobExperienceList}">
 
                         <td  th:text="${jobExperience?.jobTitle}"></td>
-                        <td  th:text="${jobExperience?.promotionDate}"></td>
+                        <td  th:text="${#dates.format(jobExperience?.promotionDate, 'yyyy-MM')}"></td>
                         <td  th:text="${jobExperience?.promotionUnit}"></td>
                         <td  th:text="${jobExperience?.ratifyUnit}"></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-
+        </div>
+        <div class=" ui hidden divider"></div>
+        <div style="align-content: center">
+            <button  class=" fluid  ui center small blue inverted button"
+                    th:onclick="|javascript:closeWindow()|">关闭</button>
         </div>
     </div>
 </div>

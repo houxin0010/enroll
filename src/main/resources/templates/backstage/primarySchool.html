@@ -42,8 +42,6 @@
                             <label>电话号码：</label>
                             <span th:text="${studentInfoDetailResult?.phoneNo}"></span>
                         </div>
-                    </div>
-                    <div  class="ui two column grid">
                         <div class="column">
                             <label>户籍所在地：</label>
                             <span th:text="${studentInfoDetailResult?.domicilePlace}"></span>
@@ -52,15 +50,15 @@
                             <label>家庭住址：</label>
                             <span th:text="${studentInfoDetailResult?.homeAddress}"></span>
                         </div>
+                    </div>
+                    <div  class="ui column grid">
+
 
                         <div class="column">
                             <label>自我介绍：</label>
                             <span th:text="${studentInfoDetailResult?.selfIntroduction}"></span>
                         </div>
-                        <div class="column">
-                            <label>备注：</label>
-                            <span th:text="${studentInfoDetailResult?.note}"></span>
-                        </div>
+
                     </div>
                     <h3 class="ui header">家庭信息</h3>
                     <div class="ui divider"></div>
@@ -95,39 +93,12 @@
                         </tr>
                         </tbody>
                     </table>
-                    <h3 class="ui header">个人获奖情况</h3>
-                    <div class="ui divider"></div>
-                    <table class="ui celled table center aligned">
-                        <thead>
-                        <tr>
-                            <th>优秀证书</th>
-                            <th>证书等级</th>
-                            <th>杯赛证书</th>
-                            <th>三好学生</th>
-                            <th>红领巾奖</th>
-                            <th>四年级校内职务</th>
-                            <th>五年级校内职务</th>
-                            <th>六年级校内职务</th>
-                            <th>其他荣誉</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="honorInfo:${studentInfoDetailResult?.honorInfoList}">
-                            <td  th:text="${honorInfo?.honorRoll}"></td>
-                            <td  th:text="${honorInfo?.level}"></td>
-                            <td  th:text="${honorInfo?.certificate}"></td>
-                            <td  th:text="${honorInfo?.meritStudent}"></td>
-                            <td  th:text="${honorInfo?.redScarf}"></td>
-                            <td  th:text="${honorInfo?.schoolPositionFour}"></td>
-                            <td  th:text="${honorInfo?.schoolPositionFive}"></td>
-                            <td  th:text="${honorInfo?.schoolPositionSix}"></td>
-                            <td  th:text="${honorInfo?.otherHonor}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-
                 </div>
-
+                <div class=" ui hidden divider"></div>
+                <div>
+                    <button class=" fluid  ui center small blue inverted button"
+                            th:onclick="|javascript:closeWindow()|">关闭</button>
+                </div>
             </div>
         </div>
     </div>

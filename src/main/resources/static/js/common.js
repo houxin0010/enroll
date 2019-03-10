@@ -83,4 +83,8 @@ function updateTeacherStatus(id) {
         })
         .modal('show');
 }
+function closeWindow() {
+    $('.long.modal').modal('hide');
+
+}
 
