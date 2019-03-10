@@ -19,6 +19,7 @@ public class StudentInfoDetailResult implements Serializable {
     private String idNo;
     private String primarySchool;
     private String studentCode;
+    private String schoolRollPlace;
     private String domicilePlace;
     private String homeAddress;
     private String phoneNo;

@@ -125,7 +125,9 @@ public class StudentInfoServiceImpl implements StudentInfoService {
         BeanUtils.copyProperties(studentInfo, studentInfoDetailResult);
         List<FamilyInfo> familyInfos = familyInfoMapper.findByStudentId(id);
         HonorInfo honorInfo= honorInfoMapper.findByStudentId(id);
-        BeanUtils.copyProperties(honorInfo, studentInfoDetailResult);
+        if (null!=honorInfo){
+            BeanUtils.copyProperties(honorInfo, studentInfoDetailResult);
+        }
         studentInfoDetailResult.setFamilyInfoList(familyInfos);
 
         return studentInfoDetailResult;
