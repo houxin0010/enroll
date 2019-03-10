@@ -185,7 +185,7 @@
             </div>
             <div class="weui-cells__title">优秀证书(区级以上):</div>
             <div class="weui-cell">
-                <div class="weui-cell__hd"><label class="weui-label">区级:</label></div>
+                <div class="weui-cell__hd"><label class="weui-label">优秀证书:</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" name="workUnit" disabled type="text"
                            th:value="${fullEnrollStudentInfo.honorInfo.honorRoll}">
@@ -196,7 +196,7 @@
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
                         <textarea class="weui-textarea" disabled rows="3" name="certificate"
-                                  th:value="${fullEnrollStudentInfo.honorInfo.certificate}"></textarea>
+                                  th:text="${fullEnrollStudentInfo.honorInfo.certificate}"></textarea>
                     </div>
                 </div>
             </div>
@@ -205,7 +205,7 @@
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
                         <textarea class="weui-textarea" disabled rows="3" name="selfIntroduction"
-                                  th:value="${fullEnrollStudentInfo.studentInfo.selfIntroduction}"></textarea>
+                                  th:text="${fullEnrollStudentInfo.studentInfo.selfIntroduction}"></textarea>
                     </div>
                 </div>
             </div>
