@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:replace="common::header"></div>
+</head>
+<body>
+<div th:replace="common::searchHeader"></div>
+<div class="weui-loadmore weui-loadmore_line" th:if="${#lists.isEmpty(teacherApplyInfoList)}">
+    <span class="weui-loadmore__tips">点击下方按钮申请报名</span>
+    <div class="weui-btn-area">
+        <a id="formSubmitBtn" class="weui-btn weui-btn_primary" th:href="@{/middleSchool/enroll}">申请报名</a>
+    </div>
+</div>
+<div class="weui-panel" th:if="${not #lists.isEmpty(teacherApplyInfoList)}">
+    <div class="weui-panel__bd">
+        <div class="weui-media-box weui-media-box_text" th:each="teacherApplyInfo:${teacherApplyInfoList}">
+            <h4 class="weui-media-box__title" th:text="${teacherApplyInfo.name}"></h4>
+            <p class="weui-media-box__desc" th:text="${teacherApplyInfo.idNo}"></p>
+            <ul class="weui-media-box__info">
+                <li class="weui-media-box__info__meta"
+                    th:text="${#dates.format(teacherApplyInfo.createTime,'yyyy-MM-dd')}"></li>
+                <li class="weui-media-box__info__meta" th:switch="${teacherApplyInfo.status}">
+                    <label th:case="INIT">初始化</label>
+                    <label th:case="AUDIT">审核中</label>
+                    <label th:case="PASSED">已通过</label>
+                    <label th:case="REJECT">拒绝</label>
+                </li>
+                <a class="weui-media-box__info__meta weui-media-box__info__meta_extra"
+                   th:href="@{/middleSchool/studentEnrollDetail(id=${teacherApplyInfo.id})}">详细信息</a>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="weui-footer">
+    <p class="weui-footer__text">Copyright © 2008-2019 weui.io</p>
+</div>
+</body>
+</html>

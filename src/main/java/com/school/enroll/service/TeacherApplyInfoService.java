@@ -10,8 +10,7 @@ public interface TeacherApplyInfoService {
 
     List<TeacherApplyInfo> getTeacherApplyInfo(TeacherInfoVo teacherInfoVo);
 
-
-    List<TeacherApplyInfo> updateStudentStatus();
+    List<TeacherApplyInfo> getTeacherApplyInfoByOpenId(String openId);
 
     int updateTeacherStatus(Long id, String status);
 

@@ -64,7 +64,6 @@ public class BackstageController {
     @RequestMapping("/teacher/index")
     public String teacherSchoolIndex(TeacherInfoVo teacherInfoVo, Model model){
         List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(teacherInfoVo);
-        log.info("list===>{}",teacherApplyInfoList.size());
         model.addAttribute("teacherApplyInfoList",teacherApplyInfoList);
         return"backstage/teacherApply";
     }

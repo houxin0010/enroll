@@ -1,5 +1,7 @@
 package com.school.enroll.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.school.enroll.entity.*;
 import com.school.enroll.mapper.*;
 import com.school.enroll.result.TeacherApplyDetailResult;
@@ -26,16 +28,17 @@ public class TeacherApplyInfoServiceImpl implements TeacherApplyInfoService {
     private TrainingExperienceMapper trainingExperienceMapper;
     @Autowired
     private EducationExperienceMapper educationExperienceMapper;
+
     @Override
     public List<TeacherApplyInfo> getTeacherApplyInfo(TeacherInfoVo teacherInfoVo) {
-        List<TeacherApplyInfo> list = teacherApplyInfoMapper.findTeacherByParams(teacherInfoVo);
-        return list;
+        return teacherApplyInfoMapper.findTeacherByParams(teacherInfoVo);
     }
 
     @Override
-    public List<TeacherApplyInfo> updateStudentStatus() {
-        return null;
+    public List<TeacherApplyInfo> getTeacherApplyInfoByOpenId(String openId) {
+        return teacherApplyInfoMapper.selectList(new LambdaQueryWrapper<TeacherApplyInfo>().eq(TeacherApplyInfo::getOpenId, openId));
     }
+
 
     @Override
     public int updateTeacherStatus(Long id, String status) {
@@ -54,7 +57,7 @@ public class TeacherApplyInfoServiceImpl implements TeacherApplyInfoService {
         List<WorkExperience> workExperiences = workExperienceMapper.selectListByTeacherId(id);
         List<TrainingExperience> trainingExperiences = trainingExperienceMapper.selectListByTeacherId(id);
         List<EducationExperience> educationExperiences = educationExperienceMapper.findByTeacherId(id);
-        BeanUtils.copyProperties(teacherApplyInfo,teacherApplyDetailResult);
+        BeanUtils.copyProperties(teacherApplyInfo, teacherApplyDetailResult);
         teacherApplyDetailResult.setJobExperienceList(jobExperiences);
         teacherApplyDetailResult.setWorkExperienceList(workExperiences);
         teacherApplyDetailResult.setTrainingExperienceList(trainingExperiences);
