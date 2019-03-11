@@ -489,7 +489,8 @@ $('#formSubmitBtn').click(function () {
                 schoolRollPlace: baseFormData[7].value,
                 domicilePlace: baseFormData[8].value,
                 homeAddress: baseFormData[9].value,
-                phoneNo: baseFormData[10].value
+                phoneNo: baseFormData[10].value,
+                selfIntroduction: baseFormData[33].value
             };
             let familyInfos = [{
                 salutation: baseFormData[11].value,
@@ -513,8 +514,7 @@ $('#formSubmitBtn').click(function () {
                 schoolPositionFive: baseFormData[26].value,
                 schoolPositionSix: baseFormData[27].value,
                 honorRoll: baseFormData[28].value + "," + baseFormData[29].value + "," + baseFormData[30].value + "," + baseFormData[31].value + ",",
-                certificate: baseFormData[32].value,
-                selfIntroduction: baseFormData[33].value
+                certificate: baseFormData[32].value
             };
             $.ajax({
                 url: url,
