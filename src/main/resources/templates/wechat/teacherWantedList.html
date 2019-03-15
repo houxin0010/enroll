@@ -10,7 +10,7 @@
 <div class="weui-loadmore weui-loadmore_line" th:if="${#lists.isEmpty(teacherApplyInfoList)}">
     <span class="weui-loadmore__tips">点击下方按钮申请报名</span>
     <div class="weui-btn-area">
-        <a id="formSubmitBtn" class="weui-btn weui-btn_primary" th:href="@{/middleSchool/enroll}">申请报名</a>
+        <a id="formSubmitBtn" class="weui-btn weui-btn_primary" th:href="@{/teacherWanted/apply}">申请报名</a>
     </div>
 </div>
 <div class="weui-panel" th:if="${not #lists.isEmpty(teacherApplyInfoList)}">

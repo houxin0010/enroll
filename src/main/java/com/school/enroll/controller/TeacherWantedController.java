@@ -5,8 +5,11 @@ import com.school.enroll.service.TeacherApplyInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 @Controller
@@ -22,6 +25,11 @@ public class TeacherWantedController {
         List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfoByOpenId(openId);
         model.addAttribute("teacherApplyInfoList", teacherApplyInfoList);
         return "wechat/teacherWantedList";
+    }
+
+    @RequestMapping("/apply")
+    public String apply(){
+        return "wechat/teacherWanted";
     }
 
 }

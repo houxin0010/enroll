@@ -16,11 +16,27 @@
         <div class="weui-panel weui-panel_access">
             <div class="weui-panel__hd">基本信息:</div>
             <div class="weui-panel__bd">
+
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
                     <div class="weui-cell__bd">
                         <input required emptyTips="请输入姓名" class="weui-input" name="name" placeholder="请输入姓名"
                                type="text">
+                    </div>
+                </div>
+                <div class="weui-cell" id="uploader">
+                    <div class="weui-cell__bd">
+                        <div class="weui-uploader">
+                            <div class="weui-uploader__hd">
+                                <p class="weui-uploader__title">上传照片</p>
+                            </div>
+                            <div class="weui-uploader__bd">
+                                <ul class="weui-uploader__files" id="uploaderFiles"></ul>
+                                <div class="weui-uploader__input-box">
+                                    <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" capture="camera" multiple=""/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="weui-cell weui-cell_select weui-cell_select-after">
@@ -52,25 +68,15 @@
                                notMatchTips="请输入正确的身份证号码" type="text">
                     </div>
                 </div>
-                <div class="weui-cell">
-                    <div class="weui-cell__hd"><label class="weui-label">现就读小学:</label></div>
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd"><label class="weui-label">政治面貌:</label></div>
                     <div class="weui-cell__bd">
-                        <input required emptyTips="请输入就读小学" class="weui-input" name="primarySchool"
-                               placeholder="请输入就读小学"
-                               type="text">
-                    </div>
-                </div>
-                <div class="weui-cell">
-                    <div class="weui-cell__hd"><label class="weui-label">学籍号:</label></div>
-                    <div class="weui-cell__bd">
-                        <input class="weui-input" name="studentCode" placeholder="请输入学籍号" type="text">
-                    </div>
-                </div>
-                <div class="weui-cell">
-                    <div class="weui-cell__hd"><label class="weui-label">学籍所在地:</label></div>
-                    <div class="weui-cell__bd">
-                        <input class="weui-input" required emptyTips="请选择学籍所在地" placeholder="请选择学籍所在地" type="text"
-                               id="school_roll_place" name="schoolRollPlace">
+                        <select class="weui-select" name="politicsStatus">
+                            <option value="0">群众</option>
+                            <option value="1">共青团员</option>
+                            <option value="2">中共预备党员</option>
+                            <option value="3">中共党员</option>
+                        </select>
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -80,6 +86,51 @@
                                id="domicile_place" name="domicilePlace">
                     </div>
                 </div>
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd"><label class="weui-label">户口性质:</label></div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="accountProperties">
+                            <option value="0">农村户口</option>
+                            <option value="1">城镇户口</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd"><label class="weui-label">婚姻状况:</label></div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="maritalStatus">
+                            <option value="0">未婚</option>
+                            <option value="1">已婚</option>
+                            <option value="2">丧偶</option>
+                            <option value="3">离婚</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">邮箱:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="email" placeholder="请输入邮箱" type="text">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">联系电话:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="tel" required pattern="[0-9]{11}" placeholder="请输入手机号"
+                               notMatchTips="请输入正确的手机号" name="phoneNo">
+                    </div>
+                </div>
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd"><label class="weui-label">最高学历:</label></div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="maritalStatus">
+                            <option value="3">大专</option>
+                            <option value="4">本科</option>
+                            <option value="5">硕士研究生</option>
+                            <option value="6">博士研究生</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">家庭住址:</label></div>
                     <div class="weui-cell__bd">
@@ -94,7 +145,9 @@
                                notMatchTips="请输入正确的手机号" name="phoneNo">
                     </div>
                 </div>
+
             </div>
+
         </div>
 
         <div class="weui-panel weui-panel_access">
