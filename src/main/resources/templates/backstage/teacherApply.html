@@ -36,7 +36,7 @@
                         </div>
                         <div class="column">
                             <label>民族：</label>
-                            <span th:text="${teacherApplyDetailResult?.nation}==0?'汉族':'少数民族'"></span>
+                            <span th:text="${teacherApplyDetailResult?.nation}"></span>
                         </div>
                         <div class="column">
                             <label>出生日期：</label>
@@ -49,11 +49,12 @@
                         <div class="column">
                             <label>政治面貌：</label>
                             <span th:switch="${teacherApplyDetailResult?.politicsStatus}">
-                            <label th:case="0">群众</label>
-                            <label th:case="1">共青团员</label>
-                            <label th:case="2">中共预备党员</label>
-                            <label th:case="3">中共党员</label>
-                        </span>
+                                <label th:case="0">群众</label>
+                                <label th:case="1">共青团员</label>
+                                <label th:case="2">中共预备党员</label>
+                                <label th:case="3">中共党员</label>
+                                <label th:case="4">其他</label>
+                            </span>
                         </div>
                         <div class="column">
                             <label>户口所在地：</label>
@@ -65,7 +66,12 @@
                         </div>
                         <div class="column">
                             <label>婚姻状况：</label>
-                            <span th:text="${teacherApplyDetailResult?.maritalStatus}"></span>
+                            <span th:text="${teacherApplyDetailResult?.maritalStatus}">
+                                <label th:case="0">未婚</label>
+                                <label th:case="1">已婚</label>
+                                <label th:case="2">丧偶</label>
+                                <label th:case="3">离婚</label>
+                            </span>
                         </div>
                         <div class="column">
                             <label>邮箱：</label>
@@ -78,15 +84,15 @@
                         <div class="column">
                             <label>最高学历：</label>
                             <span th:switch="${teacherApplyDetailResult?.education}">
-                            <label th:case="0">小学</label>
-                            <label th:case="1">初中</label>
-                            <label th:case="2">高中（中专，职高）</label>
-                            <label th:case="3">大专</label>
-                            <label th:case="4">本科</label>
-                            <label th:case="5">硕士研究生</label>
-                            <label th:case="6">博士研究生</label>
-                            <label th:case="7">其他</label>
-                        </span>
+                                <label th:case="0">小学</label>
+                                <label th:case="1">初中</label>
+                                <label th:case="2">高中（中专，职高）</label>
+                                <label th:case="3">大专</label>
+                                <label th:case="4">本科</label>
+                                <label th:case="5">硕士研究生</label>
+                                <label th:case="6">博士研究生</label>
+                                <label th:case="7">其他</label>
+                            </span>
                         </div>
                         <div class="column">
                             <label>专业：</label>
@@ -94,23 +100,55 @@
                         </div>
                         <div class="column">
                             <label>英语等级：</label>
-                            <span th:text="${teacherApplyDetailResult?.englishLevel}"></span>
+                            <span th:switch="${teacherApplyDetailResult?.englishLevel}">
+                                <label th:case="0">专业英语八级</label>
+                                <label th:case="1">专业英语四级</label>
+                                <label th:case="2">大学英语六级</label>
+                                <label th:case="3">大学英语四级</label>
+                                <label th:case="4">其他</label>
+                            </span>
                         </div>
                         <div class="column">
                             <label>教师资格证：</label>
-                            <span th:text="${teacherApplyDetailResult?.teacherCertification}"></span>
+                            <span th:text="${teacherApplyDetailResult?.teacherCertification}">
+                                <label th:case="0">小学教师资格</label>
+                                <label th:case="1">高级中学教师资格</label>
+                                <label th:case="2">初级中学教师资格</label>
+                                <label th:case="3">无</label>
+                            </span>
                         </div>
                         <div class="column">
                             <label>专业职称：</label>
-                            <span th:text="${teacherApplyDetailResult?.professionalTitle}"></span>
+                            <span th:text="${teacherApplyDetailResult?.professionalTitle}">
+                                <label th:case="0">正高级教师</label>
+                                <label th:case="1">高级教师</label>
+                                <label th:case="2">一级教师</label>
+                                <label th:case="3">二级教师</label>
+                                <label th:case="4">无</label>
+                            </span>
                         </div>
                         <div class="column">
                             <label>应聘学段：</label>
-                            <span th:text="${teacherApplyDetailResult?.applyPhaseStudying}"></span>
+                            <span th:text="${teacherApplyDetailResult?.applyPhaseStudying}">
+                                <label th:case="0">小学</label>
+                                <label th:case="1">初中</label>
+                                <label th:case="2">高中</label>
+                            </span>
                         </div>
                         <div class="column">
                             <label>应聘学科：</label>
-                            <span th:text="${teacherApplyDetailResult?.applySubject}"></span>
+                            <span th:text="${teacherApplyDetailResult?.applySubject}">
+                                <label th:case="0">语文</label>
+                                <label th:case="1">数学</label>
+                                <label th:case="2">英语</label>
+                                <label th:case="3">物理</label>
+                                <label th:case="4">化学</label>
+                                <label th:case="5">生物</label>
+                                <label th:case="6">历史</label>
+                                <label th:case="7">地理</label>
+                                <label th:case="8">政治</label>
+                                <label th:case="9">其他</label>
+                            </span>
                         </div>
                     </div>
                     <h3 class="ui header">教育经历</h3>
