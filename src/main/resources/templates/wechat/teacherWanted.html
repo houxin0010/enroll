@@ -111,7 +111,8 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">邮箱:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" name="email" placeholder="请输入邮箱" type="text">
+                        <input class="weui-input" name="email" required pattern="REG_EMAIL" placeholder="请输入邮箱"
+                               notMatchTips="请输入正确的邮箱" type="text">
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -124,7 +125,7 @@
                 <div class="weui-cell weui-cell_select weui-cell_select-after">
                     <div class="weui-cell__hd"><label class="weui-label">最高学历:</label></div>
                     <div class="weui-cell__bd">
-                        <select class="weui-select" name="maritalStatus">
+                        <select class="weui-select" name="education">
                             <option value="3">大专</option>
                             <option value="4">本科</option>
                             <option value="5">硕士研究生</option>
@@ -315,14 +316,14 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">开始时间:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" required emptyTips="请选择教育经历开始时间" placeholder="请选择开始时间" type="text"
+                        <input class="weui-input" required emptyTips="请选择工作经历开始时间" placeholder="请选择开始时间" type="text"
                                id="workExperience_startTime1" name="workExperience_startTime1">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">结束时间:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" required emptyTips="请选择教育经历结束时间" placeholder="请选择结束时间" type="text"
+                        <input class="weui-input" required emptyTips="请选择工作经历结束时间" placeholder="请选择结束时间" type="text"
                                id="workExperience_endTime1" name="workExperience_endTime1">
                     </div>
                 </div>
@@ -350,8 +351,8 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">证明人电话:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" placeholder="请输入证明人电话" type="text"
-                               name="certifierPhone1">
+                        <input class="weui-input" type="tel" required pattern="[0-9]{11}" notMatchTips="请输入正确的手机号"
+                               placeholder="请输入证明人电话" name="certifierPhone1">
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -370,7 +371,7 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">开始时间:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input"  placeholder="请选择开始时间" type="text"
+                        <input class="weui-input" placeholder="请选择开始时间" type="text"
                                id="workExperience_startTime2" name="workExperience_startTime1">
                     </div>
                 </div>
@@ -423,31 +424,32 @@
             <div class="weui-panel__hd">专业技术职务经历1:</div>
             <div class="weui-panel__bd">
                 <div class="weui-cell">
-                    <div class="weui-cell__hd"><label class="weui-label" style="font-size: x-small">专业技术职务名称:</label></div>
+                    <div class="weui-cell__hd"><label class="weui-label" style="font-size: x-small">专业技术职务名称:</label>
+                    </div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" placeholder="请输入专业技术职务名称" type="text"
-                               id="jobTitle1" name="jobTitle1">
+                               required emptyTips="请输入专业技术职务名称" id="jobTitle1" name="jobTitle1">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">晋升日期:</label></div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" placeholder="请选择晋升日期" type="text"
-                               id="promotionDate1" name="promotionDate1">
+                               required emptyTips="请选择晋升日期" id="promotionDate1" name="promotionDate1">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">晋升单位:</label></div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" placeholder="请输入晋升单位" type="text"
-                               name="promotionUnit1">
+                               required emptyTips="请输入晋升单位" name="promotionUnit1">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">批准单位:</label></div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" placeholder="请输入批准单位" type="text"
-                               name="ratifyUnit1">
+                               required emptyTips="请输入批准单位" name="ratifyUnit1">
                     </div>
                 </div>
             </div>
@@ -457,7 +459,8 @@
             <div class="weui-panel__hd">专业技术职务经历2:</div>
             <div class="weui-panel__bd">
                 <div class="weui-cell">
-                    <div class="weui-cell__hd"><label class="weui-label" style="font-size: x-small">专业技术职务名称:</label></div>
+                    <div class="weui-cell__hd"><label class="weui-label" style="font-size: x-small">专业技术职务名称:</label>
+                    </div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" placeholder="请输入专业技术职务名称" type="text"
                                id="jobTitle2" name="jobTitle2">
@@ -493,36 +496,37 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">开始时间:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input"  placeholder="请选择开始时间" type="text"
+                        <input class="weui-input" placeholder="请选择开始时间" type="text" required emptyTips="请选择开始时间"
                                id="trainingExperience_startTime1" name="trainingExperience_startTime1">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">结束时间:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" placeholder="请选择结束时间" type="text"
+                        <input class="weui-input" placeholder="请选择结束时间" type="text" required emptyTips="请选择结束时间"
                                id="trainingExperience_endTime1" name="trainingExperience_endTime1">
                     </div>
                 </div>
                 <div class="weui-cell">
-                    <div class="weui-cell__hd"><label class="weui-label" style="font-size: x-small">培训/实习内容:</label></div>
+                    <div class="weui-cell__hd"><label class="weui-label" style="font-size: x-small">培训/实习内容:</label>
+                    </div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" placeholder="请输入培训/实习内容" type="text"
-                               id="trainingContent1" name="trainingContent1">
+                               required emptyTips="请输入培训/实习内容" id="trainingContent1" name="trainingContent1">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">培训/实习机构:</label></div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" placeholder="请选择培训/实习机构" type="text"
-                               id="trainingInstitution1" name="trainingInstitution1">
+                               required emptyTips="请选择培训/实习机构" id="trainingInstitution1" name="trainingInstitution1">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">培训实习结果:</label></div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" placeholder="请输入培训实习结果" type="text"
-                               name="trainingResult1">
+                               required emptyTips="请输入培训实习结果" name="trainingResult1">
                     </div>
                 </div>
             </div>
@@ -534,7 +538,7 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">开始时间:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input"  placeholder="请选择开始时间" type="text"
+                        <input class="weui-input" placeholder="请选择开始时间" type="text"
                                id="trainingExperience_startTime2" name="trainingExperience_startTime2">
                     </div>
                 </div>
@@ -546,7 +550,8 @@
                     </div>
                 </div>
                 <div class="weui-cell">
-                    <div class="weui-cell__hd"><label class="weui-label" style="font-size: x-small">培训/实习内容:</label></div>
+                    <div class="weui-cell__hd"><label class="weui-label" style="font-size: x-small">培训/实习内容:</label>
+                    </div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" placeholder="请输入培训/实习内容" type="text"
                                id="trainingContent2" name="trainingContent2">

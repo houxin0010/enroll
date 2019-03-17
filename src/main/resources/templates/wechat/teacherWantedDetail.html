@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:replace="common::header"></div>
+</head>
+<body>
+<div th:replace="common::searchHeader"></div>
+<div class="page__hd">
+    <h1 class="page__title">您已申请的应聘信息</h1>
+</div>
+<div class="page__bd">
+    <form id="base_info_form">
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__hd">基本信息:</div>
+            <div class="weui-panel__bd">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="name" disabled type="text"
+                               th:value="${teacherWantedDetailResult.name}"/>
+                    </div>
+                </div>
+                <div class="weui-cell" id="uploader">
+                    <div class="weui-cell__hd"><label class="weui-label">照片:</label></div>
+                    <div class="weui-cell__bd">
+                        <img th:src="${teacherWantedDetailResult.pictureUrl}" height="80" width="80"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">性别:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="sex" disabled type="text"
+                               th:value="${teacherWantedDetailResult.sex}==0?'女':'男'"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">名族:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" disabled name="nation" type="text"
+                               th:value="${teacherWantedDetailResult.nation}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">出生日期:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="birthdate" disabled type="text"
+                               th:value="${#dates.format(teacherWantedDetailResult.birthdate,'yyyy-MM-dd')}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">身份证号:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" disabled name="nation" type="text"
+                               th:value="${teacherWantedDetailResult.idNo}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">政治面貌:</label></div>
+                    <div class="weui-cell__bd" th:switch="${teacherWantedDetailResult.politicsStatus}">
+                        <input class="weui-input" name="politicsStatus" disabled type="text" th:case="0" value="群众"/>
+                        <input class="weui-input" name="politicsStatus" disabled type="text" th:case="1" value="共青团员"/>
+                        <input class="weui-input" name="politicsStatus" disabled type="text" th:case="2"
+                               value="中共预备党员"/>
+                        <input class="weui-input" name="politicsStatus" disabled type="text" th:case="3" value="中共党员"/>
+                        <input class="weui-input" name="politicsStatus" disabled type="text" th:case="4" value="其他"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">户口所在地:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="domicilePlace" disabled type="text"
+                               th:value="${teacherWantedDetailResult.domicilePlace}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">户口性质:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="accountProperties" disabled type="text"
+                               th:value="${teacherWantedDetailResult.accountProperties}==0?'农村户口':'城镇户口'"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">婚姻状况:</label></div>
+                    <div class="weui-cell__bd" th:switch="${teacherWantedDetailResult.maritalStatus}">
+                        <input class="weui-input" name="maritalStatus" disabled type="text" th:case="0" value="未婚"/>
+                        <input class="weui-input" name="maritalStatus" disabled type="text" th:case="1" value="已婚"/>
+                        <input class="weui-input" name="maritalStatus" disabled type="text" th:case="2" value="丧偶"/>
+                        <input class="weui-input" name="maritalStatus" disabled type="text" th:case="3" value="离婚"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">邮箱:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="email" disabled type="text"
+                               th:value="${teacherWantedDetailResult.email}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">联系电话:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="phoneNo" disabled type="text"
+                               th:value="${teacherWantedDetailResult.phoneNo}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">最高学历:</label></div>
+                    <div class="weui-cell__bd" th:switch="${teacherWantedDetailResult.education}">
+                        <input class="weui-input" name="education" disabled type="text" th:case="3" value="大专"/>
+                        <input class="weui-input" name="education" disabled type="text" th:case="4" value="本科"/>
+                        <input class="weui-input" name="education" disabled type="text" th:case="5" value="硕士研究生"/>
+                        <input class="weui-input" name="education" disabled type="text" th:case="6" value="博士研究生"/>
+                    </div>
+                </div>
+
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">专业:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="profession" disabled type="text"
+                               th:value="${teacherWantedDetailResult.profession}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">英语等级:</label></div>
+                    <div class="weui-cell__bd" th:switch="${teacherWantedDetailResult.englishLevel}">
+                        <input class="weui-input" name="englishLevel" disabled type="text" th:case="0" value="专业英语八级"/>
+                        <input class="weui-input" name="englishLevel" disabled type="text" th:case="1" value="专业英语四级"/>
+                        <input class="weui-input" name="englishLevel" disabled type="text" th:case="2" value="大学英语六级"/>
+                        <input class="weui-input" name="englishLevel" disabled type="text" th:case="3" value="大学英语四级"/>
+                        <input class="weui-input" name="englishLevel" disabled type="text" th:case="4" value="其他"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">教师资格证:</label></div>
+                    <div class="weui-cell__bd" th:switch="${teacherWantedDetailResult.teacherCertification}">
+                        <input class="weui-input" name="teacherCertification" disabled type="text" th:case="0"
+                               value="小学教师资格"/>
+                        <input class="weui-input" name="teacherCertification" disabled type="text" th:case="1"
+                               value="高级中学教师资格"/>
+                        <input class="weui-input" name="teacherCertification" disabled type="text" th:case="2"
+                               value="初级中学教师资格"/>
+                        <input class="weui-input" name="teacherCertification" disabled type="text" th:case="3"
+                               value="无"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">专业职称:</label></div>
+                    <div class="weui-cell__bd" th:switch="${teacherWantedDetailResult.professionalTitle}">
+                        <input class="weui-input" name="professionalTitle" disabled type="text" th:case="0"
+                               value="正高级教师"/>
+                        <input class="weui-input" name="professionalTitle" disabled type="text" th:case="1"
+                               value="高级教师"/>
+                        <input class="weui-input" name="professionalTitle" disabled type="text" th:case="2"
+                               value="一级教师"/>
+                        <input class="weui-input" name="professionalTitle" disabled type="text" th:case="3"
+                               value="二级教师"/>
+                        <input class="weui-input" name="professionalTitle" disabled type="text" th:case="4" value="无"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">应聘学段:</label></div>
+                    <div class="weui-cell__bd" th:switch="${teacherWantedDetailResult.applyPhaseStudying}">
+                        <input class="weui-input" name="applyPhaseStudying" disabled type="text" th:case="0"
+                               value="小学"/>
+                        <input class="weui-input" name="applyPhaseStudying" disabled type="text" th:case="1"
+                               value="初中"/>
+                        <input class="weui-input" name="applyPhaseStudying" disabled type="text" th:case="2"
+                               value="高中"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">应聘学科:</label></div>
+                    <div class="weui-cell__bd" th:switch="${teacherWantedDetailResult.applySubject}">
+                        <input class="weui-input" name="applySubject" disabled type="text" th:case="0" value="语文"/>
+                        <input class="weui-input" name="applySubject" disabled type="text" th:case="1" value="数学"/>
+                        <input class="weui-input" name="applySubject" disabled type="text" th:case="2" value="英语"/>
+                        <input class="weui-input" name="applySubject" disabled type="text" th:case="3" value="物理"/>
+                        <input class="weui-input" name="applySubject" disabled type="text" th:case="4" value="化学"/>
+                        <input class="weui-input" name="applySubject" disabled type="text" th:case="5" value="生物"/>
+                        <input class="weui-input" name="applySubject" disabled type="text" th:case="6" value="历史"/>
+                        <input class="weui-input" name="applySubject" disabled type="text" th:case="7" value="地理"/>
+                        <input class="weui-input" name="applySubject" disabled type="text" th:case="8" value="政治"/>
+                        <input class="weui-input" name="applySubject" disabled type="text" th:case="9" value="其他"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-panel weui-panel_access"
+             th:each="educationExperience:${teacherWantedDetailResult.educationExperienceList}">
+            <div class="weui-panel__hd">主要教育经历:</div>
+            <div class="weui-panel__bd">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">开始时间:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="startTime" disabled type="text"
+                               th:value="${#dates.format(educationExperience.startTime,'yyyy-MM-dd')}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">结束时间:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="endTime" disabled type="text"
+                               th:value="${#dates.format(educationExperience.endTime,'yyyy-MM-dd')}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">院校名称:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="schoolName" disabled type="text"
+                               th:value="${educationExperience.schoolName}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">学历:</label></div>
+                    <div class="weui-cell__bd" th:switch="${educationExperience.education}">
+                        <input class="weui-input" name="education" disabled type="text" th:case=3 value="大专"/>
+                        <input class="weui-input" name="education" disabled type="text" th:case=4 value="本科"/>
+                        <input class="weui-input" name="education" disabled type="text" th:case=5 value="硕士研究生"/>
+                        <input class="weui-input" name="education" disabled type="text" th:case=6 value="博士研究生"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">专业:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="profession" disabled type="text"
+                               th:value="${educationExperience.profession}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">证书:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="credential" disabled type="text"
+                               th:value="${educationExperience.credential}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-panel weui-panel_access"
+             th:each="workExperience:${teacherWantedDetailResult.workExperienceList}">
+            <div class="weui-panel__hd">主要工作经历:</div>
+            <div class="weui-panel__bd">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">开始时间:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="startTime" disabled type="text"
+                               th:value="${#dates.format(workExperience.startTime,'yyyy-MM-dd')}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">结束时间:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="endTime" disabled type="text"
+                               th:value="${#dates.format(workExperience.endTime,'yyyy-MM-dd')}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">工作单位:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="workUnit" disabled type="text"
+                               th:value="${workExperience.workUnit}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">职位:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="position" disabled type="text"
+                               th:value="${workExperience.position}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">证明人姓名:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="certifierName" disabled type="text"
+                               th:value="${workExperience.certifierName}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">证明人电话:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="certifierPhone" disabled type="text"
+                               th:value="${workExperience.certifierPhone}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">离职原因:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="reasonsResignation" disabled type="text"
+                               th:value="${workExperience.reasonsResignation}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-panel weui-panel_access"
+             th:each="jobExperience:${teacherWantedDetailResult.jobExperienceList}">
+            <div class="weui-panel__hd">专业技术职务经历:</div>
+            <div class="weui-panel__bd">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label" style="font-size: x-small">专业技术职务名称:</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="jobTitle" disabled type="text"
+                               th:value="${jobExperience.jobTitle}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">晋升日期:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="promotionDate" disabled type="text"
+                               th:value="${#dates.format(jobExperience.promotionDate,'yyyy-MM-dd')}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">晋升单位:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="promotionUnit" disabled type="text"
+                               th:value="${jobExperience.promotionUnit}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">批准单位:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="ratifyUnit" disabled type="text"
+                               th:value="${jobExperience.ratifyUnit}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-panel weui-panel_access"
+             th:each="trainingExperience:${teacherWantedDetailResult.trainingExperienceList}">
+            <div class="weui-panel__hd">主要培训/实习经历:</div>
+            <div class="weui-panel__bd">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">开始时间:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="startTime" disabled type="text"
+                               th:value="${#dates.format(trainingExperience.startTime,'yyyy-MM-dd')}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">结束时间:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="endTime" disabled type="text"
+                               th:value="${#dates.format(trainingExperience.endTime,'yyyy-MM-dd')}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label" style="font-size: x-small">培训/实习内容:</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="trainingContent" disabled type="text"
+                               th:value="${trainingExperience.trainingContent}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">培训/实习机构:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="trainingInstitution" disabled type="text"
+                               th:value="${trainingExperience.trainingInstitution}"/>
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">培训实习结果:</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="trainingResult" disabled type="text"
+                               th:value="${trainingExperience.trainingResult}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="weui-footer">
+    <p class="weui-footer__text">Copyright © 2008-2019 weui.io</p>
+</div>
+</body>
+</html>

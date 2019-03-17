@@ -7,7 +7,7 @@ import com.school.enroll.result.TeacherApplyDetailResult;
 import com.school.enroll.service.StudentInfoService;
 import com.school.enroll.service.TeacherApplyInfoService;
 import com.school.enroll.vo.StudentInfoVo;
-import com.school.enroll.vo.TeacherInfoVo;
+import com.school.enroll.vo.TeacherInfoQueryVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -62,14 +62,14 @@ public class BackstageController {
     }
 
     @RequestMapping("/teacher/index")
-    public String teacherSchoolIndex(TeacherInfoVo teacherInfoVo, Model model){
-        List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(teacherInfoVo);
+    public String teacherSchoolIndex(TeacherInfoQueryVo teacherInfoQueryVo, Model model){
+        List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(teacherInfoQueryVo);
         model.addAttribute("teacherApplyInfoList",teacherApplyInfoList);
         return"backstage/teacherApply";
     }
     @RequestMapping("/teacher/getTeacherApplyInfo")
-    public String getTeacherApplyInfo(TeacherInfoVo teacherInfoVo, Model model){
-        List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(teacherInfoVo);
+    public String getTeacherApplyInfo(TeacherInfoQueryVo teacherInfoQueryVo, Model model){
+        List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(teacherInfoQueryVo);
         model.addAttribute("teacherApplyInfoList",teacherApplyInfoList);
         return"backstage/teacherApply::teacherApplyInfoList";
     }
@@ -80,9 +80,9 @@ public class BackstageController {
     }
     @RequestMapping("/teacher/detail")
     public String teacherDetail(Long id,Model model){
-          TeacherApplyDetailResult teacherApplyDetailResult = teacherApplyInfoService.getTeacherApplyInfoDetail(id);
-          model.addAttribute("teacherApplyDetailResult",teacherApplyDetailResult);
-          return "backstage/teacherApply::teacherApplyDetailResult";
+        TeacherApplyDetailResult teacherApplyDetailResult = teacherApplyInfoService.getTeacherApplyInfoDetail(id);
+        model.addAttribute("teacherApplyDetailResult", teacherApplyDetailResult);
+        return "backstage/teacherApply::teacherApplyDetailResult";
     }
     @RequestMapping("/middle/student/detail")
     public String middleStudentDetail(Long id,Model model){

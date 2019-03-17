@@ -18,7 +18,7 @@ public class WorkExperience implements Serializable {
     private String workUnit;
     private String position;
     private String certifierName;
-    private Long certifierPhone;
+    private String certifierPhone;
     private String reasonsResignation;
     private Long teacherId;
 

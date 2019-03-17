@@ -1,14 +1,18 @@
 package com.school.enroll.controller;
 
 import com.school.enroll.entity.TeacherApplyInfo;
+import com.school.enroll.result.TeacherApplyDetailResult;
 import com.school.enroll.service.TeacherApplyInfoService;
+import com.school.enroll.vo.TeacherWantedInfoVo;
 import com.school.enroll.vo.UploadResultVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,9 +43,24 @@ public class TeacherWantedController {
         return "wechat/teacherWantedList";
     }
 
-    @RequestMapping("/apply")
-    public String apply() {
+    @RequestMapping("/enroll")
+    public String enroll() {
         return "wechat/teacherWanted";
+    }
+
+    @RequestMapping("/apply")
+    public ResponseEntity<String> apply(@RequestBody TeacherWantedInfoVo teacherWantedInfoVo) {
+        String openId = "wx_test";
+        teacherApplyInfoService.createTeacherInfo(teacherWantedInfoVo, openId);
+        return ResponseEntity.ok("success");
+    }
+
+    @RequestMapping("/detail")
+    public String getDetail(Long id, Model model) {
+        TeacherApplyDetailResult teacherApplyDetailResult = teacherApplyInfoService.getTeacherApplyInfoDetail(id);
+        log.info("result = {}", teacherApplyDetailResult.getMaritalStatus());
+        model.addAttribute("teacherWantedDetailResult", teacherApplyDetailResult);
+        return "wechat/teacherWantedDetail";
     }
 
     @ResponseBody
@@ -61,7 +80,7 @@ public class TeacherWantedController {
         try {
             multipartFile.transferTo(dest);
             log.info("上传成功");
-            return new UploadResultVo("00", dest.getPath());
+            return new UploadResultVo("00", "../../static/images/" + fileName);
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }

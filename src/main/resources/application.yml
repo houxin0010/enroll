@@ -60,4 +60,4 @@ mybatis-plus:
 
 web:
   upload:
-    file-path: E:\myWork\enroll\static\images\
+    file-path: E:\myWork\enroll\src\main\resources\static\images\

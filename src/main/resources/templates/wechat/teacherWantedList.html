@@ -10,14 +10,13 @@
 <div class="weui-loadmore weui-loadmore_line" th:if="${#lists.isEmpty(teacherApplyInfoList)}">
     <span class="weui-loadmore__tips">点击下方按钮申请报名</span>
     <div class="weui-btn-area">
-        <a id="formSubmitBtn" class="weui-btn weui-btn_primary" th:href="@{/teacherWanted/apply}">申请报名</a>
+        <a id="formSubmitBtn" class="weui-btn weui-btn_primary" th:href="@{/teacherWanted/enroll}">申请报名</a>
     </div>
 </div>
 <div class="weui-panel" th:if="${not #lists.isEmpty(teacherApplyInfoList)}">
     <div class="weui-panel__bd">
         <div class="weui-media-box weui-media-box_text" th:each="teacherApplyInfo:${teacherApplyInfoList}">
             <h4 class="weui-media-box__title" th:text="${teacherApplyInfo.name}"></h4>
-            <p class="weui-media-box__desc" th:text="${teacherApplyInfo.idNo}"></p>
             <ul class="weui-media-box__info">
                 <li class="weui-media-box__info__meta"
                     th:text="${#dates.format(teacherApplyInfo.createTime,'yyyy-MM-dd')}"></li>
@@ -28,7 +27,7 @@
                     <label th:case="REJECT">拒绝</label>
                 </li>
                 <a class="weui-media-box__info__meta weui-media-box__info__meta_extra"
-                   th:href="@{/middleSchool/studentEnrollDetail(id=${teacherApplyInfo.id})}">详细信息</a>
+                   th:href="@{/teacherWanted/detail(id=${teacherApplyInfo.id})}">详细信息</a>
             </ul>
         </div>
     </div>

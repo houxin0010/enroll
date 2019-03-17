@@ -108,32 +108,32 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">姓名:</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" name="name" disabled type="text" th:value="${familyInfo.name}">
+                        <input class="weui-input" name="name" disabled type="text" th:value="${familyInfo.name}"/>
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">学历:</label></div>
                     <div class="weui-cell__bd" th:switch="${familyInfo.education}">
-                        <input class="weui-input" name="education" disabled type="text" th:case=1 th:value="初中">
-                        <input class="weui-input" name="education" disabled type="text" th:case=2 value="高中(中专、职高)">
-                        <input class="weui-input" name="education" disabled type="text" th:case=3 value="大专">
-                        <input class="weui-input" name="education" disabled type="text" th:case=4 value="本科">
-                        <input class="weui-input" name="education" disabled type="text" th:case=5 value="硕士研究生">
-                        <input class="weui-input" name="education" disabled type="text" th:case=6 value="博士研究生">
+                        <input class="weui-input" name="education" disabled type="text" th:case=1 value="初中"/>
+                        <input class="weui-input" name="education" disabled type="text" th:case=2 value="高中(中专、职高)"/>
+                        <input class="weui-input" name="education" disabled type="text" th:case=3 value="大专"/>
+                        <input class="weui-input" name="education" disabled type="text" th:case=4 value="本科"/>
+                        <input class="weui-input" name="education" disabled type="text" th:case=5 value="硕士研究生"/>
+                        <input class="weui-input" name="education" disabled type="text" th:case=6 value="博士研究生"/>
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">工作单位:</label></div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" name="workUnit" disabled type="text"
-                               th:value="${familyInfo.workUnit}">
+                               th:value="${familyInfo.workUnit}"/>
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">职务:</label></div>
                     <div class="weui-cell__bd">
                         <input class="weui-input" name="workUnit" disabled type="text"
-                               th:value="${familyInfo.position}">
+                               th:value="${familyInfo.position}"/>
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -211,6 +211,9 @@
             </div>
         </div>
     </form>
+</div>
+<div class="weui-footer">
+    <p class="weui-footer__text">Copyright © 2008-2019 weui.io</p>
 </div>
 </body>
 </html>
