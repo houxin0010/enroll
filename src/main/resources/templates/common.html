@@ -53,7 +53,7 @@
 </th:block>
 
 <th:block th:fragment="optionHint">
-    <div class="ui basic modal">
+    <div  class="ui basic modal">
         <div class="ui icon header">
             <i class="exclamation triangle yellow icon"></i>
             入学审核
@@ -75,7 +75,7 @@
 </th:block>
 
 <th:block th:fragment="updateHint">
-    <div class="ui mini modal">
+    <div id="update" class="ui mini modal">
         <div class="header">
             <i class="bell outline icon"></i>
             审核提示
@@ -86,9 +86,21 @@
     </div>
 </th:block>
 
+<th:block th:fragment="deleteHint">
+    <div id="deleteAlert" class="ui mini modal">
+        <div class="header">
+            <i class="bell outline icon"></i>
+            删除提示
+        </div>
+        <div class="content">
+            <p>删除成功！点击查询查看最新数据</p>
+        </div>
+    </div>
+</th:block>
+
 
 <th:block th:fragment="optionHint2">
-    <div class="ui basic modal">
+    <div  class="ui basic modal">
         <div class="ui icon header">
             <i class="exclamation triangle yellow icon"></i>
             求职审核
@@ -104,6 +116,27 @@
             <div class="ui green ok inverted button">
                 <i class="check icon"></i>
                 通过
+            </div>
+        </div>
+    </div>
+</th:block>
+<th:block th:fragment="optionHint3">
+    <div id="delete"  class="ui mini modal">
+        <div class="ui icon header">
+            <i class="exclamation triangle yellow icon"></i>
+            删除记录
+        </div>
+        <div class="content">
+            <p>是否删除记录</p>
+        </div>
+        <div class="actions">
+            <div class="ui red cancel inverted button">
+                <i class="x icon"></i>
+                取消
+            </div>
+            <div class="ui green ok inverted button">
+                <i class="check icon"></i>
+                删除
             </div>
         </div>
     </div>

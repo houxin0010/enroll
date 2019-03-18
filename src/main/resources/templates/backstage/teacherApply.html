@@ -253,7 +253,9 @@
 </th:block>
 <div th:replace="common::leftMenu"></div>
 <div th:replace="common::optionHint2"></div>
+<div th:replace="common::optionHint3"></div>
 <div th:replace="common::updateHint"></div>
+<div th:replace="common::deleteHint"></div>
 <div th:replace="common::contentHint"></div>
 <div class="main" style="margin-left: 19em; margin-right: 1em;">
     <div class="ui grid">
@@ -359,6 +361,8 @@
                                         class="ui small green inverted button"
                                         th:onclick="|javascript:updateTeacherStatus(${teacherApplyInfo.id})|">审核
                                 </button>
+                                <button class="ui small red inverted button"
+                                        th:onclick="|javascript:deleteTeacher(${teacherApplyInfo.id})|">删除</button>
                             </td>
                         </tr>
                         </tbody>

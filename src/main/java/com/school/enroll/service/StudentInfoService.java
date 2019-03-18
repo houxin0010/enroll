@@ -26,4 +26,6 @@ public interface StudentInfoService {
     StudentInfoDetailResult getStudentInfoDetail(Long id);
 
     FullEnrollStudentInfo getFullEnrollStudentInfo(Long id);
+
+    int delete(Long id);
 }

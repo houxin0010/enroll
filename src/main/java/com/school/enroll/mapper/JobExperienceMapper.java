@@ -2,6 +2,7 @@ package com.school.enroll.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.school.enroll.entity.JobExperience;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +12,6 @@ import java.util.List;
 public interface JobExperienceMapper extends BaseMapper<JobExperience> {
     @Select("select * from job_experience where teacher_id =#{teacherId}")
     List<JobExperience> selectListByTeacherId(Long teacherId);
+    @Delete("delete from job_experience where teacher_id = #{id}")
+    void deleteByTeacherId(Long id);
 }
