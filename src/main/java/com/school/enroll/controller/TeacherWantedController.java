@@ -89,7 +89,7 @@ public class TeacherWantedController {
 
     @RequestMapping("/applySuccess")
     public String applySuccess(){
-        return "/wechat/teacherWantedSuccess";
+        return "wechat/teacherWantedSuccess";
     }
 
 }
