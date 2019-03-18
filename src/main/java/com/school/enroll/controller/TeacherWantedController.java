@@ -87,4 +87,9 @@ public class TeacherWantedController {
         return new UploadResultVo("-1", "上传失败");
     }
 
+    @RequestMapping("/applySuccess")
+    public String applySuccess(){
+        return "/wechat/teacherWantedSuccess";
+    }
+
 }

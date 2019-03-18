@@ -6,7 +6,6 @@
     <div th:replace="common::header"></div>
 </head>
 <body>
-<div th:replace="common::searchHeader"></div>
 <div class="page__hd">
     <h1 class="page__title">教师招聘</h1>
     <p class="page__desc">请填写真实的完整信息，谢谢!</p>
@@ -577,9 +576,13 @@
     </form>
 
     <div class="weui-btn-area">
+        <a href="javascript:history.back();" class="weui-btn weui-btn_default">返回上一页</a>
         <a id="formSubmitBtn" class="weui-btn weui-btn_primary">提交并保存</a>
     </div>
 
+    <div class="weui-footer">
+        <p class="weui-footer__text">Copyright © 2008-2019 weui.io</p>
+    </div>
 </div>
 </body>
 <script th:src="@{../../static/js/teacherWanted.js}"></script>

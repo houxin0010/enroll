@@ -47,7 +47,8 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     public List<StudentInfo> getStudentInfoByOpenId(String openId, Integer type) {
         return studentInfoMapper.selectList(new LambdaQueryWrapper<StudentInfo>()
                 .eq(StudentInfo::getOpenId, openId)
-                .eq(StudentInfo::getType, type));
+                .eq(StudentInfo::getType, type)
+                .orderByDesc(StudentInfo::getCreateTime));
     }
 
     @Override
@@ -148,7 +149,6 @@ public class StudentInfoServiceImpl implements StudentInfoService {
 
         return fullEnrollStudentInfo;
     }
-
 
 
 }

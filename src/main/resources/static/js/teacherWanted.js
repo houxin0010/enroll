@@ -15,7 +15,7 @@ $('#educationExperience_startTime1').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#educationExperience_startTime1').val(result[0].label + result[1].label + result[2].label);
@@ -28,7 +28,7 @@ $('#educationExperience_startTime2').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#educationExperience_startTime2').val(result[0].label + result[1].label + result[2].label);
@@ -41,7 +41,7 @@ $('#educationExperience_endTime1').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#educationExperience_endTime1').val(result[0].label + result[1].label + result[2].label);
@@ -54,7 +54,7 @@ $('#educationExperience_endTime2').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#educationExperience_endTime2').val(result[0].label + result[1].label + result[2].label);
@@ -67,7 +67,7 @@ $('#workExperience_startTime1').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#workExperience_startTime1').val(result[0].label + result[1].label + result[2].label);
@@ -80,7 +80,7 @@ $('#workExperience_endTime1').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#workExperience_endTime1').val(result[0].label + result[1].label + result[2].label);
@@ -93,7 +93,7 @@ $('#workExperience_startTime2').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#workExperience_startTime2').val(result[0].label + result[1].label + result[2].label);
@@ -106,7 +106,7 @@ $('#workExperience_endTime2').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#workExperience_endTime2').val(result[0].label + result[1].label + result[2].label);
@@ -119,7 +119,7 @@ $('#promotionDate1').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#promotionDate1').val(result[0].label + result[1].label + result[2].label);
@@ -132,7 +132,7 @@ $('#promotionDate2').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#promotionDate2').val(result[0].label + result[1].label + result[2].label);
@@ -145,7 +145,7 @@ $('#trainingExperience_startTime1').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#trainingExperience_startTime1').val(result[0].label + result[1].label + result[2].label);
@@ -158,7 +158,7 @@ $('#trainingExperience_endTime1').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#trainingExperience_endTime1').val(result[0].label + result[1].label + result[2].label);
@@ -171,7 +171,7 @@ $('#trainingExperience_startTime2').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#trainingExperience_startTime2').val(result[0].label + result[1].label + result[2].label);
@@ -184,7 +184,7 @@ $('#trainingExperience_endTime2').on('focus', function () {
     weui.datePicker({
         start: 1980,
         end: new Date(),
-        defaultValue: [2000, 1, 1],
+        defaultValue: [2010, 1, 1],
         onConfirm: function (result) {
             console.log(result);
             $('#trainingExperience_endTime2').val(result[0].label + result[1].label + result[2].label);
@@ -339,12 +339,13 @@ $('#formSubmitBtn').click(function () {
                 }),
                 success: function (data) {
                     loading.hide();
-                    weui.toast('提交成功', 2000);
-                    window.location.href="/teacherWanted/index";
+                    weui.toast('提交成功', 3000);
+                    window.location.href="/teacherWanted/applySuccess";
                 },
                 error: function () {
                     loading.hide();
-                    weui.alert('请求超时', 3000);
+                    weui.toast('系统繁忙,请稍后再试!', 3000);
+                    window.location.href="/teacherWanted/index";
                 }
             });
         }

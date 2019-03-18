@@ -26,9 +26,7 @@ server:
 
 logging:
   level:
-    org:
-      springframework:
-        security: INFO
+    root: info
 
 mybatis-plus:
   global-config:

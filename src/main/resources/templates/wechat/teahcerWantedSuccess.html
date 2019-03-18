@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:replace="common::header"></div>
+</head>
+<body>
+<div class="page msg_success js_show">
+    <div class="weui-msg">
+        <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title">提交成功</h2>
+            <p class="weui-msg__desc">感谢您的申请，我校会在七个工作日对您提交的内容进行审批，敬请您耐心等待，谢谢！</p>
+        </div>
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a th:href="@{/teacherWanted/index}" class="weui-btn weui-btn_primary">确定</a>
+            </p>
+        </div>
+        <div class="weui-msg__extra-area">
+            <div class="weui-footer">
+                <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link">底部链接文本</a>
+                </p>
+                <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
