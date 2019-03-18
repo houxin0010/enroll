@@ -30,7 +30,7 @@ function updateStatus(id) {
                         status: 'REJECT'
                     },
                     success: function (data) {
-                        $('.mini.modal').modal('show');
+                        $('#update').modal('show');
                     }
                 });
             },
@@ -43,7 +43,27 @@ function updateStatus(id) {
                         status: 'PASSED'
                     },
                     success: function (data) {
-                        $('.mini.modal').modal('show');
+                        $('#update').modal('show');
+                    }
+                });
+            }
+        })
+        .modal('show');
+}
+function deleteStudent(id){
+    let url = "/backstage/delete/student";
+    $('#delete')
+        .modal({
+            onApprove: function () {
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+                        $('#deleteAlert').modal('show');
+                        setTimeout(function(){window.location.reload()},3000)
                     }
                 });
             }
@@ -63,7 +83,7 @@ function updateTeacherStatus(id) {
                         status: 'REJECT'
                     },
                     success: function (data) {
-                        $('.mini.modal').modal('show');
+                        $('#update').modal('show');
                     }
                 });
             },
@@ -76,7 +96,7 @@ function updateTeacherStatus(id) {
                         status: 'PASSED'
                     },
                     success: function (data) {
-                        $('.mini.modal').modal('show');
+                        $('#update').modal('show');
                     }
                 });
             }
@@ -87,4 +107,24 @@ function closeWindow() {
     $('.long.modal').modal('hide');
 
 }
+function deleteTeacher(id){
+    let url = "/backstage/delete/teacher";
+    $('#delete')
+        .modal({
+            onApprove: function () {
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+                        $('#deleteAlert').modal('show');
+                        setTimeout(function(){window.location.reload()},3000)
+                    }
+                });
+            }
 
+        })
+        .modal('show');
+}

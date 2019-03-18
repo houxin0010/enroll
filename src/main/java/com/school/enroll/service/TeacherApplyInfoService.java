@@ -18,4 +18,6 @@ public interface TeacherApplyInfoService {
     TeacherApplyDetailResult getTeacherApplyInfoDetail(Long id);
 
     void createTeacherInfo(TeacherWantedInfoVo teacherWantedInfoVo, String openId);
+
+    int deletc(Long id);
 }

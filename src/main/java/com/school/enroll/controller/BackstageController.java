@@ -61,6 +61,11 @@ public class BackstageController {
         return ResponseEntity.ok(studentInfoService.updateStudentStatus(id, status));
     }
 
+    @RequestMapping("/delete/student")
+    public ResponseEntity deleteStudent(Long id){
+        return ResponseEntity.ok(studentInfoService.delete(id));
+    }
+
     @RequestMapping("/teacher/index")
     public String teacherSchoolIndex(TeacherInfoQueryVo teacherInfoQueryVo, Model model){
         List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(teacherInfoQueryVo);
@@ -95,5 +100,9 @@ public class BackstageController {
         StudentInfoDetailResult studentInfoDetailResult = studentInfoService.getStudentInfoDetail(id);
         model.addAttribute("studentInfoDetailResult",studentInfoDetailResult);
         return "backstage/primarySchool::studentInfoDetailResult";
+    }
+    @RequestMapping("/delete/teacher")
+    public ResponseEntity deleteTeacher(Long id){
+        return ResponseEntity.ok(teacherApplyInfoService.deletc(id));
     }
 }

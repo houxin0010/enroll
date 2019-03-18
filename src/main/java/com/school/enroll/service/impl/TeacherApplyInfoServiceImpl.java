@@ -160,4 +160,15 @@ public class TeacherApplyInfoServiceImpl implements TeacherApplyInfoService {
             log.error(e.getMessage(), e);
         }
     }
+
+    @Override
+    public int deletc(Long id) {
+        int i = teacherApplyInfoMapper.deleteById(id);
+        jobExperienceMapper.deleteByTeacherId(id);
+        workExperienceMapper.deleteByTeacherId(id);
+        trainingExperienceMapper.deletcByTeacherId(id);
+        educationExperienceMapper.deleteByTeacherId(id);
+
+        return i;
+    }
 }

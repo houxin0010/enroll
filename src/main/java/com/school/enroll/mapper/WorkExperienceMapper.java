@@ -11,4 +11,6 @@ import java.util.List;
 public interface WorkExperienceMapper extends BaseMapper<WorkExperience> {
     @Select("select * from work_experience where teacher_id = #{teacherId}")
     List<WorkExperience> selectListByTeacherId(Long teacherId);
+    @Select("delete from work_experience where teacher_id = #{id}")
+    void deleteByTeacherId(Long id);
 }
