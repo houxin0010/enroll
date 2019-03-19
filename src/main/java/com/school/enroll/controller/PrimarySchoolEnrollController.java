@@ -38,7 +38,7 @@ public class PrimarySchoolEnrollController {
     public ResponseEntity apply(@RequestBody PrimarySchoolApplyVo primarySchoolApplyVo) {
         String openId = "wx_test";
         studentInfoService.createPrimaryStudentInfo(primarySchoolApplyVo, openId);
-        return ResponseEntity.ok("保存成功!");
+        return ResponseEntity.ok("success!");
     }
 
     @GetMapping("/studentEnrollDetail")
@@ -46,5 +46,10 @@ public class PrimarySchoolEnrollController {
         FullEnrollStudentInfo fullEnrollStudentInfo = studentInfoService.getFullEnrollStudentInfo(id);
         model.addAttribute("fullEnrollStudentInfo", fullEnrollStudentInfo);
         return "wechat/primaryEnrollDetail";
+    }
+
+    @RequestMapping("/applySuccess")
+    public String applySuccess(){
+        return "wechat/primaryEnrollSuccess";
     }
 }

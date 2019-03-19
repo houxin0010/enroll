@@ -276,15 +276,19 @@ $('#formSubmitBtn').click(function () {
                 contentType: 'application/json;charset=UTF-8',
                 data: JSON.stringify({
                     primaryStudentInfoVo: studentInfo,
-                    familyInfoVos: familyInfo
+                    familyInfos: familyInfo
                 }),
                 success: function (data) {
                     loading.hide();
-                    weui.toast('提交成功', 3000);
+                    // weui.toast('提交成功', 3000);
+                    window.location.href="/primarySchool/applySuccess";
                 },
                 error: function () {
                     loading.hide();
                     weui.toast('请求超时', 3000);
+                    setTimeout(function () {
+                        window.location.href = "/primarySchool/index";
+                    }, 2000);
                 }
             });
         }

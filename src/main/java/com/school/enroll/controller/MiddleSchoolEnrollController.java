@@ -47,4 +47,9 @@ public class MiddleSchoolEnrollController {
         model.addAttribute("fullEnrollStudentInfo", fullEnrollStudentInfo);
         return "wechat/middleEnrollDetail";
     }
+
+    @RequestMapping("/applySuccess")
+    public String applySuccess(){
+        return "wechat/MiddleEnrollSuccess";
+    }
 }

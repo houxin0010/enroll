@@ -527,11 +527,15 @@ $('#formSubmitBtn').click(function () {
                 }),
                 success: function (data) {
                     loading.hide();
-                    weui.toast('提交成功', 3000);
+                    // weui.toast('提交成功', 3000);
+                    window.location.href="/middleSchool/applySuccess";
                 },
                 error: function () {
                     loading.hide();
                     weui.toast('请求超时', 3000);
+                    setTimeout(function () {
+                        window.location.href = "/middleSchool/index";
+                    }, 2000);
                 }
             });
         }

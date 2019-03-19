@@ -340,12 +340,15 @@ $('#formSubmitBtn').click(function () {
                 success: function (data) {
                     loading.hide();
                     weui.toast('提交成功', 3000);
-                    window.location.href="/teacherWanted/applySuccess";
+                    window.location.href = "/teacherWanted/applySuccess";
                 },
                 error: function () {
                     loading.hide();
                     weui.toast('系统繁忙,请稍后再试!', 3000);
-                    window.location.href="/teacherWanted/index";
+                    setTimeout(function () {
+                        window.location.href = "/teacherWanted/index";
+                    }, 2000);
+
                 }
             });
         }
