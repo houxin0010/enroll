@@ -2,6 +2,9 @@ package com.school.enroll.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.school.enroll.entity.FamilyInfo;
 import com.school.enroll.entity.HonorInfo;
 import com.school.enroll.entity.StudentInfo;
@@ -39,9 +42,9 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     private HonorInfoMapper honorInfoMapper;
 
     @Override
-    public List<StudentInfo> getPrimaryStudentInfo(StudentInfoVo studentInfoVo) {
+    public IPage<StudentInfo> getPrimaryStudentInfo(Page<StudentInfo> page, StudentInfoVo studentInfoVo) {
         log.info("studentInfoVo = {}", JSON.toJSONString(studentInfoVo));
-        return studentInfoMapper.findByField(studentInfoVo.getName(), studentInfoVo.getStatus(), 0,
+        return studentInfoMapper.findByField(page, studentInfoVo.getName(), studentInfoVo.getStatus(), 0,
                 studentInfoVo.getStartTime(), studentInfoVo.getEndTime());
     }
 
@@ -54,10 +57,10 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     }
 
     @Override
-    public List<StudentInfo> getMiddleStudentInfo(StudentInfoVo studentInfoVo) {
+    public IPage<StudentInfo> getMiddleStudentInfo(Page<StudentInfo> page, StudentInfoVo studentInfoVo) {
 
         log.info("studentInfoVo = {}", JSON.toJSONString(studentInfoVo));
-        return studentInfoMapper.findByField(studentInfoVo.getName(), studentInfoVo.getStatus(), 1,
+        return studentInfoMapper.findByField(page, studentInfoVo.getName(), studentInfoVo.getStatus(), 1,
                 studentInfoVo.getStartTime(), studentInfoVo.getEndTime());
     }
 

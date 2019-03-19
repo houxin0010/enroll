@@ -172,7 +172,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="studentInfo:${primaryStudentInfoList}">
+                        <tr th:each="studentInfo:${primaryStudentInfoList.records}">
                             <td th:text="${studentInfo.name}"></td>
                             <td th:text="${studentInfo.sex}==0?'女':'男'"></td>
                             <td th:text="${studentInfo.nation}"></td>

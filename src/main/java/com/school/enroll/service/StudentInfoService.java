@@ -1,5 +1,7 @@
 package com.school.enroll.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.school.enroll.entity.StudentInfo;
 import com.school.enroll.result.StudentInfoDetailResult;
 import com.school.enroll.vo.FullEnrollStudentInfo;
@@ -11,11 +13,11 @@ import java.util.List;
 
 public interface StudentInfoService {
 
-    List<StudentInfo> getPrimaryStudentInfo(StudentInfoVo studentInfoVo);
+    IPage<StudentInfo> getPrimaryStudentInfo(Page<StudentInfo> page, StudentInfoVo studentInfoVo);
 
     List<StudentInfo> getStudentInfoByOpenId(String openId, Integer type);
 
-    List<StudentInfo> getMiddleStudentInfo(StudentInfoVo studentInfoVo);
+    IPage<StudentInfo> getMiddleStudentInfo(Page<StudentInfo> page, StudentInfoVo studentInfoVo);
 
     int updateStudentStatus(Long id, String status);
 

@@ -271,8 +271,31 @@ $('#formSubmitBtn').click(function () {
                 phoneNo: baseFormData[15].value
             }];
             $.ajax({
+                url: '/wechat/getAuthCode',
+                type: 'POST',
+                async: false,
+                // contentType: 'application/json;charset=UTF-8',
+                // data: JSON.stringify({
+                //     primaryStudentInfoVo: studentInfo,
+                //     familyInfos: familyInfo
+                // }),
+                success: function (data) {
+                    // loading.hide();
+                    // weui.toast('提交成功', 3000);
+                    // window.location.href = "/primarySchool/applySuccess";
+                },
+                error: function () {
+                    // loading.hide();
+                    // weui.toast('请求超时', 3000);
+                    // setTimeout(function () {
+                    //     window.location.href = "/primarySchool/index";
+                    // }, 2000);
+                }
+            });
+            $.ajax({
                 url: url,
                 type: 'POST',
+                async: false,
                 contentType: 'application/json;charset=UTF-8',
                 data: JSON.stringify({
                     primaryStudentInfoVo: studentInfo,
@@ -281,7 +304,7 @@ $('#formSubmitBtn').click(function () {
                 success: function (data) {
                     loading.hide();
                     // weui.toast('提交成功', 3000);
-                    window.location.href="/primarySchool/applySuccess";
+                    window.location.href = "/primarySchool/applySuccess";
                 },
                 error: function () {
                     loading.hide();
