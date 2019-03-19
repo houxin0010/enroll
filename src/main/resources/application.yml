@@ -59,3 +59,7 @@ mybatis-plus:
 web:
   upload:
     file-path: E:\myWork\enroll\src\main\resources\static\images\
+
+wx:
+  appid: wx1ffbee7b7b2f5409
+

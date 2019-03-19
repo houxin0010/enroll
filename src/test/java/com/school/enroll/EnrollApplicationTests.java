@@ -1,7 +1,5 @@
 package com.school.enroll;
 
-import com.alibaba.fastjson.JSON;
-import com.school.enroll.entity.StudentInfo;
 import com.school.enroll.mapper.StudentInfoMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -11,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
-import java.util.List;
 
 @Slf4j
 @RunWith(SpringRunner.class)

@@ -6,6 +6,7 @@ import com.school.enroll.vo.FullEnrollStudentInfo;
 import com.school.enroll.vo.PrimarySchoolApplyVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +23,14 @@ import java.util.List;
 @RequestMapping("/primarySchool")
 public class PrimarySchoolEnrollController {
 
+    @Value("${wx.appid}")
+    private String appId;
+
     @Autowired
     private StudentInfoService studentInfoService;
 
     @RequestMapping("/getAuthCode")
     public String getAuthCode() {
-        String appid = "wx1ffbee7b7b2f5409";
         String redirectUri = "";
         try {
             redirectUri = URLEncoder.encode("http://enroll.natapp1.cc/primarySchool/index", "UTF-8");
@@ -37,7 +40,7 @@ public class PrimarySchoolEnrollController {
         String responseType = "code";
         String scope = "snsapi_base";
         String state = "primary";
-        return "redirect:https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid +
+        return "redirect:https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appId +
                 "&redirect_uri=" + redirectUri +
                 "&response_type=" + responseType +
                 "&scope=" + scope +
@@ -49,6 +52,7 @@ public class PrimarySchoolEnrollController {
         if (!"primary".equals(state)) {
             return "";
         }
+
         String openId = "wx_test";
         List<StudentInfo> studentInfoList = studentInfoService.getStudentInfoByOpenId(openId, 0);
         model.addAttribute("studentInfoList", studentInfoList);
