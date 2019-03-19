@@ -3,6 +3,7 @@ package com.school.enroll.vo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.http.HttpStatus;
 
 import java.io.Serializable;
 
@@ -27,4 +28,8 @@ public class HttpClientResult implements Serializable {
      * 响应数据
      */
     private String content;
+
+    public boolean isOk() {
+        return HttpStatus.SC_OK == code;
+    }
 }
