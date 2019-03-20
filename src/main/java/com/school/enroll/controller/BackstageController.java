@@ -75,14 +75,16 @@ public class BackstageController {
 
     @RequestMapping("/teacher/index")
     public String teacherSchoolIndex(TeacherInfoQueryVo teacherInfoQueryVo, Model model) {
-        List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(teacherInfoQueryVo);
+        Page page = new Page(teacherInfoQueryVo.getPage(), teacherInfoQueryVo.getSize());
+        IPage teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(page, teacherInfoQueryVo);
         model.addAttribute("teacherApplyInfoList", teacherApplyInfoList);
         return "backstage/teacherApply";
     }
 
     @RequestMapping("/teacher/getTeacherApplyInfo")
     public String getTeacherApplyInfo(TeacherInfoQueryVo teacherInfoQueryVo, Model model) {
-        List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(teacherInfoQueryVo);
+        Page page = new Page(teacherInfoQueryVo.getPage(), teacherInfoQueryVo.getSize());
+        IPage teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfo(page, teacherInfoQueryVo);
         model.addAttribute("teacherApplyInfoList", teacherApplyInfoList);
         return "backstage/teacherApply::teacherApplyInfoList";
     }

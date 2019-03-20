@@ -53,7 +53,7 @@
 </th:block>
 
 <th:block th:fragment="optionHint">
-    <div  class="ui basic modal">
+    <div class="ui basic modal">
         <div class="ui icon header">
             <i class="exclamation triangle yellow icon"></i>
             入学审核
@@ -100,7 +100,7 @@
 
 
 <th:block th:fragment="optionHint2">
-    <div  class="ui basic modal">
+    <div class="ui basic modal">
         <div class="ui icon header">
             <i class="exclamation triangle yellow icon"></i>
             求职审核
@@ -121,7 +121,7 @@
     </div>
 </th:block>
 <th:block th:fragment="optionHint3">
-    <div id="delete"  class="ui mini modal">
+    <div id="delete" class="ui mini modal">
         <div class="ui icon header">
             <i class="exclamation triangle yellow icon"></i>
             删除记录
@@ -160,6 +160,28 @@
             </label>
         </form>
         <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    </div>
+</th:block>
+
+<th:block th:fragment="page(current, pages)">
+    <div class="ui right floated pagination menu">
+        <a class="icon item" th:if="${current > 1}" th:onclick="|javascript:queryStudentInfo(${current - 1})|">
+            <i class="left chevron icon"></i>
+        </a>
+        <a class="ui icon item disabled" th:if="${current == 1}">
+            <i class="left chevron icon"></i>
+        </a>
+        <th:block th:each="nav:${#numbers.sequence(1,pages)}">
+            <a class="ui item disabled" th:if="${nav == current}" th:text="${nav}"></a>
+            <a class="item" th:if="${nav != current}" th:text="${nav}"
+               th:onclick="|javascript:queryStudentInfo(${nav})|"></a>
+        </th:block>
+        <a class="icon item" th:if="${current < pages}" th:onclick="|javascript:queryStudentInfo(${current + 1})|">
+            <i class="right chevron icon"></i>
+        </a>
+        <a class="ui icon item disabled" th:if="${current == pages}">
+            <i class="right chevron icon"></i>
+        </a>
     </div>
 </th:block>
 </body>

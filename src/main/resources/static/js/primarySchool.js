@@ -5,9 +5,11 @@ function resst() {
     $('form').form('clear');
 }
 
-function queryStudentInfo() {
+function queryStudentInfo(page) {
     let $form = $('.ui.segment form');
     let allFields = $form.form('get values');
+    allFields.page = page;
+    allFields.size = 10;
     console.log(allFields);
     let url = "/backstage/primary/getPrimaryStudentInfo";
     $.ajax({
@@ -19,13 +21,14 @@ function queryStudentInfo() {
         }
     });
 }
-function  findDetail(id) {
-    $('.long.modal') .modal('show');
-    let url ="/backstage/primary/student/detail"
+
+function findDetail(id) {
+    $('.long.modal').modal('show');
+    let url = "/backstage/primary/student/detail"
     $.ajax({
         url: url,
         type: 'POST',
-        data: {id:id},
+        data: {id: id},
         success: function (data) {
             $('#studentInfoDetailResult').html(data);
         }

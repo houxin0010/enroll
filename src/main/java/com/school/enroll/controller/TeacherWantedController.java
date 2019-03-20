@@ -3,12 +3,12 @@ package com.school.enroll.controller;
 import com.school.enroll.entity.TeacherApplyInfo;
 import com.school.enroll.result.TeacherApplyDetailResult;
 import com.school.enroll.service.TeacherApplyInfoService;
+import com.school.enroll.service.WxService;
 import com.school.enroll.vo.TeacherWantedInfoVo;
 import com.school.enroll.vo.UploadResultVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -29,6 +31,11 @@ import java.util.List;
 @RequestMapping("/teacherWanted")
 public class TeacherWantedController {
 
+    @Autowired
+    private HttpServletRequest request;
+    @Autowired
+    private WxService wxService;
+
     @Value("${web.upload.file-path}")
     private String filePath;
 
@@ -36,8 +43,17 @@ public class TeacherWantedController {
     private TeacherApplyInfoService teacherApplyInfoService;
 
     @RequestMapping("/index")
-    public String index(Model model) {
-        String openId = "wx_test";
+    public String index(String code, String state, Model model) {
+        HttpSession session = request.getSession();
+        String openId = (String) session.getAttribute(session.getId());
+        if (StringUtils.isEmpty(openId)) {
+            openId = wxService.getOpenId(code);
+            if (StringUtils.isEmpty(openId)) {
+                return "wechat/wxError";
+            }
+            openId = "teacher-" + openId;
+            session.setAttribute(session.getId(), openId);
+        }
         List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfoByOpenId(openId);
         model.addAttribute("teacherApplyInfoList", teacherApplyInfoList);
         return "wechat/teacherWantedList";
@@ -49,10 +65,14 @@ public class TeacherWantedController {
     }
 
     @RequestMapping("/apply")
-    public ResponseEntity<String> apply(@RequestBody TeacherWantedInfoVo teacherWantedInfoVo) {
-        String openId = "wx_test";
+    public String apply(@RequestBody TeacherWantedInfoVo teacherWantedInfoVo) {
+        HttpSession session = request.getSession();
+        String openId = (String) session.getAttribute(session.getId());
+        if (StringUtils.isEmpty(openId)) {
+            return "wechat/wxError";
+        }
         teacherApplyInfoService.createTeacherInfo(teacherWantedInfoVo, openId);
-        return ResponseEntity.ok("success");
+        return "teacherWantedSuccess";
     }
 
     @RequestMapping("/detail")
@@ -88,7 +108,7 @@ public class TeacherWantedController {
     }
 
     @RequestMapping("/applySuccess")
-    public String applySuccess(){
+    public String applySuccess() {
         return "wechat/teacherWantedSuccess";
     }
 

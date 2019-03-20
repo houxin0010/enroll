@@ -2,6 +2,8 @@ package com.school.enroll.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.school.enroll.entity.*;
 import com.school.enroll.enums.StatusEnum;
 import com.school.enroll.mapper.*;
@@ -38,8 +40,8 @@ public class TeacherApplyInfoServiceImpl implements TeacherApplyInfoService {
     private EducationExperienceMapper educationExperienceMapper;
 
     @Override
-    public List<TeacherApplyInfo> getTeacherApplyInfo(TeacherInfoQueryVo teacherInfoQueryVo) {
-        return teacherApplyInfoMapper.findTeacherByParams(teacherInfoQueryVo);
+    public IPage<TeacherApplyInfo> getTeacherApplyInfo(Page<StudentInfo> page, TeacherInfoQueryVo teacherInfoQueryVo) {
+        return teacherApplyInfoMapper.findTeacherByParams(page, teacherInfoQueryVo);
     }
 
     @Override

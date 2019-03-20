@@ -6,9 +6,11 @@ function resst() {
     $('form').form('clear');
 }
 
-function queryStudentInfo() {
+function queryStudentInfo(page) {
     let $form = $('.ui.segment form');
     let allFields = $form.form('get values');
+    allFields.page = page;
+    allFields.size = 10;
     console.log(allFields);
     let url = "/backstage/middle/getMiddleStudentInfo";
     $.ajax({
