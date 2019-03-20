@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.school.enroll.entity.StudentInfo;
 import com.school.enroll.service.StudentInfoService;
+import com.school.enroll.service.WxService;
 import com.school.enroll.util.HttpClientUtil;
 import com.school.enroll.vo.FullEnrollStudentInfo;
 import com.school.enroll.vo.HttpClientResult;
@@ -39,6 +40,8 @@ public class PrimarySchoolEnrollController {
 
     @Autowired
     private HttpServletRequest request;
+    @Autowired
+    private WxService wxService;
 
     @Autowired
     private StudentInfoService studentInfoService;
@@ -48,31 +51,13 @@ public class PrimarySchoolEnrollController {
         HttpSession session = request.getSession();
         String openId = (String) session.getAttribute(session.getId());
         if (StringUtils.isEmpty(openId)) {
-            String getOpenIdUrl = "https://api.weixin.qq.com/sns/oauth2/access_token";
-            Map<String, String> paramMap = new HashMap<>(16);
-            paramMap.put("appid", appId);
-            paramMap.put("secret", secret);
-            paramMap.put("code", code);
-            paramMap.put("grant_type", "authorization_code");
-            try {
-                HttpClientResult httpClientResult = HttpClientUtil.doGet(getOpenIdUrl, null, paramMap);
-                log.info("httpClientResult = {}", httpClientResult);
-                if (!httpClientResult.isOk()) {
-                    return "wechat/wxError";
-                }
-                String resultContent = httpClientResult.getContent();
-                JSONObject resultJsonObject = JSON.parseObject(resultContent);
-                openId = resultJsonObject.getString("openid");
-                if (StringUtils.isEmpty(openId)) {
-                    return "wechat/wxError";
-                }
-                session.setAttribute(session.getId(), openId);
-            } catch (Exception e) {
-                log.error(e.getMessage(), e);
+            openId = wxService.getOpenId(code);
+            if (StringUtils.isEmpty(openId)) {
                 return "wechat/wxError";
             }
+            session.setAttribute(session.getId(), openId);
         }
-//        String openId = "wx_test";
+        //        String openId = "wx_test";
         List<StudentInfo> studentInfoList = studentInfoService.getStudentInfoByOpenId(openId, 0);
         model.addAttribute("studentInfoList", studentInfoList);
         return "wechat/primaryEnrollList";
@@ -87,7 +72,7 @@ public class PrimarySchoolEnrollController {
     public String apply(@RequestBody PrimarySchoolApplyVo primarySchoolApplyVo) {
         HttpSession session = request.getSession();
         String openId = (String) session.getAttribute(session.getId());
-        if (StringUtils.isEmpty(openId)){
+        if (StringUtils.isEmpty(openId)) {
             return "wechat/wxError";
         }
 //        String openId = "wx_test";
