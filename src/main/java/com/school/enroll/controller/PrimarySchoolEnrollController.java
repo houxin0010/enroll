@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -36,36 +38,41 @@ public class PrimarySchoolEnrollController {
     private String secret;
 
     @Autowired
+    private HttpServletRequest request;
+
+    @Autowired
     private StudentInfoService studentInfoService;
 
     @RequestMapping("/index")
     public String index(String code, String state, Model model) {
-        if (!"primary".equals(state)) {
-            return "wechat/wxError";
-        }
-        String openId;
-        String getOpenIdUrl = "https://api.weixin.qq.com/sns/oauth2/access_token";
-        Map<String, String> paramMap = new HashMap<>(16);
-        paramMap.put("appid", appId);
-        paramMap.put("secret", secret);
-        paramMap.put("code", code);
-        paramMap.put("grant_type", "authorization_code");
-        try {
-            HttpClientResult httpClientResult = HttpClientUtil.doGet(getOpenIdUrl, null, paramMap);
-            log.info("httpClientResult = {}", httpClientResult);
-            if (!httpClientResult.isOk()) {
+        HttpSession session = request.getSession();
+        String openId = (String) session.getAttribute(session.getId());
+        if (StringUtils.isEmpty(openId)) {
+            String getOpenIdUrl = "https://api.weixin.qq.com/sns/oauth2/access_token";
+            Map<String, String> paramMap = new HashMap<>(16);
+            paramMap.put("appid", appId);
+            paramMap.put("secret", secret);
+            paramMap.put("code", code);
+            paramMap.put("grant_type", "authorization_code");
+            try {
+                HttpClientResult httpClientResult = HttpClientUtil.doGet(getOpenIdUrl, null, paramMap);
+                log.info("httpClientResult = {}", httpClientResult);
+                if (!httpClientResult.isOk()) {
+                    return "wechat/wxError";
+                }
+                String resultContent = httpClientResult.getContent();
+                JSONObject resultJsonObject = JSON.parseObject(resultContent);
+                openId = resultJsonObject.getString("openid");
+                if (StringUtils.isEmpty(openId)) {
+                    return "wechat/wxError";
+                }
+                session.setAttribute(session.getId(), openId);
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
                 return "wechat/wxError";
             }
-            String resultContent = httpClientResult.getContent();
-            JSONObject resultJsonObject = JSON.parseObject(resultContent);
-            openId = resultJsonObject.getString("openid");
-            if (StringUtils.isEmpty(openId)) {
-                return "wechat/wxError";
-            }
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            return "wechat/wxError";
         }
+//        String openId = "wx_test";
         List<StudentInfo> studentInfoList = studentInfoService.getStudentInfoByOpenId(openId, 0);
         model.addAttribute("studentInfoList", studentInfoList);
         return "wechat/primaryEnrollList";
@@ -77,10 +84,15 @@ public class PrimarySchoolEnrollController {
     }
 
     @RequestMapping("/apply")
-    public ResponseEntity apply(@RequestBody PrimarySchoolApplyVo primarySchoolApplyVo) {
-        String openId = "wx_test";
+    public String apply(@RequestBody PrimarySchoolApplyVo primarySchoolApplyVo) {
+        HttpSession session = request.getSession();
+        String openId = (String) session.getAttribute(session.getId());
+        if (StringUtils.isEmpty(openId)){
+            return "wechat/wxError";
+        }
+//        String openId = "wx_test";
         studentInfoService.createPrimaryStudentInfo(primarySchoolApplyVo, openId);
-        return ResponseEntity.ok("success!");
+        return "wechat/primaryEnrollSuccess";
     }
 
     @GetMapping("/studentEnrollDetail")
@@ -98,7 +110,7 @@ public class PrimarySchoolEnrollController {
     public static void main(String[] args) {
         String redirectUri = "";
         try {
-            redirectUri = URLEncoder.encode("http://enroll.natapp1.cc/primarySchool/index", "UTF-8");
+            redirectUri = URLEncoder.encode("http://enroll.natapp1.cc/primarySchool/apply", "UTF-8");
         } catch (UnsupportedEncodingException e) {
             log.error(e.getMessage(), e);
         }
