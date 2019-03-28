@@ -6,7 +6,6 @@ import com.school.enroll.service.WxService;
 import com.school.enroll.vo.FullEnrollStudentInfo;
 import com.school.enroll.vo.MiddleSchoolApplyVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -39,7 +38,7 @@ public class MiddleSchoolEnrollController {
             if (StringUtils.isEmpty(openId)) {
                 return "wechat/wxError";
             }
-            openId = "middle-" + openId;
+//            openId = "middle-" + openId;
             session.setAttribute(session.getId(), openId);
         }
         List<StudentInfo> studentInfoList = studentInfoService.getStudentInfoByOpenId(openId, 1);

@@ -51,7 +51,7 @@ public class TeacherWantedController {
             if (StringUtils.isEmpty(openId)) {
                 return "wechat/wxError";
             }
-            openId = "teacher-" + openId;
+//            openId = "teacher-" + openId;
             session.setAttribute(session.getId(), openId);
         }
         List<TeacherApplyInfo> teacherApplyInfoList = teacherApplyInfoService.getTeacherApplyInfoByOpenId(openId);
@@ -72,7 +72,7 @@ public class TeacherWantedController {
             return "wechat/wxError";
         }
         teacherApplyInfoService.createTeacherInfo(teacherWantedInfoVo, openId);
-        return "teacherWantedSuccess";
+        return "wechat/teacherWantedSuccess";
     }
 
     @RequestMapping("/detail")

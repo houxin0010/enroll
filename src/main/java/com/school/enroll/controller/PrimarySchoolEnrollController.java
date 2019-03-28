@@ -48,7 +48,7 @@ public class PrimarySchoolEnrollController {
             if (StringUtils.isEmpty(openId)) {
                 return "wechat/wxError";
             }
-            openId = "primary-" + openId;
+//            openId = "primary-" + openId;
             session.setAttribute(session.getId(), openId);
         }
         List<StudentInfo> studentInfoList = studentInfoService.getStudentInfoByOpenId(openId, 0);
@@ -87,7 +87,7 @@ public class PrimarySchoolEnrollController {
     public static void main(String[] args) {
         String redirectUri = "";
         try {
-            redirectUri = URLEncoder.encode("http://enroll.natapp1.cc/primarySchool/apply", "UTF-8");
+            redirectUri = URLEncoder.encode("http://enroll.natapp1.cc/teacherWanted/index", "UTF-8");
         } catch (UnsupportedEncodingException e) {
             log.error(e.getMessage(), e);
         }

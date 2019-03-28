@@ -96,8 +96,12 @@ public class TeacherApplyInfoServiceImpl implements TeacherApplyInfoService {
                     EducationExperience educationExperience = new EducationExperience();
                     BeanUtils.copyProperties(educationExperienceVo, educationExperience);
                     try {
-                        educationExperience.setStartTime(simpleDateFormat.parse(educationExperienceVo.getStartTime()));
-                        educationExperience.setEndTime(simpleDateFormat.parse(educationExperienceVo.getEndTime()));
+                        if (!StringUtils.isEmpty(educationExperienceVo.getStartTime())) {
+                            educationExperience.setStartTime(simpleDateFormat.parse(educationExperienceVo.getStartTime()));
+                        }
+                        if (!StringUtils.isEmpty(educationExperienceVo.getEndTime())) {
+                            educationExperience.setEndTime(simpleDateFormat.parse(educationExperienceVo.getEndTime()));
+                        }
                     } catch (ParseException e) {
                         log.error(e.getMessage(), e);
                     }
